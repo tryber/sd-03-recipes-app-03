@@ -7,20 +7,20 @@ const Login = () => {
 
   const handleEmail = ({ target: { value } }) => {
     const regExr = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
-    const email = regExr.test(value) ? value : '';
-    return setDisabled((currentState) => ({ ...currentState, email }));;
-  }
+    const input = regExr.test(value) ? value : '';
+    return setDisabled((currentState) => ({ ...currentState, email: input }));
+  };
 
   const handlePassword = ({ target: { value } }) => {
-    const password = value.length > 6 ? value : '';
-    return setDisabled((currentState) => ({ ...currentState, password }));
-  }
+    const input = value.length > 6 ? value : '';
+    return setDisabled((currentState) => ({ ...currentState, password: input }));
+  };
 
   const handleSubmit = () => {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify({ email }));
-  }
+  };
 
   return (
     <section>
