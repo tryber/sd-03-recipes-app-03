@@ -11,6 +11,8 @@ const FoodList = ({ meals }) => (
   </div>
 );
 
-FoodList.propTypes = { meals: PropTypes.array.isRequired };
+FoodList.propTypes = {
+  meals: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};
 
 export default FoodList;

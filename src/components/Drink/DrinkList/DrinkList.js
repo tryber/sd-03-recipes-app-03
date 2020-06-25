@@ -11,6 +11,8 @@ const DrinkList = ({ drinks }) => (
   </div>
 );
 
-DrinkList.propTypes = { drinks: PropTypes.array.isRequired };
+DrinkList.propTypes = {
+  drinks: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};
 
 export default DrinkList;
