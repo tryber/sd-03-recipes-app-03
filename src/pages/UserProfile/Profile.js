@@ -4,17 +4,16 @@ import { Redirect } from 'react-router-dom';
 const Profile = () => {
   const [email, setEmail] = useState('');
   const [rote, setRote] = useState('');
-
   useEffect(() => {
     setEmail(JSON.parse(localStorage.getItem('user')).email);
   }, []);
 
   const handleExit = () => {
     localStorage.clear();
-    setRote('/')
-  }
+    setRote('/');
+  };
 
-  if (rote !== '') return <Redirect to={`${rote}`}/>
+  if (rote !== '') return <Redirect to={`${rote}`} />;
   return (
     <div>
       <span data-testid="profile-email">{email}</span>
