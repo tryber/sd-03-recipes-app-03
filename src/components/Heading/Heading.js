@@ -1,11 +1,11 @@
 import React from 'react';
-import './Welcome.css';
+import './Heading.css';
 import woman from './mulher.svg';
 import man from './pessoa.svg';
 
-const Welcome = () => (
-  <div className="welcome-container">
-    <h1>Welcome</h1>
+const Heading = ({ title }) => (
+  <div className="heading-container">
+    <h1>{title}</h1>
     <div>
       <img className="personal-icon" src={woman} alt="icone de um homem" />
       <img className="personal-icon" src={man} alt="icone de uma mulher" />
@@ -13,4 +13,4 @@ const Welcome = () => (
   </div>
 );
 
-export default Welcome;
+export default Heading;
