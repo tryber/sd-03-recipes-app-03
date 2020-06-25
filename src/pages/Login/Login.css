@@ -1,7 +1,6 @@
 .form-container {
   animation: opacitySign 1s 1 forwards;
   border-radius: 6px;
-  box-shadow: 0 3px 1px #f2f2f2 , 0 -4px 10px 0 #f2f2f2;
   color: #262626;
   display: flex;
   flex-direction: column;
