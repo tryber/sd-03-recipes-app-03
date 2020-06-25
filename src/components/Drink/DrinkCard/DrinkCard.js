@@ -4,7 +4,7 @@ import '../../Food/FoodCard/FoodCard.css';
 
 const DrinkCard = ({ drink: { strDrinkThumb, strDrink }, index }) => (
   <div className="card b-shadow">
-    <div data-testid={`${index}-recipe-card`} className="card-image">
+    <div data-testid={`${index}-recipe-card`}>
       <img
         className="thumbnail"
         alt={`imagem de um drink: ${strDrink}`}
