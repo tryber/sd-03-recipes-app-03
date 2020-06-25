@@ -41,14 +41,14 @@ export const fetchDrinksByCategory = () => (
 );
 
 const urlFindDrinkByIngredients = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
-export const fetchMealsByCategory = (ingredient) => (
+export const fetchDrinksByIngredient = (ingredient) => (
   fetch(`${urlFindDrinkByIngredients}${ingredient}`)
     .then((response) => response.json())
     .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
 );
 
 const urlFindDrinksByName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-export const fetchMealsByName = (name) => (
+export const fetchDrinksByName = (name) => (
   fetch(`${urlFindDrinksByName}${name}`)
     .then((response) => response.json())
     .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))

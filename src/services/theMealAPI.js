@@ -8,12 +8,11 @@ export const fetchMeals = (quantity) => (
 const urlCategoriesMeals = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesMeals = () => (
   fetch(urlCategoriesMeals)
-  .then((response) => response.json())
-  .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
+    .then((response) => response.json())
+    .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
 );
 
-const urlCategoryMealsButton = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
-export const fetchMealsByCategory = (category) => (
+const urlCategoryMealsButton = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';MealsByIngredients = (category) => (
   fetch(`${urlCategoryMealsButton}${category}`)
     .then((response) => response.json())
     .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
@@ -41,21 +40,21 @@ export const fetchAreasList = () => (
 );
 
 const urlFilterByArea = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=';
-export const fetchMealsByCategory = (country) => (
+export const fetchMealsByCountry = (country) => (
   fetch(`${urlFilterByArea}${country}`)
     .then((response) => response.json())
     .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
 );
 
 const urlListMealsIngredients = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
-export const fetchMealsByCategory = () => (
+export const fetchIngredientsList = () => (
   fetch(urlListMealsIngredients)
     .then((response) => response.json())
     .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
 );
 
 const urlFindMealsByIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
-export const fetchMealsByCategory = (ingredient) => (
+export const fetchMealsByIngredients = (ingredient) => (
   fetch(`${urlFindMealsByIngredients}${ingredient}`)
     .then((response) => response.json())
     .then((json) => Promise.ok ? Promise.resolve(json) : Promise.reject(json))
