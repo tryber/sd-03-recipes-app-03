@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../../Food/FoodCard/FoodCard.css';
 
-const FoodCard = ({ drink: { strDrinkThumb, strDrink }, index }) => (
+const DrinkCard = ({ drink: { strDrinkThumb, strDrink }, index }) => (
   <div className="card">
     <div data-testid={`${index}-recipe-card`} className="Card">
       <img
@@ -14,4 +15,12 @@ const FoodCard = ({ drink: { strDrinkThumb, strDrink }, index }) => (
   </div>
 );
 
-export default FoodCard;
+DrinkCard.propTypes = {
+  drink: PropTypes.shape({
+    strDrinkThumb: PropTypes.string.isRequired,
+    strDrink: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+export default DrinkCard;

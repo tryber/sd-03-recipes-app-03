@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './FoodCard.css';
 
 const FoodCard = ({ meal: { strMealThumb, strMeal }, index }) => (
@@ -13,5 +14,14 @@ const FoodCard = ({ meal: { strMealThumb, strMeal }, index }) => (
     <span data-testid={`${index}-card-name`}>{strMeal}</span>
   </div>
 );
+
+FoodCard.propTypes = {
+  meal: PropTypes.shape({
+    strMealThumb: PropTypes.string.isRequired,
+    strMeal: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
 
 export default FoodCard;

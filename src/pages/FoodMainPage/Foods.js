@@ -3,13 +3,12 @@ import FoodContext from './Context/FoodContext';
 import FoodList from '../../components/Food/FoodList/FoodList';
 
 const Foods = () => {
-  const { get12Meals, meals } = useContext(FoodContext);
+  const { get12Meals, mealsData } = useContext(FoodContext);
   useEffect(() => {
     get12Meals();
-    console.log('fui montado', meals);
   }, []);
   return (
-    <FoodList meals={meals}/>
+    <FoodList meals={mealsData} />
   );
 };
 

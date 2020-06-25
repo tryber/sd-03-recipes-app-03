@@ -5,13 +5,12 @@ import { fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinks } from '../../../services/theCockTailAPI';
 
 const FoodProvider = ({ children }) => {
-  const [meals, setMeals] = useState([]);
-  const [drinks, setDrinks] = useState([]);
+  const [mealsData, setMeals] = useState([]);
+  const [drinksData, setDrinks] = useState([]);
   const [error, setError] = useState([{ toDrink: '', toMeals: '' }]);
   const handleMealsFailure = (err) => {
-    setError((currentState) => ({ ...currentState, toMeals: err}));
+    setError((currentState) => ({ ...currentState, toMeals: err }));
   };
-
   const handleMealsSuccess = (response) => {
     const { meals } = response;
     setMeals(meals);
@@ -35,12 +34,11 @@ const FoodProvider = ({ children }) => {
     fetchDrinks('')
       .then(handleDrinksFailure, handleDrinksSuccess);
   };
-
   const context = {
     get12Meals: fetch12Meals,
     get12Drinks: fetch12Drinks,
-    meals,
-    drinks,
+    mealsData,
+    drinksData,
     error,
   };
   return (
