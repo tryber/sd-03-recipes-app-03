@@ -28,7 +28,7 @@ const Login = () => {
   return (
     <section className="container">
       <div className="form-container b-shadow" name="login">
-        <Heading title="Welcome"/>
+        <Heading title="Welcome" />
         <label htmlFor="email">E-mail</label>
         <input data-testid="email-input" onChange={(e) => handleEmail(e)} type="email" />
         <label htmlFor="password">Password</label>

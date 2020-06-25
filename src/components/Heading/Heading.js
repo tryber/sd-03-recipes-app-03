@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Heading.css';
 import woman from './mulher.svg';
 import man from './pessoa.svg';
@@ -12,5 +13,7 @@ const Heading = ({ title }) => (
     </div>
   </div>
 );
+
+Heading.propTypes = { title: PropTypes.string.isRequired };
 
 export default Heading;
