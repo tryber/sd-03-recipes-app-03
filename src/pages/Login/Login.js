@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Welcome from './Welcome/Welcome';
+import './Login.css';
 
 const Login = () => {
   const [disabled, setDisabled] = useState({ email: '', password: '' });
@@ -23,12 +25,16 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <form name="login">
+    <section className="container">
+      <div className="form-container" name="login">
+        <Welcome />
+        <label htmlFor="email">E-mail</label>
         <input data-testid="email-input" onChange={(e) => handleEmail(e)} type="email" />
+        <label htmlFor="password">Password</label>
         <input data-testid="password-input" onChange={(e) => handlePassword(e)} type="password" />
         <Link to="/comidas">
           <button
+            className="submit-btn"
             data-testid="login-submit-btn"
             onClick={() => handleSubmit()}
             disabled={email === '' || password === ''}
@@ -37,7 +43,7 @@ const Login = () => {
             Submit
           </button>
         </Link>
-      </form>
+      </div>
     </section>
   );
 };
