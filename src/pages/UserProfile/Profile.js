@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Profile = () => {
   const [email, setEmail] = useState('');
+  const [rote, setRote] = useState('');
 
   useEffect(() => {
     setEmail(JSON.parse(localStorage.getItem('user')).email);
   }, []);
 
+  const handleExit = () => {
+    localStorage.clear();
+    setRote('/')
+  }
+
+  if (rote !== '') return <Redirect to={`${rote}`}/>
   return (
     <div>
       <span data-testid="profile-email">{email}</span>
-      <Link to="/receitas-feitas">
-        <button data-testid="profile-done-btn">Receitas Feitas</button>
-      </Link>
-      <Link to="/receitas-favoritas">
-        <button data-testid="profile-favorite-btn">Receitas Favoritas</button>
-      </Link>
-      <Link to="/">
-        <button
-          onClick={() => localStorage.clear()} data-testid="profile-logout-btn"
-        >
-          Sair
-        </button>
-      </Link>
+      <button
+        onClick={() => setRote('/receitas-feitas')} data-testid="profile-done-btn"
+      >
+        Receitas Feitas
+      </button>
+      <button
+        onClick={() => setRote('/receitas-favoritas')}
+        data-testid="profile-favorite-btn"
+      >
+        Receitas Favoritas
+      </button>
+      <button
+        onClick={() => handleExit()} data-testid="profile-logout-btn"
+      >
+        Sair
+      </button>
     </div>
   );
 };
