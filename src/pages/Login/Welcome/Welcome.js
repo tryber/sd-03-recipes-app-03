@@ -1,6 +1,6 @@
 import React from 'react';
 import './Welcome.css';
-import woman from './mulher.svg'
+import woman from './mulher.svg';
 import man from './pessoa.svg';
 
 const Welcome = () => (
