@@ -1,5 +1,14 @@
-.Card {
-  border: 1px solid black;
-  height: 100px;
-  width: 100px;
+.card {
+  border-radius: 4px;
+  margin: 5% auto;
+  overflow: hidden;
+  width: 35%;
+}
+
+.card-title {
+  margin-left: 10%;
+}
+
+.thumbnail {
+  max-width: 150px;
 }

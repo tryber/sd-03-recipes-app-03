@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import './FoodCard.css';
 
 const FoodCard = ({ meal: { strMealThumb, strMeal }, index }) => (
-  <div>
-    <div data-testid={`${index}-recipe-card`} className="Card">
+  <div className="card b-shadow">
+    <div data-testid={`${index}-recipe-card`} className="card-image">
       <img
+        className="thumbnail"
         alt={`imagem de uma refeição: ${strMeal}`}
         data-testid={`${index}-card-img`}
-        src={strMealThumb} width="100px" height="50px"
+        src={strMealThumb}
       />
     </div>
-    <span data-testid={`${index}-card-name`}>{strMeal}</span>
+    <span className="card-title"data-testid={`${index}-card-name`}>{strMeal}</span>
   </div>
 );
 
