@@ -13,7 +13,7 @@ export const fetchCategoriesDrinks = () => (
 );
 
 const urlCategoryDrinksButton = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=';
-export const fetchDrinkByCategory = (category) => (
+export const fetchDrinkByCategoryButton = (category) => (
   fetch(`${urlCategoryDrinksButton}${category}`)
     .then((response) => response.json())
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
@@ -34,7 +34,7 @@ export const fetchRandomDrink = () => (
 );
 
 const urlListDrinksIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
-export const fetchDrinksByCategory = () => (
+export const fetchListDrinksIngredients = () => (
   fetch(urlListDrinksIngredients)
     .then((response) => response.json())
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))

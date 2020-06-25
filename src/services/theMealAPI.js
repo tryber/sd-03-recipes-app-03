@@ -12,6 +12,7 @@ export const fetchCategoriesMeals = () => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
+//Buscar Meals por categoria específica
 const urlCategoryMealsButton = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 export const fetchCategoryMealsButton = (category) => (
   fetch(`${urlCategoryMealsButton}${category}`)
