@@ -61,7 +61,7 @@ export const fetchMealsByIngredients = (ingredient) => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlFindMealsByName = 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+const urlFindMealsByName = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 export const fetchMealsByName = (name) => (
   fetch(`${urlFindMealsByName}${name}`)
     .then((response) => response.json())
