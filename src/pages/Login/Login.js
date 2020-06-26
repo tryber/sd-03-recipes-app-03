@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../components/Header';
+import Heading from '../../components/Heading/Heading';
 import './Login.css';
 import '../../App.css';
 
@@ -28,7 +28,7 @@ const Login = () => {
   return (
     <section className="container">
       <div className="form-container b-shadow" name="login">
-        <Header title="Welcome" />
+        <Heading title="Welcome" />
         <label htmlFor="email">E-mail</label>
         <input data-testid="email-input" onChange={(e) => handleEmail(e)} type="email" />
         <label htmlFor="password">Password</label>
