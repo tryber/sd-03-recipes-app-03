@@ -4,8 +4,6 @@ import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 import { fetchDrinkByCategoryButton } from '../../services/theCockTailAPI';
 import { fetchCategoryMealsButton } from '../../services/theMealAPI';
 import './ListCategories.css';
-import ShareButton from '../Share/ShareButton';
-import FavoriteButton from '../Favorite/FavoriteButton';
 const handleCategories = (category, fetchCallBack, setCallBack) => {
   fetchCallBack(category)
     .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
