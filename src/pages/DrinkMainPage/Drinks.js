@@ -9,10 +9,10 @@ const Drinks = () => {
     get12Drinks();
   }, []);
   return (
-    <>
+    <div>
       <DrinkList drinks={drinksData} />
       <Footer />
-    </>
+    </div>
   );
 };
 

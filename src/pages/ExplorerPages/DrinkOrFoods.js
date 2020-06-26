@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
-import './Explorer.css'
+import './Explorer.css';
 
 
 function renderButton(pathname, newRote, title, testid) {
@@ -17,7 +17,7 @@ function renderButton(pathname, newRote, title, testid) {
   );
 }
 
-function isComidasOrBebidas(pathname) {
+function isFoodOrDrink(pathname) {
   const title = {
     ingredients: 'Por Ingredientes',
     origem: 'Por Local de Origem',
@@ -42,7 +42,7 @@ function isComidasOrBebidas(pathname) {
 function DrinkOrFoods({ location: { pathname } }) {
   return (
     <div>
-      {isComidasOrBebidas(pathname)}
+      {isFoodOrDrink(pathname)}
       <Footer />
     </div>
   );

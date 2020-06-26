@@ -1,7 +1,7 @@
 .explorer-container {
-  height: 90vh;
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
+  height: 90vh;
   justify-content: space-around;
 }

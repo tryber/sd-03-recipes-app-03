@@ -5,25 +5,25 @@ import './Explorer.css';
 
 function Explorar() {
   return (
-      <>
-        <div className="explorer-container">
-          <Link to="/explorar/comidas">
-            <button 
-              className="explorer-button"
-              data-testid="explore-food"
-              >Explorar Comidas
-            </button>
-          </Link>
-          <Link to="/explorar/bebidas">
-            <button 
-              className="explorer-button"
-              data-testid="explore-drinks"
-              >Explorar Bebidas
-            </button>
-          </Link>
-        </div>
-        <Footer />
-      </>
+    <div>
+      <div className="explorer-container">
+        <Link to="/explorar/comidas">
+          <button 
+            className="explorer-button"
+            data-testid="explore-food"
+            >Explorar Comidas
+          </button>
+        </Link>
+        <Link to="/explorar/bebidas">
+          <button 
+            className="explorer-button"
+            data-testid="explore-drinks"
+            >Explorar Bebidas
+          </button>
+        </Link>
+      </div>
+      <Footer />
+    </div>
   );
 }
 
