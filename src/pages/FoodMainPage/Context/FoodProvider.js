@@ -18,8 +18,8 @@ const FoodProvider = ({ children }) => {
     setDataBase((currentState) => ({ ...currentState, meals }));
   };
   const fetch12Meals = () => {
-    fetchMeals('')
-      .then(handleMealsFailure, handleMealsSuccess);
+    fetchMeals()
+      .then(handleMealsSuccess, handleMealsFailure);
   };
   const handleDrinksFailure = (err) => {
     setError((currentState) => ({ ...currentState, toDrink: err }));
@@ -30,8 +30,8 @@ const FoodProvider = ({ children }) => {
     setDataBase((currentState) => ({ ...currentState, drinks }));
   };
   const fetch12Drinks = () => {
-    fetchDrinks('')
-      .then(handleDrinksFailure, handleDrinksSuccess);
+    fetchDrinks()
+      .then(handleDrinksSuccess, handleDrinksFailure);
   };
   const context = {
     get12Meals: fetch12Meals,
