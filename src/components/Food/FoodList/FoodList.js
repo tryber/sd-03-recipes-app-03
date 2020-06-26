@@ -14,7 +14,7 @@ const FoodList = ({ meals }) => {
   }, []);
   return (
     <section>
-      <ListCategories strCategories={[{ strCategory: 'all' }, ...categories.meals]}/>
+      <ListCategories strCategories={[{ strCategory: 'all' }, ...categories.meals]} />
       <div className="foodList">
         {meals.map((meal, index) => (
           index < 12 && <FoodCard key={meal.idMeal} meal={meal} index={index} />
