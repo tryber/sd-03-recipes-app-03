@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
-import { fetchMeals } from '../../../services/theMealAPI';
+import React, { useContext } from 'react';
 import RecommendedMealsComponent from './RecommendedMealsComponent';
 import FoodContext from '../../FoodMainPage/Context/FoodContext';
 

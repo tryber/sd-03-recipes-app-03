@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { fetchDrinks } from '../../../services/theCockTailAPI';
+import React, { useContext } from 'react';
 import FoodContext from '../../FoodMainPage/Context/FoodContext';
 import RecommendedDrinksComponent from './RecommendedDrinksComponent';
 
