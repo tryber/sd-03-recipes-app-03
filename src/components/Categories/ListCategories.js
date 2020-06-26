@@ -42,16 +42,18 @@ const ListCategories = ({ strCategories, type }) => {
       case 'drink':
         if (handleAllCategories(setDrinksData, drinks, category)) {
           return setAllCategories('');
-        } else {
-          handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-          setAllCategories({ category });
         }
+        handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
+        setAllCategories({ category });
+        break;
       case 'meal':
         if (handleAllCategories(setMealsData, meals, category)) {
           return setAllCategories('');
         };
         handleCategories(category, fetchCategoryMealsButton, setMealsData);
         setAllCategories({ category });
+        break;
+      default: return null;
       };
     }
   return (
