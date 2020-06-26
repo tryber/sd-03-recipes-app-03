@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Heading.css';
+import './style.css';
 import woman from './mulher.svg';
 import man from './pessoa.svg';
 
