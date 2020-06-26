@@ -19,7 +19,7 @@ const FoodProvider = ({ children }) => {
   };
   const fetch12Meals = () => {
     fetchMeals('')
-      .then(handleMealsFailure, handleMealsSuccess);
+      .then(handleMealsSuccess, handleMealsFailure);
   };
   const handleDrinksFailure = (err) => {
     setError((currentState) => ({ ...currentState, toDrink: err }));
@@ -31,7 +31,7 @@ const FoodProvider = ({ children }) => {
   };
   const fetch12Drinks = () => {
     fetchDrinks('')
-      .then(handleDrinksFailure, handleDrinksSuccess);
+      .then(handleDrinksSuccess, handleDrinksFailure);
   };
   const context = {
     get12Meals: fetch12Meals,
