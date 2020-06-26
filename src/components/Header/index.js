@@ -1,19 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
-import woman from './mulher.svg';
-import man from './pessoa.svg';
+// import woman from './mulher.svg';
+// import man from './pessoa.svg';
+import profileIcon from '../../images/profileIcon.svg';
 
-const Heading = ({ title }) => (
-  <div className="heading-container">
-    <h1>{title}</h1>
+const Header = ({ title, searchIcon, onClick }) => (
+  <header className="heading-container">
     <div>
-      <img className="personal-icon" src={woman} alt="icone de um homem" />
-      <img className="personal-icon" src={man} alt="icone de uma mulher" />
+      <Link to="/perfil">
+        <img
+          className="personal-icon"
+          src={profileIcon} 
+          alt="icone de  perfil"
+          data-testid="profile-top-btn"
+        />
+      </Link>
     </div>
-  </div>
+    <h1 data-testid="page-title">{title}</h1>
+    {searchIcon && (
+      <Link>
+        <img
+          className="personal-icon"
+          src={searchIcon} 
+          alt="icone de  busca"
+          data-testid="search-top-btn"
+          onClick={onClick}
+        />
+      </Link>
+    )}
+  </header>
 );
 
-Heading.propTypes = { title: PropTypes.string.isRequired };
+export default Header;
 
-export default Heading;
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  searchIcon: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};
