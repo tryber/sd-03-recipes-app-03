@@ -14,7 +14,7 @@ const RecipeButtonControl = (props) => {
         </Link>
       </div>
     );
-  };
+  }
   return (
     <div>
       <Link to={`/${type}/${id}/in-progress`}>
@@ -33,11 +33,11 @@ RecipeButtonControl.propTypes = {
   id: PropTypes.number,
   setInProgress: PropTypes.func,
   inProgress: PropTypes.bool,
-}
+};
 
 RecipeButtonControl.defaultProps = {
   type: '',
   id: undefined,
   setInProgress: () => {},
   inProgress: false,
-}
+};
