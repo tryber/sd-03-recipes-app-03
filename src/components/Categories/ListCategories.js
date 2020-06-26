@@ -26,33 +26,39 @@ const handleCategories = (category, fetchCallBack, setCallBack) => {
     .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
 };
 
+const handleAllCategories = (callback, data, category, allCategories) => {
+  console.log(allCategories);
+  if (allCategories === category || category === 'All') {
+    callback(data);
+    return true;
+  }
+  return false;
+};
 
 const ListCategories = ({ strCategories, type }) => {
   const { setMealsData, setDrinksData, dataBase: { drinks, meals } } = useContext(FoodContext);
   const [allCategories, setAllCategories] = useState({ category: '' });
 
-  const handleAllCategories = (callback, data, category) => {
-    if (allCategories.category === category || category === 'All') {
-      callback(data);
-      return true;
-    }
-    return false;
-  };
   const filterByCategory = (category, categoryType) => {
-    console.log(allCategories.category);
     if (categoryType === 'drink') {
-      handleAllCategories(setDrinksData, drinks, category) ? setAllCategories('') :
+      if (handleAllCategories(setDrinksData, drinks, category, allCategories.category)) {
+        return setAllCategories('');
+      };
+      setAllCategories({ category });
+      console.log(category, allCategories.category);
       handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
     } else {
-      handleAllCategories(setMealsData, meals, category) ? setAllCategories('') :
+      if (handleAllCategories(setMealsData, meals, category, allCategories.category)) {
+        return setAllCategories('');
+      };
+      setAllCategories({ category });
       handleCategories(category, fetchCategoryMealsButton, setMealsData);
     }
-    return setAllCategories({ category });;
+    return null;
   };
   return (
     <div>
-      {strCategories.map(({ strCategory }, index) => (
-        index < 6 &&
+      {strCategories.slice(0, 6).map(({ strCategory }) => (
         <button
           onClick={() => filterByCategory(strCategory, type)}
           data-testid={`${strCategory}-category-filter`} key={strCategory}
