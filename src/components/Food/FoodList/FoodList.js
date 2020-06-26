@@ -8,8 +8,9 @@ import './FoodList.css';
 const FoodList = ({ meals }) => {
   const [categories, setCategories] = useState({ meals: [] });
   useEffect(() => {
+    localStorage.setItem('favoriteRecipes', []);
     fetchCategoriesMeals()
-      .then((resp) => console.log('1', resp), (resp) => setCategories(resp));
+      .then((resp) => resp, (resp) => setCategories(resp));
   }, []);
   return (
     <section>

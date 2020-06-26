@@ -5,7 +5,7 @@ import { fetchDrinkByCategoryButton } from '../../services/theCockTailAPI';
 import { fetchCategoryMealsButton } from '../../services/theMealAPI';
 import './ListCategories.css';
 import ShareButton from '../Share/ShareButton';
-
+import FavoriteButton from '../Favorite/FavoriteButton';
 const handleCategories = (category, fetchCallBack, setCallBack) => {
   fetchCallBack(category)
     .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
@@ -52,7 +52,6 @@ const ListCategories = ({ strCategories, type }) => {
 
   return (
     <div>
-      <ShareButton />
       {strCategories.slice(0, 6).map(({ strCategory }) => (
         <button
           className="categoryBtn"
