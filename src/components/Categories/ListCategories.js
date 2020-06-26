@@ -4,11 +4,9 @@ import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 import { fetchDrinkByCategoryButton } from '../../services/theCockTailAPI';
 import { fetchCategoryMealsButton } from '../../services/theMealAPI';
 
-
 const ListCategories = ({ strCategories, type }) => {
   const { setMealsData, setDrinksData, dataBase: { drinks, meals } } = useContext(FoodContext);
   const [allCategories, setAllCategories] = useState('');
-
   const handleAllCategories = (callback, data, category) => {
     if (allCategories.category === category || category === 'All') {
       setAllCategories('');
@@ -16,27 +14,23 @@ const ListCategories = ({ strCategories, type }) => {
       return true;
     }
     return false;
-  }
+  };
 
   const handleCategories = (category, fetchCallBack, setCallBack) => {
     setAllCategories({ category });
     fetchCallBack(category)
-      .then(err => err, (response) => setCallBack(Object.values(response)[0]));
-  }
+      .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
+  };
 
-  const filterByCategory = (category, type) => {
-    if (type === 'drink') {
+  const filterByCategory = (category, categoryType) => {
+    if (categoryType === 'drink') {
       if (handleAllCategories(setDrinksData, drinks, category)) return null;
-      setAllCategories({ category });
-      fetchDrinkByCategoryButton(category)
-        .then(err => err, ({ drinks }) => setDrinksData(drinks));
+      handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
     } else {
-        if (handleAllCategories(setMealsData, meals, category)) return null;
-        handleCategories(category, fetchCategoryMealsButton, setMealsData);
-        // setAllCategories({ category });
-        // fetchCategoryMealsButton(category)
-        //   .then(err => err, ({ meals }) => setMealsData(meals));
+      if (handleAllCategories(setMealsData, meals, category)) return null;
+      handleCategories(category, fetchCategoryMealsButton, setMealsData);
     }
+    return null;
   };
   return (
     <div>
@@ -55,6 +49,7 @@ const ListCategories = ({ strCategories, type }) => {
 
 ListCategories.propTypes = {
   strCategories: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ListCategories;
