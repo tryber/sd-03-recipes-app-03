@@ -27,10 +27,14 @@ const FavoriteButton = (recipe, type) => {
     setSrcIcon(blackHeartIcon);
     return newRecipe;
   };
+
   const handleFavorite = () => {
     // favorited ? addToLocalStorage() : removeLocalStorage();
     setFavorited((currentState) => !currentState);
   };
+
+  console.log(removeLocalStorage, addToLocalStorage, favorited);
+
   return (
     <button onClick={() => handleFavorite()}>
       <img src={srcIcon} alt="Icone para favoritar receita" />
