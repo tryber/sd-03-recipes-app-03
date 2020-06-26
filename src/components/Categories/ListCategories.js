@@ -43,13 +43,11 @@ const ListCategories = ({ strCategories, type }) => {
     if (categoryType === 'drink') {
       handleAllCategories(setDrinksData, drinks, category) ? setAllCategories('') :
       handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-      setAllCategories({ category });
     } else {
       handleAllCategories(setMealsData, meals, category) ? setAllCategories('') :
       handleCategories(category, fetchCategoryMealsButton, setMealsData);
-      setAllCategories({ category });
     }
-    return null;
+    return setAllCategories({ category });;
   };
   return (
     <div>
