@@ -12,7 +12,7 @@ const Header = ({ title, searchIcon, onClick }) => (
       <Link to="/perfil">
         <img
           className="personal-icon"
-          src={profileIcon} 
+          src={profileIcon}
           alt="icone de  perfil"
           data-testid="profile-top-btn"
         />
@@ -21,9 +21,9 @@ const Header = ({ title, searchIcon, onClick }) => (
     <h1 data-testid="page-title">{title}</h1>
     {searchIcon && (
       <Link>
-        <img
+        <button
           className="personal-icon"
-          src={searchIcon} 
+          src={searchIcon}
           alt="icone de  busca"
           data-testid="search-top-btn"
           onClick={onClick}
@@ -38,5 +38,5 @@ export default Header;
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   searchIcon: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
