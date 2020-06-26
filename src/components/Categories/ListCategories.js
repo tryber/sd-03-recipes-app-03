@@ -4,23 +4,6 @@ import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 import { fetchDrinkByCategoryButton } from '../../services/theCockTailAPI';
 import { fetchCategoryMealsButton } from '../../services/theMealAPI';
 
-// const filterByCategory = (category, categoryType) => {
-//   if (categoryType === 'drink') {
-//     if (handleAllCategories(setDrinksData, drinks, category)) {
-//       return setAllCategories('');
-//     };
-//     handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-//     setAllCategories({ category });
-//   } else {
-//     if (handleAllCategories(setMealsData, meals, category)) {
-//       return setAllCategories('');
-//     };
-//     handleCategories(category, fetchCategoryMealsButton, setMealsData);
-//     setAllCategories({ category });
-//   }
-//   return null;
-// };
-
 const handleCategories = (category, fetchCallBack, setCallBack) => {
   fetchCallBack(category)
     .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
@@ -44,13 +27,12 @@ const filterByCategory = (category, categoryType, untils) => {
     setAllCategories({ category });
     console.log(category, allCategories.category);
     handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-  } else {
-    if (handleAllCategories(setMealsData, meals, category, allCategories.category)) {
-      return setAllCategories('');
-    }
-    setAllCategories({ category });
-    handleCategories(category, fetchCategoryMealsButton, setMealsData);
   }
+  if (handleAllCategories(setMealsData, meals, category, allCategories.category)) {
+    return setAllCategories('');
+  }
+  setAllCategories({ category });
+  handleCategories(category, fetchCategoryMealsButton, setMealsData);
   return null;
 };
 
