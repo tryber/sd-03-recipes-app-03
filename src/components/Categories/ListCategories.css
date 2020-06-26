@@ -1,0 +1,12 @@
+.categoryBtn {
+  border: 1px solid #d2d2d2;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  margin: 1px 4px;
+  outline: 0px auto;
+  padding: 1%;
+}
+
+.categoryBtn:hover {
+  background-color: #e2e2e2;
+}

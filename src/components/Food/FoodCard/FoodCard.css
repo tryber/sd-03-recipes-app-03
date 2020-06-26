@@ -1,12 +1,15 @@
 .card {
   border-radius: 4px;
+  color: #390438;
+  font-weight: 700;
   margin: 5% auto;
   overflow: hidden;
+  text-decoration: none;
   width: 150px;
 }
 
 .card-title {
-  margin-left: 10%;
+  margin-left: 5px;
 }
 
 .thumbnail {

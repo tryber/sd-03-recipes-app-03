@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import '../../Food/FoodCard/FoodCard.css';
 
 const DrinkCard = ({ drink: { strDrinkThumb, strDrink, idDrink }, index }) => (
-  <Link to={`/bebidas/${idDrink}`}>
-    <div className="card b-shadow">
+  <Link className="card b-shadow" to={`/bebidas/${idDrink}`}>
+    <div>
       <div data-testid={`${index}-recipe-card`}>
         <img
           className="thumbnail"

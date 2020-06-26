@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './FoodCard.css';
 
 const FoodCard = ({ meal: { strMealThumb, strMeal, idMeal }, index }) => (
-  <Link to={`/comidas/${idMeal}`}>
-    <div className="card b-shadow">
+  <Link className="card b-shadow" to={`/comidas/${idMeal}`}>
+    <div>
       <div data-testid={`${index}-recipe-card`}>
         <img
           className="thumbnail"
