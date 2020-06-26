@@ -10,22 +10,22 @@ const RecommendedMeals = () => {
   const apiRequestSucceedMeal = ({ meals }) => {
     setData(meals);
     setIsLoading(false);
-  }
+  };
 
   const apiRequestFailure = ({ message }) => {
     setErrorMessage(message);
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
     const apiRequestFunction = () => {
-      fetchMeals().then(apiRequestSucceedMeal, apiRequestFailure)
-    }
-    apiRequestFunction()
-  }, [])
+      fetchMeals().then(apiRequestSucceedMeal, apiRequestFailure);
+    };
+    apiRequestFunction();
+  }, []);
 
   const sixRecommendedMeals = data.slice(0, 6);
-
+  console.log(isLoading, errorMessage)
   return (
     <div>
       <h2>Recomendadas</h2>
@@ -36,7 +36,7 @@ const RecommendedMeals = () => {
             key={meals.idMeal}
             meals={meals}
             index={index}
-          />
+          />,
         )}
       </div>
     </div>

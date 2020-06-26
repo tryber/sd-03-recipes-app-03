@@ -3,7 +3,7 @@ export const fetchMeals = () => {
   return fetch(url12Meals).then((response) => (
     response.json()
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
-  ))
+  ));
 };
 
 const urlCategoriesMeals = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
@@ -27,7 +27,7 @@ export const fetchMealById = (id) => {
   return fetch(urlMealById).then((response) => (
     response.json()
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
-  ))
+  ));
 };
 
 const urlRandomMeal = 'https://www.themealdb.com/api/json/v1/1/random.php';

@@ -11,24 +11,24 @@ const DetailsDrinksPage = (props) => {
     apiRequestFunction,
   } = useContext(DetailsPageContext);
 
-  const { match: { params: { id } }} = props;
+  const { match: { params: { id } } } = props;
 
   useEffect(() => {
-    apiRequestFunction(fetchDrinkById, id)
-  }, [])
+    apiRequestFunction(fetchDrinkById, id);
+  }, []);
 
 
-  if (isLoading) return <div>Loading...</div>
-  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>
-  return <div><DrinksComponent /></div>
-}
+  if (isLoading) return <div>Loading...</div>;
+  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
+  return <div><DrinksComponent /></div>;
+};
 
 export default DetailsDrinksPage;
 
 DetailsDrinksPage.propTypes = {
-  id: PropTypes.string.isRequired,
-}
+  id: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
-DetailsDrinksPage.defaultProps = {
-  id: '',
-}
+// DetailsDrinksPage.defaultProps = {
+//   id: '',
+// }

@@ -4,7 +4,7 @@ import RecommendedMeals from './RecommendedMeals';
 import RecipeButtonControl from '../RecipeButtonControl';
 
 const DrinksComponent = () => {
-  const [inProgress, setInProgress] = useState(false)
+  const [inProgress, setInProgress] = useState(false);
   const { data } = useContext(DetailsPageContext);
 
   const { strDrink, strAlcoholic, strDrinkThumb, strInstructions, idDrink } = data;
@@ -15,10 +15,10 @@ const DrinksComponent = () => {
   const ingredientsWithQuantity = ingredientsValues.reduce((acc, currentElement, index) => {
     if (currentElement !== '' && currentElement !== null) {
       if (ingredientsQuantity[index] === null) ingredientsQuantity[index] = 'A seu gosto';
-        acc.push([ currentElement, ingredientsQuantity[index] ]);
+      acc.push([currentElement, ingredientsQuantity[index]]);
     }
     return acc;
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -40,7 +40,7 @@ const DrinksComponent = () => {
         inProgress={inProgress}
       />
     </div>
-  )
-}
+  );
+};
 
 export default DrinksComponent;
