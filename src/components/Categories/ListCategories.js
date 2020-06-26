@@ -35,32 +35,42 @@ const handleAllCategories = (callback, data, category, allCategories) => {
   return false;
 };
 
+const filterByCategory = (category, categoryType, untils) => {
+  const { setMealsData, setDrinksData, allCategories, setAllCategories, drinks, meals } = untils;
+  if (categoryType === 'drink') {
+    if (handleAllCategories(setDrinksData, drinks, category, allCategories.category)) {
+      return setAllCategories('');
+    }
+    setAllCategories({ category });
+    console.log(category, allCategories.category);
+    handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
+  } else {
+    if (handleAllCategories(setMealsData, meals, category, allCategories.category)) {
+      return setAllCategories('');
+    }
+    setAllCategories({ category });
+    handleCategories(category, fetchCategoryMealsButton, setMealsData);
+  }
+  return null;
+};
+
 const ListCategories = ({ strCategories, type }) => {
   const { setMealsData, setDrinksData, dataBase: { drinks, meals } } = useContext(FoodContext);
   const [allCategories, setAllCategories] = useState({ category: '' });
-
-  const filterByCategory = (category, categoryType) => {
-    if (categoryType === 'drink') {
-      if (handleAllCategories(setDrinksData, drinks, category, allCategories.category)) {
-        return setAllCategories('');
-      };
-      setAllCategories({ category });
-      console.log(category, allCategories.category);
-      handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-    } else {
-      if (handleAllCategories(setMealsData, meals, category, allCategories.category)) {
-        return setAllCategories('');
-      };
-      setAllCategories({ category });
-      handleCategories(category, fetchCategoryMealsButton, setMealsData);
-    }
-    return null;
+  const untils = {
+    setMealsData,
+    setDrinksData,
+    allCategories,
+    setAllCategories,
+    drinks,
+    meals,
   };
+
   return (
     <div>
       {strCategories.slice(0, 6).map(({ strCategory }) => (
         <button
-          onClick={() => filterByCategory(strCategory, type)}
+          onClick={() => filterByCategory(strCategory, type, untils)}
           data-testid={`${strCategory}-category-filter`} key={strCategory}
         >
           {`${strCategory}`}
