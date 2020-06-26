@@ -25,7 +25,7 @@ const RecommendedMeals = () => {
   }, []);
 
   const sixRecommendedMeals = data.slice(0, 6);
-  console.log(isLoading, errorMessage)
+  console.log(isLoading, errorMessage);
   return (
     <div>
       <h2>Recomendadas</h2>
@@ -40,7 +40,7 @@ const RecommendedMeals = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RecommendedMeals;

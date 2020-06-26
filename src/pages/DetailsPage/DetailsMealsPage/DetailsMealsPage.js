@@ -11,23 +11,23 @@ const DetailsMealsPage = (props) => {
     apiRequestFunction,
   } = useContext(DetailsPageContext);
 
-  const { match: { params: { id } }} = props;
+  const { match: { params: { id } } } = props;
 
   useEffect(() => {
-    apiRequestFunction(fetchMealById, id)
-  }, [])
+    apiRequestFunction(fetchMealById, id);
+  }, []);
 
-  if (isLoading) return <div>Loading...</div>
-  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>
-  return <div><MealsComponent /></div>
-}
+  if (isLoading) return <div>Loading...</div>;
+  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
+  return <div><MealsComponent /></div>;
+};
 
 export default DetailsMealsPage;
 
 DetailsMealsPage.propTypes = {
-  id: PropTypes.string,
-}
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
-DetailsMealsPage.defaultProps = {
-  id: '',
-}
+// DetailsMealsPage.defaultProps = {
+//   id: '',
+// }

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { DetailsPageContext } from '../DetailsPageProvider';
 import ReactPlayer from 'react-player';
+import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedDrinks from './RecommendedDrinks';
 import RecipeButtonControl from '../RecipeButtonControl';
 
@@ -16,10 +16,10 @@ const MealsComponent = () => {
 
   const ingredientsWithQuantity = ingredientsValues.reduce((acc, currentElement, index) => {
     if (currentElement !== '' && currentElement !== null) {
-        acc.push([ currentElement, ingredientsQuantity[index] ]);
+      acc.push([currentElement, ingredientsQuantity[index]]);
     }
     return acc;
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -34,7 +34,7 @@ const MealsComponent = () => {
       <h2>Instructions</h2>
       <p data-testid="instructions">{strInstructions}</p>
       <h2>Video</h2>
-      <ReactPlayer data-testid="video" url={strYoutube} controls={true} />
+      <ReactPlayer data-testid="video" url={strYoutube} />
       <RecommendedDrinks />
       <RecipeButtonControl
         type="comidas"
@@ -43,7 +43,7 @@ const MealsComponent = () => {
         inProgress={inProgress}
       />
     </div>
-  )
-}
+  );
+};
 
 export default MealsComponent;

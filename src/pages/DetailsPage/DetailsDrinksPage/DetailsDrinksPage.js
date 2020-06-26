@@ -26,7 +26,7 @@ const DetailsDrinksPage = (props) => {
 export default DetailsDrinksPage;
 
 DetailsDrinksPage.propTypes = {
-  id: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 // DetailsDrinksPage.defaultProps = {

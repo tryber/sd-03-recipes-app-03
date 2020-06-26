@@ -22,19 +22,11 @@ const RecommendedMealsComponent = (props) => {
 export default RecommendedMealsComponent;
 
 RecommendedMealsComponent.propTypes = {
-  strDrink: PropTypes.string,
-  strDrinkThumb: PropTypes.string,
-  strAlcoholic: PropTypes.string,
-  idDrink: PropTypes.string,
   meals: PropTypes.objectOf(PropTypes.any),
   index: PropTypes.number,
 };
 
 RecommendedMealsComponent.defaultProps = {
-  strDrink: '',
-  strDrinkThumb: '',
-  strAlcoholic: '',
-  idDrink: '',
   meals: {},
   index: undefined,
 };

@@ -1,5 +1,5 @@
 export const fetchDrinks = () => {
-  const url12Drinks = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
+  const url12Drinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   return fetch(url12Drinks).then((response) => (
     response.json()
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))

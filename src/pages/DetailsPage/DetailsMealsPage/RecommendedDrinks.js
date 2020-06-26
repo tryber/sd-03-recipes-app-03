@@ -10,22 +10,22 @@ const RecommendedDrinks = () => {
   const apiRequestSucceedDrink = ({ drinks }) => {
     setData(drinks);
     setIsLoading(false);
-  }
+  };
 
   const apiRequestFailure = ({ message }) => {
     setErrorMessage(message);
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
     const apiRequestFunction = () => {
-      fetchDrinks().then(apiRequestSucceedDrink, apiRequestFailure)
-    }
-    apiRequestFunction()
-  }, [])
+      fetchDrinks().then(apiRequestSucceedDrink, apiRequestFailure);
+    };
+    apiRequestFunction();
+  }, []);
 
   const sixRecommendedDrinks = data.slice(0, 6);
-
+  console.log(isLoading, errorMessage);
   return (
     <div>
       <h2>Recomendadas</h2>
@@ -36,11 +36,11 @@ const RecommendedDrinks = () => {
             key={drinks.idDrink}
             drinks={drinks}
             index={index}
-          />
+          />,
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RecommendedDrinks;
