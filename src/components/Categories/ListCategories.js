@@ -4,14 +4,33 @@ import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 import { fetchDrinkByCategoryButton } from '../../services/theCockTailAPI';
 import { fetchCategoryMealsButton } from '../../services/theMealAPI';
 
+// const filterByCategory = (category, categoryType) => {
+//   if (categoryType === 'drink') {
+//     if (handleAllCategories(setDrinksData, drinks, category)) {
+//       return setAllCategories('');
+//     };
+//     handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
+//     setAllCategories({ category });
+//   } else {
+//     if (handleAllCategories(setMealsData, meals, category)) {
+//       return setAllCategories('');
+//     };
+//     handleCategories(category, fetchCategoryMealsButton, setMealsData);
+//     setAllCategories({ category });
+//   }
+//   return null;
+// };
+
 const handleCategories = (category, fetchCallBack, setCallBack) => {
   fetchCallBack(category)
     .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
 };
 
+
 const ListCategories = ({ strCategories, type }) => {
   const { setMealsData, setDrinksData, dataBase: { drinks, meals } } = useContext(FoodContext);
-  const [allCategories, setAllCategories] = useState('');
+  const [allCategories, setAllCategories] = useState({ category: '' });
+
   const handleAllCategories = (callback, data, category) => {
     if (allCategories.category === category || category === 'All') {
       callback(data);
@@ -19,43 +38,19 @@ const ListCategories = ({ strCategories, type }) => {
     }
     return false;
   };
-
-  // const filterByCategory = (category, categoryType) => {
-  //   if (categoryType === 'drink') {
-  //     if (handleAllCategories(setDrinksData, drinks, category)) {
-  //       return setAllCategories('');
-  //     };
-  //     handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-  //     setAllCategories({ category });
-  //   } else {
-  //     if (handleAllCategories(setMealsData, meals, category)) {
-  //       return setAllCategories('');
-  //     };
-  //     handleCategories(category, fetchCategoryMealsButton, setMealsData);
-  //     setAllCategories({ category });
-  //   }
-  //   return null;
-  // };
-
   const filterByCategory = (category, categoryType) => {
-    switch(categoryType) {
-      case 'drink':
-        if (handleAllCategories(setDrinksData, drinks, category)) {
-          return setAllCategories('');
-        }
-        handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
-        setAllCategories({ category });
-        break;
-      case 'meal':
-        if (handleAllCategories(setMealsData, meals, category)) {
-          return setAllCategories('');
-        };
-        handleCategories(category, fetchCategoryMealsButton, setMealsData);
-        setAllCategories({ category });
-        break;
-      default: return null;
-      };
+    console.log(allCategories.category);
+    if (categoryType === 'drink') {
+      handleAllCategories(setDrinksData, drinks, category) ? setAllCategories('') :
+      handleCategories(category, fetchDrinkByCategoryButton, setDrinksData);
+      setAllCategories({ category });
+    } else {
+      handleAllCategories(setMealsData, meals, category) ? setAllCategories('') :
+      handleCategories(category, fetchCategoryMealsButton, setMealsData);
+      setAllCategories({ category });
     }
+    return null;
+  };
   return (
     <div>
       {strCategories.map(({ strCategory }, index) => (
