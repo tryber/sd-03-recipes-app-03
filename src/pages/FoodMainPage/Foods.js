@@ -9,10 +9,10 @@ const Foods = () => {
     get12Meals();
   }, []);
   return (
-    <>
+    <div>
       <FoodList meals={mealsData} />
       <Footer />
-    </>
+    </div>
   );
 };
 

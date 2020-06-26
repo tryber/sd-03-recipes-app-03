@@ -8,17 +8,17 @@ function Explorar() {
     <div>
       <div className="explorer-container">
         <Link to="/explorar/comidas">
-          <button 
+          <button
             className="explorer-button"
             data-testid="explore-food"
-            >Explorar Comidas
+          >Explorar Comidas
           </button>
         </Link>
         <Link to="/explorar/bebidas">
-          <button 
+          <button
             className="explorer-button"
             data-testid="explore-drinks"
-            >Explorar Bebidas
+          >Explorar Bebidas
           </button>
         </Link>
       </div>
