@@ -6,17 +6,15 @@ import './Explorer.css';
 function Explorar() {
   return (
     <div>
-      <div className="explorer-container">
+      <div >
         <Link to="/explorar/comidas">
           <button
-            className="explorer-button"
             data-testid="explore-food"
           >Explorar Comidas
           </button>
         </Link>
         <Link to="/explorar/bebidas">
           <button
-            className="explorer-button"
             data-testid="explore-drinks"
           >Explorar Bebidas
           </button>

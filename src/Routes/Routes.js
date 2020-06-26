@@ -5,7 +5,11 @@ import Profile from '../pages/UserProfile/Profile';
 import Foods from '../pages/FoodMainPage/Foods';
 import Drinks from '../pages/DrinkMainPage/Drinks';
 import Explorer from '../pages/ExplorerPages/Explorer';
-import DrinkOrFoods from '../pages/ExplorerPages/DrinkOrFoods';
+import DrinkOrFoods from '../pages/ExplorerPages/ExplorerDrinkOrFoods';
+import ExplorerByIngredients from '../pages/ExplorerPages/ExplorerByIngredients';
+import ExplorerByArea from '../pages/ExplorerPages/ExplorerByArea';
+import NotFound from '../pages/ExplorerPages/NotFound';
+
 
 const Routes = () => (
   <BrowserRouter basename="/">
@@ -17,6 +21,10 @@ const Routes = () => (
       <Route exact path="/explorar" component={Explorer} />
       <Route exact path="/explorar/comidas" component={DrinkOrFoods} />
       <Route exact path="/explorar/bebidas" component={DrinkOrFoods} />
+      <Route exact path="/explorar/comidas/ingredientes" component={ExplorerByIngredients} />
+      <Route exact path="/explorar/bebidas/ingredientes" component={ExplorerByIngredients} />
+      <Route exact path="/explorar/comidas/area" component={ExplorerByArea} />
+      <Route exact path="/explorar/bebidas/area" component={NotFound} />
     </Switch>
   </BrowserRouter>
 );
