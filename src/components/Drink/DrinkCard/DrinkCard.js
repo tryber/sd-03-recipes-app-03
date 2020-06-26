@@ -19,7 +19,7 @@ const DrinkCard = ({ drink, index }) => {
         </div>
         <span className="card-title" data-testid={`${index}-card-name`}>{strDrink}</span>
       </div>
-    // </Link>
+    </Link>
   );
 };
 

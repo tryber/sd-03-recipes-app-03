@@ -16,7 +16,7 @@ const FavoriteButton = (recipe, type) => {
   };
 
   const addToLocalStorage = () => {
-    let recipes = localStorage.getItem('favoriteRecipes');
+    const recipes = localStorage.getItem('favoriteRecipes');
     recipes.push(newRecipe);
     localStorage.setItem('favoriteRecipes', recipes);
     setSrcIcon(whiteHeartIcon);
@@ -28,13 +28,13 @@ const FavoriteButton = (recipe, type) => {
     return newRecipe;
   };
   const handleFavorite = () => {
-    favorited ? addToLocalStorage() : removeLocalStorage();
+    // favorited ? addToLocalStorage() : removeLocalStorage();
     setFavorited((currentState) => !currentState);
   };
   return (
-    <div onClick={() => handleFavorite()}>
+    <button onClick={() => handleFavorite()}>
       <img src={srcIcon} alt="Icone para favoritar receita" />
-    </div>
+    </button>
   );
 };
 

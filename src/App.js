@@ -12,7 +12,7 @@ function App() {
         </DetailsPageProvider>
       </FoodProvider>
     </div>
-  )
+  );
 }
 
 export default App;
