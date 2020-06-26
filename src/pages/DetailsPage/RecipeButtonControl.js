@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const RecipeButtonControl = (props) => {
@@ -26,3 +27,17 @@ const RecipeButtonControl = (props) => {
 };
 
 export default RecipeButtonControl;
+
+RecipeButtonControl.propTypes = {
+  type: PropTypes.string,
+  id: PropTypes.number,
+  setInProgress: PropTypes.func,
+  inProgress: PropTypes.bool,
+}
+
+RecipeButtonControl.defaultProps = {
+  type: '',
+  id: undefined,
+  setInProgress: () => {},
+  inProgress: false,
+}
