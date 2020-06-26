@@ -3,8 +3,8 @@ import ReactPlayer from 'react-player';
 import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedDrinks from './RecommendedDrinks';
 import RecipeButtonControl from '../RecipeButtonControl';
-// import shareIcon from '../../../images/shareIcon.svg';
-// import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
+import ShareButton from '../../../components/Share/ShareButton';
+import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 
 const MealsComponent = () => {
   const [inProgress, setInProgress] = useState(false);
@@ -26,8 +26,8 @@ const MealsComponent = () => {
   return (
     <div>
       <img data-testid="recipe-photo" src={strMealThumb} alt={strMeal} width="20%" />
-      {/* <img src={shareIcon} alt="share-button" />
-      <img src={whiteHeartIcon} alt="favorite-button" /> */}
+      <ShareButton />
+      <FavoriteButton />
       <h1 data-testid="recipe-title">{strMeal}</h1>
       <h3 data-testid="recipe-category">{strCategory}</h3>
       <h2>Ingredients</h2>

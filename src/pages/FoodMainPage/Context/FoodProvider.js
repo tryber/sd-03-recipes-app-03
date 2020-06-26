@@ -18,7 +18,7 @@ const FoodProvider = ({ children }) => {
     setDataBase((currentState) => ({ ...currentState, meals }));
   };
   const fetch12Meals = () => {
-    fetchMeals('')
+    fetchMeals()
       .then(handleMealsSuccess, handleMealsFailure);
   };
   const handleDrinksFailure = (err) => {
@@ -30,7 +30,7 @@ const FoodProvider = ({ children }) => {
     setDataBase((currentState) => ({ ...currentState, drinks }));
   };
   const fetch12Drinks = () => {
-    fetchDrinks('')
+    fetchDrinks()
       .then(handleDrinksSuccess, handleDrinksFailure);
   };
   const context = {

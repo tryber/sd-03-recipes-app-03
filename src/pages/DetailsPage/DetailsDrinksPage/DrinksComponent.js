@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedMeals from './RecommendedMeals';
 import RecipeButtonControl from '../RecipeButtonControl';
-
+import ShareButton from '../../../components/Share/ShareButton';
+import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 
 const DrinksComponent = () => {
   const [inProgress, setInProgress] = useState(false);
@@ -24,6 +25,8 @@ const DrinksComponent = () => {
   return (
     <div>
       <img data-testid="recipe-photo" src={strDrinkThumb} alt={strDrink} width="20%" />
+      <ShareButton />
+      <FavoriteButton />
       <h1 data-testid="recipe-title">{strDrink}</h1>
       <h3 data-testid="recipe-category">{strAlcoholic}</h3>
       <h2>Ingredients</h2>

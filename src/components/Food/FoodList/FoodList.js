@@ -8,7 +8,6 @@ import './FoodList.css';
 const FoodList = ({ meals }) => {
   const [categories, setCategories] = useState({ meals: [] });
   useEffect(() => {
-    localStorage.setItem('favoriteRecipes', []);
     fetchCategoriesMeals()
       .then((resp) => resp, (resp) => setCategories(resp));
   }, []);

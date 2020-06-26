@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../../Food/FoodCard/FoodCard.css';
-import ShareButton from '../../Share/ShareButton';
-import FavoriteButton from '../../Favorite/FavoriteButton';
 
 const DrinkCard = ({ drink, index }) => {
   const { strDrinkThumb, strDrink, idDrink } = drink;
 
   return (
-    // <Link className="card b-shadow" to={`/bebidas/${idDrink}`}>
+    <Link className="card b-shadow" to={`/bebidas/${idDrink}`}>
       <div>
         <div data-testid={`${index}-recipe-card`}>
           <img
@@ -20,8 +18,6 @@ const DrinkCard = ({ drink, index }) => {
           />
         </div>
         <span className="card-title" data-testid={`${index}-card-name`}>{strDrink}</span>
-        {/* <ShareButton />
-        <FavoriteButton recipe={drink} type="drink"/> */}
       </div>
     // </Link>
   );
