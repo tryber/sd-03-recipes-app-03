@@ -3,6 +3,7 @@ import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedMeals from './RecommendedMeals';
 import RecipeButtonControl from '../RecipeButtonControl';
 
+
 const DrinksComponent = () => {
   const [inProgress, setInProgress] = useState(false);
   const { data } = useContext(DetailsPageContext);
@@ -14,7 +15,7 @@ const DrinksComponent = () => {
 
   const ingredientsWithQuantity = ingredientsValues.reduce((acc, currentElement, index) => {
     if (currentElement !== '' && currentElement !== null) {
-      if (ingredientsQuantity[index] === null) ingredientsQuantity[index] = 'A seu gosto';
+      ingredientsQuantity[index] = ingredientsQuantity[index] || 'A seu gosto';
       acc.push([currentElement, ingredientsQuantity[index]]);
     }
     return acc;

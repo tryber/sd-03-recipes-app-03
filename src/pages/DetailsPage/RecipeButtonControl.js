@@ -30,7 +30,7 @@ export default RecipeButtonControl;
 
 RecipeButtonControl.propTypes = {
   type: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   setInProgress: PropTypes.func,
   inProgress: PropTypes.bool,
 };
