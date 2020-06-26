@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const RecommendedDrinksComponent = (props) => {
   const { strDrink, strAlcoholic, strDrinkThumb, idDrink } = props.drinks;
-
+  const { index } = props
   return (
     <div>
       <Link to={`/bebidas/${idDrink}`}>
         <div>
           <img src={strDrinkThumb} alt={strDrink} width="5%"/>
           <h5>{strAlcoholic}</h5>
-          <h4>{strDrink}</h4>
+          <h4 data-testid={`${index}-recomendation-title`}>{strDrink}</h4>
         </div>
       </Link>
     </div>

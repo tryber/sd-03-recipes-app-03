@@ -30,8 +30,13 @@ const RecommendedMeals = () => {
     <div>
       <h2>Recomendadas</h2>
       <div>
-        {sixRecommendedMeals.map((meals) =>
-            <RecommendedMealsComponent key={meals.idMeal} meals={meals} />
+        {sixRecommendedMeals.map((meals, index) =>
+          <RecommendedMealsComponent
+            data-testid={`${index}-recomendation-card`}
+            key={meals.idMeal}
+            meals={meals}
+            index={index}
+          />
         )}
       </div>
     </div>

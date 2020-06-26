@@ -30,8 +30,13 @@ const RecommendedDrinks = () => {
     <div>
       <h2>Recomendadas</h2>
       <div>
-        {sixRecommendedDrinks.map((drinks) =>
-            <RecommendedDrinksComponent key={drinks.idDrink} drinks={drinks} />
+        {sixRecommendedDrinks.map((drinks, index) =>
+          <RecommendedDrinksComponent
+            data-testid={`${index}-recomendation-card`}
+            key={drinks.idDrink}
+            drinks={drinks}
+            index={index}
+          />
         )}
       </div>
     </div>
