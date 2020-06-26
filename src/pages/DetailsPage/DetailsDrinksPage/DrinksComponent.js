@@ -28,8 +28,10 @@ const DrinksComponent = () => {
       <h3 data-testid="recipe-category">{strAlcoholic}</h3>
       <h2>Ingredients</h2>
       <ul>
-        {ingredientsWithQuantity.map((e, index) =>
-          (<li data-testid={`${index}-ingredient-name-and-measure`} key={e}>{e[0]} - {e[1]}</li>))}
+        {ingredientsWithQuantity.map(([ingredient, quantity], index) =>
+          (<li data-testid={`${index}-ingredient-name-and-measure`} key={ingredient}>
+            {ingredient} - {quantity}
+          </li>))}
       </ul>
       <h2>Instructions</h2>
       <p data-testid="instructions">{strInstructions}</p>
