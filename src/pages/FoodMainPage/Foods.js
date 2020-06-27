@@ -4,9 +4,10 @@ import FoodList from '../../components/Food/FoodList/FoodList';
 import Footer from '../../components/Footer/Footer';
 
 const Foods = () => {
-  const { get12Meals, mealsData } = useContext(FoodContext);
+  const { get12Meals, mealsData, get12Drinks } = useContext(FoodContext);
   useEffect(() => {
     get12Meals();
+    get12Drinks();
   }, []);
   return (
     <div>

@@ -1,9 +1,10 @@
-const url12Drinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-export const fetchDrinks = (quantity) => (
-  fetch(`${url12Drinks}${quantity}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchDrinks = () => {
+  const url12Drinks = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  return fetch(url12Drinks).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
 const urlCategoriesDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesDrinks = () => (
@@ -19,12 +20,13 @@ export const fetchDrinkByCategoryButton = (category) => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlDrinkById = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
-export const fetchDrinkById = (id) => (
-  fetch(`${urlDrinkById}${id}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchDrinkById = (id) => {
+  const urlDrinkById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+  return fetch(urlDrinkById).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
 const urlRandomDrink = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 export const fetchRandomDrink = () => (

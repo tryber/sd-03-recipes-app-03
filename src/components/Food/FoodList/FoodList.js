@@ -7,14 +7,13 @@ import './FoodList.css';
 
 const FoodList = ({ meals }) => {
   const [categories, setCategories] = useState({ meals: [] });
-  console.log(categories.meals);
   useEffect(() => {
     fetchCategoriesMeals()
-      .then((resp) => console.log('1', resp), (resp) => setCategories(resp));
+      .then((resp) => resp, (resp) => setCategories(resp));
   }, []);
   return (
     <section>
-      <ListCategories strCategories={[{ strCategory: 'all' }, ...categories.meals]} />
+      <ListCategories strCategories={[{ strCategory: 'All' }, ...categories.meals]} type="meal" />
       <div className="foodList">
         {meals.map((meal, index) => (
           index < 12 && <FoodCard key={meal.idMeal} meal={meal} index={index} />

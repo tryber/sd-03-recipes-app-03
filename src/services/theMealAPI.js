@@ -1,9 +1,10 @@
-const url12Meals = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-export const fetchMeals = (quantity) => (
-  fetch(`${url12Meals}${quantity}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMeals = () => {
+  const url12Meals = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  return fetch(url12Meals).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
 const urlCategoriesMeals = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesMeals = () => (
@@ -21,12 +22,13 @@ export const fetchCategoryMealsButton = (category) => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlMealById = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
-export const fetchMealById = (id) => (
-  fetch(`${urlMealById}${id}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealById = (id) => {
+  const urlMealById = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  return fetch(urlMealById).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
 const urlRandomMeal = 'https://www.themealdb.com/api/json/v1/1/random.php';
 export const fetchRandomMeal = () => (
