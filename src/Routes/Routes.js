@@ -16,7 +16,7 @@ const Routes = () => (
   <BrowserRouter basename="/">
     <Switch>
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
-      <Route exact path="/explorar/comidas/area" component={ExplorerByArea} />      
+      <Route exact path="/explorar/comidas/area" component={ExplorerByArea} />
       <Route exact path="/explorar/comidas/ingredientes" component={ExplorerByIngredients} />
       <Route exact path="/explorar/bebidas/ingredientes" component={ExplorerByIngredients} />
       <Route exact path="/explorar/comidas" component={DrinkOrFoods} />
