@@ -6,10 +6,22 @@ import DetailsMealsPage from '../pages/DetailsPage/DetailsMealsPage/DetailsMeals
 import DetailsDrinksPage from '../pages/DetailsPage/DetailsDrinksPage/DetailsDrinksPage';
 import Foods from '../pages/FoodMainPage/Foods';
 import Drinks from '../pages/DrinkMainPage/Drinks';
+import Explorer from '../pages/ExplorerPages/Explorer';
+import DrinkOrFoods from '../pages/ExplorerPages/ExplorerDrinkOrFoods';
+import ExplorerByIngredients from '../pages/ExplorerPages/ExplorerByIngredients';
+import ExplorerByArea from '../pages/ExplorerPages/ExplorerByArea';
+import NotFound from '../pages/ExplorerPages/NotFound';
 
 const Routes = () => (
   <BrowserRouter basename="/">
     <Switch>
+      <Route exact path="/explorar/bebidas/area" component={NotFound} />
+      <Route exact path="/explorar/comidas/area" component={ExplorerByArea} />      
+      <Route exact path="/explorar/comidas/ingredientes" component={ExplorerByIngredients} />
+      <Route exact path="/explorar/bebidas/ingredientes" component={ExplorerByIngredients} />
+      <Route exact path="/explorar/comidas" component={DrinkOrFoods} />
+      <Route exact path="/explorar/bebidas" component={DrinkOrFoods} />
+      <Route exact path="/explorar" component={Explorer} />
       <Route exact path="/comidas/:id" component={DetailsMealsPage} />
       <Route exact path="/bebidas/:id" component={DetailsDrinksPage} />
       <Route exact path="/comidas" component={Foods} />

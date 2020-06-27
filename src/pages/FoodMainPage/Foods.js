@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import FoodContext from './Context/FoodContext';
 import FoodList from '../../components/Food/FoodList/FoodList';
+import Footer from '../../components/Footer/Footer';
 
 const Foods = () => {
   const { get12Meals, mealsData, get12Drinks } = useContext(FoodContext);
@@ -9,7 +10,10 @@ const Foods = () => {
     get12Drinks();
   }, []);
   return (
-    <FoodList meals={mealsData} />
+    <div>
+      <FoodList meals={mealsData} />
+      <Footer />
+    </div>
   );
 };
 

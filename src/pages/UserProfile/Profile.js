@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Heading from '../../components/Heading/Heading';
 import './Profile.css';
 import '../../App.css';
+import Footer from '../../components/Footer/Footer';
 
 const Profile = () => {
   const [email, setEmail] = useState('');
@@ -41,6 +42,7 @@ const Profile = () => {
       >
         Sair
       </button>
+      <Footer />
     </div>
   );
 };
