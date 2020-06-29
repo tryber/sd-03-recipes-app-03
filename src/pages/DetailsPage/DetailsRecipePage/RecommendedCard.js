@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { DetailsPageContext } from '../DetailsPageProvider';
-import './RecommendedDrinksComponent.css';
+import './RecommendedCard.css';
 
-const RecommendedDrinksComponent = (props) => {
+const RecommendedCard = (props) => {
   const { name, category, img, id } = props.recommended;
   const { index } = props;
   const { pathName } = useContext(DetailsPageContext);
@@ -25,13 +25,13 @@ const RecommendedDrinksComponent = (props) => {
   );
 };
 
-export default RecommendedDrinksComponent;
+export default RecommendedCard;
 
-RecommendedDrinksComponent.propTypes = {
+RecommendedCard.propTypes = {
   index: PropTypes.number,
   recommended: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-RecommendedDrinksComponent.defaultProps = {
+RecommendedCard.defaultProps = {
   index: undefined,
 };

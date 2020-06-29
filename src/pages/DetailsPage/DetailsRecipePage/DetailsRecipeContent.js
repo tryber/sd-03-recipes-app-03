@@ -5,7 +5,7 @@ import DetailsRecipesPage from './DetailsRecipesPage';
 import { fetchMealById, fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
 
-const DetailsMealsPage = (props) => {
+const DetailsRecipeContent = (props) => {
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -58,13 +58,9 @@ const DetailsMealsPage = (props) => {
   return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage, data }} /></div>;
 };
 
-export default DetailsMealsPage;
+export default DetailsRecipeContent;
 
-DetailsMealsPage.propTypes = {
+DetailsRecipeContent.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   location: PropTypes.objectOf(PropTypes.any).isRequired,
 };
-
-// DetailsMealsPage.defaultProps = {
-//   id: '',
-// }

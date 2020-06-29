@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { DetailsPageContext } from '../DetailsPageProvider';
-import RecommendedDrinksComponent from './RecommendedDrinksComponent';
-import './RecommendedDrinks.css';
+import RecommendedCard from './RecommendedCard';
+import './RecommendedContainerComponent.css';
 
 const destructureMeal = (data) => {
   const { strMeal: name, strCategory: category, strMealThumb: img, idMeal: id } = data;
@@ -15,7 +15,7 @@ const destructureDrinks = (data) => {
   return dataObj;
 };
 
-const RecommendedDrinks = () => {
+const RecommendedContainerComponent = () => {
   // const [index, setIndex] = useState(2);
 
   const { providerRecommended } = useContext(DetailsPageContext);
@@ -37,7 +37,7 @@ const RecommendedDrinks = () => {
       <div className="slideshow-container">
         <div className="recommended-drinks-container">
           {sixRecommended.map((recommended, index) =>
-            <RecommendedDrinksComponent
+            <RecommendedCard
               data-testid={`${index}-recomendation-card`}
               key={dataRecommendedDestructure(recommended).id}
               recommended={dataRecommendedDestructure(recommended)}
@@ -57,4 +57,4 @@ const RecommendedDrinks = () => {
   );
 };
 
-export default RecommendedDrinks;
+export default RecommendedContainerComponent;

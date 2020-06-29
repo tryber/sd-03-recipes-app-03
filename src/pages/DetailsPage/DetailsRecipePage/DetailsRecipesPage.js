@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MealsComponent from './MealsComponent';
+import RecipeComponent from './RecipeComponent';
 
 const destructureMeal = (data) => {
   const {
@@ -31,7 +31,7 @@ const DetailsRecipesPage = (props) => {
   );
   if (isLoading) return <div>Loading...</div>;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
-  return <div><MealsComponent data={dataDestructure(data)} /></div>;
+  return <div><RecipeComponent data={dataDestructure(data)} /></div>;
 };
 
 export default DetailsRecipesPage;

@@ -2,19 +2,19 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import { DetailsPageContext } from '../DetailsPageProvider';
-import RecommendedDrinks from './RecommendedDrinks';
+import RecommendedContainerComponent from './RecommendedContainerComponent';
 import RecipeButtonControl from '../RecipeButtonControl';
 import ShareButton from '../../../components/Share/ShareButton';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
-import './MealsComponent.css';
+import './RecipeComponent.css';
 import Ingredients from './Ingredients';
 
-const MealsComponent = (props) => {
+const RecipeComponent = (props) => {
   const [inProgress, setInProgress] = useState(false);
   const { data } = props;
   const { providerData } = useContext(DetailsPageContext);
   const { name, category, img, instructions, id, type } = data;
-
+  console.log(type);
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
@@ -42,7 +42,7 @@ const MealsComponent = (props) => {
           :
           null
         }
-        <RecommendedDrinks />
+        <RecommendedContainerComponent />
         <RecipeButtonControl
           type={type}
           id={id}
@@ -54,8 +54,8 @@ const MealsComponent = (props) => {
   );
 };
 
-export default MealsComponent;
+export default RecipeComponent;
 
-MealsComponent.propTypes = {
+RecipeComponent.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
