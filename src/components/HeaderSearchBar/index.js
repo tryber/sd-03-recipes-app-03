@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import PropTypes, { objectOf } from 'prop-types';
 import './style.css';
-import { fetchDrinksByIngredient, fetchDrinksByName, fetchDrinksByFirstLetter } from '../../services/theCockTailAPI';
-import { fetchMealsByIngredients, fetchMealsByName, fetchMealsByFirstLetter } from '../../services/theMealAPI';
+import { fetchRecipesByIngredient, fetchRecipesByName, fetchRecipesByFirstLetter } from '../../services/searchBarAPI';
 import { SearchBarContext } from './HeaderSearchBarContext';
+import { zipObjectDeep } from 'lodash';
 
 const HeaderSearchBar = ({ history, location }) => {
   const [state, setState] = useState({
@@ -17,40 +17,23 @@ const HeaderSearchBar = ({ history, location }) => {
   const { searchParam, searchName } = state;
 
   const searchButton = async () => {
-    const searchMeal = {
-      ingredients: fetchMealsByIngredients,
-      name: fetchMealsByName,
-      firstLetter: fetchMealsByFirstLetter,
-    };
-
-    const searchDrink = {
-      ingredients: fetchDrinksByIngredient,
-      name: fetchDrinksByName,
-      firstLetter: fetchDrinksByFirstLetter,
+    const search = {
+      ingredients: fetchRecipesByIngredient,
+      name: fetchRecipesByName,
+      firstLetter: fetchRecipesByFirstLetter,
     };
 
     if (searchParam === 'firstLetter' && searchName.length !== 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
-    if (location.pathname === '/comidas') {
-      const data = await searchMeal[searchParam](searchName);
-      console.log( 123, data )
-      setData(data.meals);
-      setIsFetching(false);
-      if (data.meals) {
-        if (data.meals.length === 1) history.push(`/comidas/${data.meals[0].idMeal}`);
-        if (data.meals.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-      }
-    }
-
-    if (location.pathname === '/bebidas') {
-      const data = await searchDrink[searchParam](searchName);
-      setData(data.drinks);
-      setIsFetching(false);
-      if (data.drinks) {
-        if (data.drinks.length === 1) history.push(`/bebidas/${data.drinks[0].idDrink}`);
-        if (data.drinks.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-      }
+    // if (location.pathname === '/comidas') {
+    const data = await search[searchParam](searchName, (location.pathname === '/comidas' ? 'meal' : 'cocktail'));
+    const json = location.pathname === '/comidas' ? data.meals : data.drinks
+    setData(json);
+    setIsFetching(false);
+    if (json) {
+      if (json.length === 1) history.push(`/comidas/${json[0][location.pathname === '/comidas' ? 'idMeal' : 'idDrink']}`);
+      if (json.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   };
 

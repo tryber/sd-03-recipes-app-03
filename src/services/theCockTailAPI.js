@@ -42,7 +42,7 @@ export const fetchListDrinksIngredients = () => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlFindDrinkByIngredients = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
+const urlFindDrinkByIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 export const fetchDrinksByIngredient = (ingredient) => (
   fetch(`${urlFindDrinkByIngredients}${ingredient}`)
     .then((response) => response.json())
@@ -56,7 +56,7 @@ export const fetchDrinksByName = (name) => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlFindByFirstLetter = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
+const urlFindByFirstLetter = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 export const fetchDrinksByFirstLetter = (letter) => (
   fetch(`${urlFindByFirstLetter}${letter}`)
     .then((response) => response.json())
