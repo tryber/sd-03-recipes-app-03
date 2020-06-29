@@ -1,0 +1,35 @@
+.details-meals-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-meals-content {
+  border: 1px solid black;
+  padding: 10px;
+  width: 400px;
+}
+
+.food-img {
+  width: 400px;
+  height: 200px;
+}
+
+.details-meals-header {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.fav-share-button {
+  display: flex;
+}
+
+.details-meals-titles {
+  line-height: 2px;
+}
+
+.instructions-container {
+  text-align: justify;
+}

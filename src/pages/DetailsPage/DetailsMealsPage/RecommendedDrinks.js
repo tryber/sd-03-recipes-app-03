@@ -1,46 +1,57 @@
-import React, { useContext } from 'react';
-import FoodContext from '../../FoodMainPage/Context/FoodContext';
+import React, { useContext, useState } from 'react';
+import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedDrinksComponent from './RecommendedDrinksComponent';
+import './RecommendedDrinks.css';
+
+const destructureMeal = (data) => {
+  const { strMeal:name,strCategory:category, strMealThumb:img, idMeal:id } = data;
+  const dataObj = { name, category, img, id };
+  return dataObj;
+};
+
+const destructureDrinks = (data) => {
+  const { strDrink:name, strAlcoholic:category, strDrinkThumb:img, idDrink:id } = data;
+  const dataObj = { name, category, img, id }
+  return dataObj;
+};
 
 const RecommendedDrinks = () => {
-  // const [data, setData] = useState([]);
-  // const [isLoading, setIsLoading] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
-  const { drinksData } = useContext(FoodContext);
+  // const [index, setIndex] = useState(2);
 
+  const { providerRecommended } = useContext(DetailsPageContext);
 
-  // const apiRequestSucceedDrink = ({ drinks }) => {
-  //   setData(drinks);
-  //   setIsLoading(false);
-  // };
+  // const setIndexFunction = () => {
+  //   setIndex((current) => current + 2)
+  // }
 
-  // const apiRequestFailure = ({ message }) => {
-  //   setErrorMessage(message);
-  //   setIsLoading(false);
-  // };
+  const sixRecommended = providerRecommended.slice(0, 6);
 
-  // useEffect(() => {
-  //   const apiRequestFunction = () => {
-  //     fetchDrinks().then(apiRequestSucceedDrink, apiRequestFailure);
-  //   };
-  //   apiRequestFunction();
-  // }, []);
+  // const showingRecommendedDrinks = sixRecommendedDrinks[index];
 
-  const sixRecommendedDrinks = drinksData.slice(0, 6);
-
+  const dataRecommendedDestructure = (data) =>
+    data.idMeal ? destructureMeal(data) : destructureDrinks(data);
   return (
     <div>
       <h2>Recomendadas</h2>
-      <div>
-        {sixRecommendedDrinks.map((drinks, index) =>
-          <RecommendedDrinksComponent
-            data-testid={`${index}-recomendation-card`}
-            key={drinks.idDrink}
-            drinks={drinks}
-            index={index}
-          />,
-        )}
+      <div className="slideshow-container">
+        <div className="recommended-drinks-container">
+          {sixRecommended.map((recommended, index) =>
+            <RecommendedDrinksComponent
+              data-testid={`${index}-recomendation-card`}
+              key={dataRecommendedDestructure(recommended).id}
+              recommended={dataRecommendedDestructure(recommended)}
+              index={index}
+            />,
+          )}
+        </div>
       </div>
+      {/* <a className="prev" onClick={setIndexFunction}>&#10094;</a>
+      <a className="next" onClick={setIndexFunction}>&#10095;</a>
+      <div>
+        <span className="dot" onClick="currentSlide(1)"></span>
+        <span className="dot" onClick="currentSlide(2)"></span>
+        <span className="dot" onClick="currentSlide(3)"></span>
+      </div> */}
     </div>
   );
 };

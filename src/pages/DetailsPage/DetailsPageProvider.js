@@ -1,42 +1,28 @@
 import React, { useState, createContext } from 'react';
 import PropTypes from 'prop-types';
-import { fetchMealById } from '../../services/theMealAPI';
 
 export const DetailsPageContext = createContext();
 
 export const DetailsPageProvider = ({ children }) => {
-  const [data, setData] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [providerData, setProviderData] = useState([]);
+  const [providerRecommended, setProviderRecommended] = useState([]);
+  const [pathName, setPathName] = useState('');
 
-  const apiRequestSucceedMeal = ({ meals }) => {
-    setData(meals[0]);
-    setIsLoading(false);
-  };
+  const setProviderRecommendedFunc = (recommendedData) => setProviderRecommended(recommendedData);
 
-  const apiRequestSucceedDrink = ({ drinks }) => {
-    setData(drinks[0]);
-    setIsLoading(false);
-  };
+  const setProviderDataFunc = (data) => {
+    setProviderData(data);
+  }
 
-  const apiRequestFailure = ({ message }) => {
-    setErrorMessage(message);
-    setIsLoading(false);
-  };
-
-  const apiRequestFunction = (callback, id) => {
-    setIsLoading(true);
-    if (callback === fetchMealById) {
-      return callback(id).then(apiRequestSucceedMeal, apiRequestFailure);
-    }
-    return callback(id).then(apiRequestSucceedDrink, apiRequestFailure);
-  };
+  const setPathNameFunc = (path) => setPathName(path);
 
   const detailsPageObj = {
-    data,
-    isLoading,
-    errorMessage,
-    apiRequestFunction,
+    setPathNameFunc,
+    pathName,
+    setProviderDataFunc,
+    providerData,
+    setProviderRecommendedFunc,
+    providerRecommended,
   };
 
   return (
