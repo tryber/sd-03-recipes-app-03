@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedDrinksComponent from './RecommendedDrinksComponent';
 import './RecommendedDrinks.css';
 
 const destructureMeal = (data) => {
-  const { strMeal: name,strCategory: category, strMealThumb: img, idMeal: id } = data;
+  const { strMeal: name, strCategory: category, strMealThumb: img, idMeal: id } = data;
   const dataObj = { name, category, img, id };
   return dataObj;
 };
@@ -28,8 +28,9 @@ const RecommendedDrinks = () => {
 
   // const showingRecommendedDrinks = sixRecommendedDrinks[index];
 
-  const dataRecommendedDestructure = (data) =>
-    data.idMeal ? destructureMeal(data) : destructureDrinks(data);
+  const dataRecommendedDestructure = (data) => (
+    data.idMeal ? destructureMeal(data) : destructureDrinks(data)
+  );
   return (
     <div>
       <h2>Recomendadas</h2>

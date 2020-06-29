@@ -12,7 +12,7 @@ export const DetailsPageProvider = ({ children }) => {
 
   const setProviderDataFunc = (data) => {
     setProviderData(data);
-  }
+  };
 
   const setPathNameFunc = (path) => setPathName(path);
 
