@@ -6,22 +6,13 @@ import RecipeButtonControl from '../RecipeButtonControl';
 import ShareButton from '../../../components/Share/ShareButton';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import './MealsComponent.css';
+import Ingredients from './Ingredients';
 
 const MealsComponent = (props) => {
   const [inProgress, setInProgress] = useState(false);
   const { data } = props;
   const { providerData } = useContext(DetailsPageContext);
-  const { name, category, img, instructions, id, init, mid, end, type } = data;
-  const ingredientsValues = Object.values(providerData).slice(init, mid);
-  const ingredientsQuantity = Object.values(providerData).slice(mid, end);
-
-  const ingredientsWithQuantity = ingredientsValues.reduce((acc, currentElement, index) => {
-    if (currentElement !== '' && currentElement !== null) {
-      ingredientsQuantity[index] = ingredientsQuantity[index] || 'A seu gosto';
-      acc.push([currentElement, ingredientsQuantity[index]]);
-    }
-    return acc;
-  }, []);
+  const { name, category, img, instructions, id, type } = data;
 
   return (
     <div className="details-meals-container">
@@ -37,11 +28,12 @@ const MealsComponent = (props) => {
             <FavoriteButton />
           </div>
         </div>
-        <h2>Ingredients</h2>
+        <Ingredients data={data} />
+        {/* <h2>Ingredients</h2>
         <ul>
           {ingredientsWithQuantity.map(([ingredient, quantity], index) =>
             (<li data-testid={`${index}-ingredient-name-and-measure`} key={ingredient}>{ingredient} - {quantity}</li>))}
-        </ul>
+        </ul> */}
         <h2>Instructions</h2>
         <div className="instructions-container">
           <p data-testid="instructions">{instructions}</p>
