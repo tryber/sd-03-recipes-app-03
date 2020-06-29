@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { DetailsPageContext } from '../DetailsPageProvider';
+import PropTypes from 'prop-types';
 
 const Ingredients = (props) => {
   const { providerData } = useContext(DetailsPageContext);
@@ -25,4 +26,8 @@ const Ingredients = (props) => {
   );
 };
 
-export default Ingredients
+export default Ingredients;
+
+Ingredients.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+};

@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { DetailsPageContext } from '../DetailsPageProvider';
 import PropTypes from 'prop-types';
-import MealsComponent from './MealsComponent';
+import { DetailsPageContext } from '../DetailsPageProvider';
 import DetailsRecipesPage from './DetailsRecipesPage';
-import { fetchMealById, fetchMeals } from '../../../services/theMealAPI'
+import { fetchMealById, fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
 
 const DetailsMealsPage = (props) => {
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { setProviderDataFunc, setPathNameFunc, setProviderRecommendedFunc } = useContext(DetailsPageContext)
+  const {
+    setProviderDataFunc, setPathNameFunc, setProviderRecommendedFunc
+  } = useContext(DetailsPageContext);
   const { match: { params: { id } }, location: { pathname } } = props;
   const apiRequestSucceedMeal = ({ meals }) => {
     if (!pathname.includes('/comidas')) return setProviderRecommendedFunc(meals);
@@ -31,12 +32,12 @@ const DetailsMealsPage = (props) => {
     setIsLoading(false);
   };
   useEffect(() => {
-    const apiRequestFunction = (callback, id = '') => {
+    const apiRequestFunction = (callback, recipeId = '') => {
       setIsLoading(true);
       if (callback === fetchMealById || callback === fetchMeals) {
-        return callback(id).then(apiRequestSucceedMeal, apiRequestFailure);
+        return callback(recipeId).then(apiRequestSucceedMeal, apiRequestFailure);
       }
-      return callback(id).then(apiRequestSucceedDrink, apiRequestFailure);
+      return callback(recipeId).then(apiRequestSucceedDrink, apiRequestFailure);
     };
     if (pathname.includes('/comidas')) {
       apiRequestFunction(fetchMealById, id);
@@ -46,19 +47,14 @@ const DetailsMealsPage = (props) => {
       apiRequestFunction(fetchMeals);
     }
   }, [pathname]);
-  console.log(data)
-  console.log(errorMessage)
-  return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage, data }} /></div>
-  // const dataDestructure = (data) => data.idMeal ? destructureMeal(data) : destructureDrinks(data);
-  // if (isLoading) return <div>Loading...</div>;
-  // if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
-  // return <div><MealsComponent data={dataDestructure(data)} /></div>;
+  return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage, data }} /></div>;
 };
 
 export default DetailsMealsPage;
 
 DetailsMealsPage.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 // DetailsMealsPage.defaultProps = {

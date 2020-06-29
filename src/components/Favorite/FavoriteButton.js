@@ -29,7 +29,7 @@ const FavoriteButton = (recipe, type) => {
   };
 
   const handleFavorite = () => {
-    // favorited ? addToLocalStorage() : removeLocalStorage();
+    favorited ? addToLocalStorage() : removeLocalStorage();
     setFavorited((currentState) => !currentState);
   };
 

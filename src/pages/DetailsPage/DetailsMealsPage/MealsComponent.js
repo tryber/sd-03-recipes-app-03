@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedDrinks from './RecommendedDrinks';
@@ -29,11 +30,6 @@ const MealsComponent = (props) => {
           </div>
         </div>
         <Ingredients data={data} />
-        {/* <h2>Ingredients</h2>
-        <ul>
-          {ingredientsWithQuantity.map(([ingredient, quantity], index) =>
-            (<li data-testid={`${index}-ingredient-name-and-measure`} key={ingredient}>{ingredient} - {quantity}</li>))}
-        </ul> */}
         <h2>Instructions</h2>
         <div className="instructions-container">
           <p data-testid="instructions">{instructions}</p>
@@ -41,7 +37,7 @@ const MealsComponent = (props) => {
         {providerData.video ?
           <div>
             <h2>Video</h2>
-            <ReactPlayer data-testid="video" url={providerData.video} height={200} width={400}/>
+            <ReactPlayer data-testid="video" url={providerData.video} height={200} width={400} />
           </div>
           :
           null
@@ -59,3 +55,7 @@ const MealsComponent = (props) => {
 };
 
 export default MealsComponent;
+
+MealsComponent.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+};
