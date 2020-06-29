@@ -10,7 +10,7 @@ import './MealsComponent.css';
 const MealsComponent = (props) => {
   const [inProgress, setInProgress] = useState(false);
   const { data } = props;
-  const { providerData, providerRecommended } = useContext(DetailsPageContext);
+  const { providerData } = useContext(DetailsPageContext);
   const { name, category, img, instructions, id, init, mid, end, type } = data;
   const ingredientsValues = Object.values(providerData).slice(init, mid);
   const ingredientsQuantity = Object.values(providerData).slice(mid, end);
@@ -54,7 +54,7 @@ const MealsComponent = (props) => {
           :
           null
         }
-        {providerRecommended ? <RecommendedDrinks /> : null}
+        <RecommendedDrinks />
         <RecipeButtonControl
           type={type}
           id={id}
