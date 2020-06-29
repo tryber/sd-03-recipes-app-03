@@ -1,8 +1,8 @@
 .details-meals-container {
-  padding: 10px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 10px;
 }
 
 .details-meals-content {
@@ -12,14 +12,14 @@
 }
 
 .food-img {
-  width: 400px;
   height: 200px;
+  width: 400px;
 }
 
 .details-meals-header {
   display: flex;
-  justify-content: space-between;
   height: 80px;
+  justify-content: space-between;
 }
 
 .fav-share-button {
