@@ -8,16 +8,18 @@ export const fetchDrinks = () => {
 
 const urlCategoriesDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesDrinks = () => (
-  fetch(urlCategoriesDrinks)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(urlCategoriesDrinks).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 const urlCategoryDrinksButton = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=';
 export const fetchDrinkByCategoryButton = (category) => (
-  fetch(`${urlCategoryDrinksButton}${category}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(`${urlCategoryDrinksButton}${category}`).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 export const fetchDrinkById = (id) => {

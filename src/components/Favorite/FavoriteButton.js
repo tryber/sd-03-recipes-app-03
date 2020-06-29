@@ -1,44 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
-const FavoriteButton = (recipe, type) => {
-  const [favorited, setFavorited] = useState(false);
+const recipeObject = (recipe, type) => {
+  if (type === 'meal') {
+    return {
+      id: recipe.idMeal,
+      type,
+      area: recipe.strArea,
+      category: recipe.strCategory,
+      alcoholicOrNot: '',
+      name: recipe.strMeal,
+      image: recipe.strMealThumb,
+    };
+  } else {
+    return {
+      id: recipe.idDrink,
+      type,
+      area: recipe.strArea,
+      category: recipe.strCategory,
+      alcoholicOrNot: recipe.strAlcoholic,
+      name: recipe.strDrink,
+      image: recipe.strDrinkThumb,
+    };
+  }
+}
+
+const FavoriteButton = ({ recipe, type }) => {
+  const [NotFavorited, setNotFavorited] = useState(true);
   const [srcIcon, setSrcIcon] = useState(whiteHeartIcon);
-  const newRecipe = {
-    id: '',
-    type,
-    area: '',
-    category: '',
-    alcoholicOrNot: '',
-    name: '',
-    image: '',
-  };
+  useEffect(() => {
+    if(!localStorage.getItem('favoriteRecipes')) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
+  }, []);
 
   const addToLocalStorage = () => {
-    const recipes = localStorage.getItem('favoriteRecipes');
-    recipes.push(newRecipe);
-    localStorage.setItem('favoriteRecipes', recipes);
-    setSrcIcon(whiteHeartIcon);
-    return recipe;
+    const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const newRecipe = recipes.concat(recipeObject(recipe, type));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newRecipe));
+    setSrcIcon(blackHeartIcon);
+    return null;
   };
 
   const removeLocalStorage = () => {
-    setSrcIcon(blackHeartIcon);
-    return newRecipe;
+    let recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const newRecipe = recipes.filter((element) => element.id !== recipe.idMeal);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newRecipe));
+    setSrcIcon(whiteHeartIcon);
+    return null;
   };
 
   const handleFavorite = () => {
-    // favorited ? addToLocalStorage() : removeLocalStorage();
-    setFavorited((currentState) => !currentState);
+    NotFavorited ? addToLocalStorage() : removeLocalStorage();
+    setNotFavorited((currentState) => !currentState);
+    return null;
   };
 
-  console.log(removeLocalStorage, addToLocalStorage, favorited);
-
   return (
-    <button onClick={() => handleFavorite()}>
-      <img src={srcIcon} alt="Icone para favoritar receita" />
-    </button>
+      <img
+        onClick={() => handleFavorite()}
+        data-testid="favorite-btn"
+        src={srcIcon} alt="Icone para favoritar receita"
+      />
   );
 };
 

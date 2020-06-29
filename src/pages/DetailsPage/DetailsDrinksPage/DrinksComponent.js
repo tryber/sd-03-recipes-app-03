@@ -26,7 +26,7 @@ const DrinksComponent = () => {
     <div>
       <img data-testid="recipe-photo" src={strDrinkThumb} alt={strDrink} width="20%" />
       <ShareButton />
-      <FavoriteButton />
+      <FavoriteButton recipe={data} type="drink" />
       <h1 data-testid="recipe-title">{strDrink}</h1>
       <h3 data-testid="recipe-category">{strAlcoholic}</h3>
       <h2>Ingredients</h2>

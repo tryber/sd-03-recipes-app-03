@@ -8,18 +8,20 @@ export const fetchMeals = () => {
 
 const urlCategoriesMeals = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesMeals = () => (
-  fetch(urlCategoriesMeals)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(urlCategoriesMeals).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 // Buscar Meals por categoria específica
 
 const urlCategoryMealsButton = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 export const fetchCategoryMealsButton = (category) => (
-  fetch(`${urlCategoryMealsButton}${category}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(`${urlCategoryMealsButton}${category}`).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 export const fetchMealById = (id) => {

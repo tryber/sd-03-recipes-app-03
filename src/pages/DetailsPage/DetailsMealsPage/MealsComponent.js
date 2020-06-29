@@ -27,7 +27,7 @@ const MealsComponent = () => {
     <div>
       <img data-testid="recipe-photo" src={strMealThumb} alt={strMeal} width="20%" />
       <ShareButton />
-      <FavoriteButton />
+      <FavoriteButton recipe={data} type="meal" />
       <h1 data-testid="recipe-title">{strMeal}</h1>
       <h3 data-testid="recipe-category">{strCategory}</h3>
       <h2>Ingredients</h2>

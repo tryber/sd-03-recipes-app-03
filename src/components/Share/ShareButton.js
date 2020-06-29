@@ -10,9 +10,10 @@ const ShareButton = () => {
   };
   return (
     <div>
-      <button onClick={() => handleShareButton()}>
-        <img src={shareIcon} alt="Icone para compartilhar receita" />
-      </button>
+        <img
+          data-testid="share-btn" onClick={() => handleShareButton()}
+          src={shareIcon} alt="Icone para compartilhar receita"
+        />
       {copied && <span>Link copiado!</span>}
     </div>
   );
