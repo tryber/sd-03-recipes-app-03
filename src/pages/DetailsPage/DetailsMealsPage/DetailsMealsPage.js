@@ -38,14 +38,14 @@ const DetailsMealsPage = (props) => {
     if (!pathname.includes('/comidas')) return setProviderRecommendedFunc(meals);
     setData(meals[0]);
     setProviderDataFunc(meals[0]);
-    setPathNameFunc(pathname)
+    setPathNameFunc(pathname);
     setIsLoading(false);
   };
   const apiRequestSucceedDrink = ({ drinks }) => {
     if (!pathname.includes('/bebidas')) return setProviderRecommendedFunc(drinks);
     setData(drinks[0]);
     setProviderDataFunc(drinks[0]);
-    setPathNameFunc(pathname)
+    setPathNameFunc(pathname);
     setIsLoading(false);
   };
   const apiRequestFailure = ({ message }) => {
@@ -68,7 +68,7 @@ const DetailsMealsPage = (props) => {
       apiRequestFunction(fetchMeals);
     }
   }, [pathname]);
-  const dataDestructure = (data) => data.idMeal ? destructureMeal(data) : destructureDrinks(data);
+  // const dataDestructure = (data) => data.idMeal ? destructureMeal(data) : destructureDrinks(data);
   if (isLoading) return <div>Loading...</div>;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
   return <div><MealsComponent data={dataDestructure(data)} /></div>;
