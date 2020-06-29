@@ -6,7 +6,7 @@ const RecipeButtonControl = (props) => {
   const { type, id, setInProgress, inProgress } = props;
   if (inProgress) {
     return (
-      <div data-testid="start-recipe-btn">
+      <div>
         <Link to={`/${type}/${id}/in-progress`}>
           <button type="button">
             Continuar Receita
@@ -17,7 +17,7 @@ const RecipeButtonControl = (props) => {
   }
   return (
     <div>
-      <Link to={`/${type}/${id}/in-progress`}>
+      <Link data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
         <button type="button" onClick={() => setInProgress(true)}>
           Iniciar Receita
         </button>
