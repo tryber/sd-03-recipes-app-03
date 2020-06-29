@@ -9,10 +9,13 @@ const DetailsMealsPage = (props) => {
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
   const {
     setProviderDataFunc, setPathNameFunc, setProviderRecommendedFunc,
   } = useContext(DetailsPageContext);
+
   const { match: { params: { id } }, location: { pathname } } = props;
+
   const apiRequestSucceedMeal = ({ meals }) => {
     if (!pathname.includes('/comidas')) return setProviderRecommendedFunc(meals);
     setData(meals[0]);
@@ -20,6 +23,7 @@ const DetailsMealsPage = (props) => {
     setPathNameFunc(pathname);
     return setIsLoading(false);
   };
+
   const apiRequestSucceedDrink = ({ drinks }) => {
     if (!pathname.includes('/bebidas')) return setProviderRecommendedFunc(drinks);
     setData(drinks[0]);
@@ -27,10 +31,12 @@ const DetailsMealsPage = (props) => {
     setPathNameFunc(pathname);
     return setIsLoading(false);
   };
+
   const apiRequestFailure = ({ message }) => {
     setErrorMessage(message);
     setIsLoading(false);
   };
+
   useEffect(() => {
     const apiRequestFunction = (callback, recipeId = '') => {
       setIsLoading(true);
@@ -39,6 +45,7 @@ const DetailsMealsPage = (props) => {
       }
       return callback(recipeId).then(apiRequestSucceedDrink, apiRequestFailure);
     };
+
     if (pathname.includes('/comidas')) {
       apiRequestFunction(fetchMealById, id);
       apiRequestFunction(fetchDrinks);
@@ -47,6 +54,7 @@ const DetailsMealsPage = (props) => {
       apiRequestFunction(fetchMeals);
     }
   }, [pathname]);
+
   return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage, data }} /></div>;
 };
 
