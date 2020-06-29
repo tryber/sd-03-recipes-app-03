@@ -8,7 +8,7 @@ const Foods = () => {
   useEffect(() => {
     get12Meals();
   }, []);
-  if (mealsData.length === 0) return <Loading />
+  if (mealsData.length === 0) return <Loading />;
   return (
     <FoodList meals={mealsData} />
   );

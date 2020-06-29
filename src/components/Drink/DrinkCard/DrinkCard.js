@@ -19,7 +19,7 @@ const DrinkCard = ({ drink, index }) => {
       </div>
       <div className="card-title">
         <span data-testid={`${index}-card-name`}>{strDrink}</span>
-        <img className="recipe-icon" src={beber} alt="icone de uma taça" width="20px"/>
+        <img className="recipe-icon" src={beber} alt="icone de uma taça" width="20px" />
       </div>
     </Link>
   );

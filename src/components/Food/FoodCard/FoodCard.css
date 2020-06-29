@@ -11,10 +11,10 @@
 }
 
 .card-title {
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
   margin: 15px;
-  align-items: flex-start;
   width: 100%;
 }
 
