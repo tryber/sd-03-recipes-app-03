@@ -55,3 +55,10 @@ export const fetchDrinksByName = (name) => (
     .then((response) => response.json())
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
+
+const urlFindByFirstLetter = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
+export const fetchDrinksByFirstLetter = (letter) => (
+  fetch(`${urlFindByFirstLetter}${letter}`)
+    .then((response) => response.json())
+    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+);

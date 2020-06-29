@@ -46,6 +46,6 @@ export default Header;
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  searchIcon: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  searchIcon: PropTypes.bool,
+  onClick: PropTypes.func,
 };
