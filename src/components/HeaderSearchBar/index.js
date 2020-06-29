@@ -2,39 +2,37 @@ import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
-import { fetchDrinksByIngredient, fetchDrinksByName, fetchDrinksByFirstLetter} from '../../services/theCockTailAPI';
-import { fetchMealsByIngredients, fetchMealsByName, fetchMealsByFirstLetter} from '../../services/theMealAPI';
+import { fetchDrinksByIngredient, fetchDrinksByName, fetchDrinksByFirstLetter } from '../../services/theCockTailAPI';
+import { fetchMealsByIngredients, fetchMealsByName, fetchMealsByFirstLetter } from '../../services/theMealAPI';
 import { SearchBarContext } from './HeaderSearchBarContext';
 
 const HeaderSearchBar = ({ history, location }) => {
-
-    const [state, setState] = useState({
+  const [state, setState] = useState({
     searchParam: 'name',
     searchName: '',
   });
 
-  const { setIsFetching, setData, data } = useContext(SearchBarContext);
-  
+  const { setIsFetching, setData } = useContext(SearchBarContext);
+
   const { searchParam, searchName } = state;
 
-  
   const searchButton = async () => {
     const searchMeal = {
       ingredients: fetchMealsByIngredients,
       name: fetchMealsByName,
       firstLetter: fetchMealsByFirstLetter,
-    }
+    };
 
     const searchDrink = {
       ingredients: fetchDrinksByIngredient,
       name: fetchDrinksByName,
       firstLetter: fetchDrinksByFirstLetter,
-    }
+    };
 
     if (searchParam === 'firstLetter' && searchName.length !== 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
-    if(location.pathname === '/comidas') {
+    if (location.pathname === '/comidas') {
       const data = await searchMeal[searchParam](searchName);
       setData(data.meals);
       setIsFetching(false);
@@ -44,7 +42,7 @@ const HeaderSearchBar = ({ history, location }) => {
       }
     }
 
-    if(location.pathname === '/bebidas') {
+    if (location.pathname === '/bebidas') {
       const data = await searchDrink[searchParam](searchName);
       setData(data.drinks);
       setIsFetching(false);
@@ -89,7 +87,8 @@ const HeaderSearchBar = ({ history, location }) => {
             name="searchParam"
             value="name"
             data-testid="name-search-radio"
-            onClick={(e) => handleChange(e)}/>
+            onClick={(e) => handleChange(e)}
+          />
           Nome
         </label>
         <label htmlFor="first-letter" className="search-label">
@@ -120,4 +119,7 @@ export default withRouter(HeaderSearchBar);
 
 HeaderSearchBar.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
 };
