@@ -34,6 +34,7 @@ const HeaderSearchBar = ({ history, location }) => {
     }
     if (location.pathname === '/comidas') {
       const data = await searchMeal[searchParam](searchName);
+      console.log( 123, data )
       setData(data.meals);
       setIsFetching(false);
       if (data.meals) {
@@ -120,6 +121,6 @@ export default withRouter(HeaderSearchBar);
 HeaderSearchBar.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 };

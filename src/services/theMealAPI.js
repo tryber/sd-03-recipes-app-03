@@ -59,7 +59,7 @@ export const fetchIngredientsList = () => (
 );
 
 export const fetchMealsByIngredients = (ingredient) => {
-  const urlFindMealsByIngredients = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  const urlFindMealsByIngredients = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
   return fetch(urlFindMealsByIngredients).then((response) => (
     response.json()
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))

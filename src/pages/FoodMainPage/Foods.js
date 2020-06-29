@@ -14,7 +14,7 @@ const Foods = () => {
   return (
     <div>
       <Header title="Comidas" searchIcon />
-      <FoodList meals={data.length ? data : mealsData} />
+      <FoodList meals={ data.length ? data : mealsData} />
     </div>
   );
 };
