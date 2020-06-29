@@ -20,7 +20,7 @@ const Header = ({ title, searchIcon }) => {
             data-testid="profile-top-btn"
             src={profileIcon}
             alt="icone de  perfil"
-            className="personal-icon"
+            className="header-icon"
           />
         </Link>
         <h1 data-testid="page-title" className="header-title">{title}</h1>
@@ -32,7 +32,7 @@ const Header = ({ title, searchIcon }) => {
               data-testid="search-top-btn"
               alt="icone de  busca"
               onClick={() => setViewSearch(!viewSearch)}
-              className="personal-icon"
+              className="header-icon"
             />
           </Link>
         )}
@@ -46,6 +46,6 @@ export default Header;
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  searchIcon: PropTypes.bool,
-  onClick: PropTypes.func,
+  searchIcon: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

@@ -1,21 +1,21 @@
-.personal-icon {
-  width: 50px;
+.header-icon {
+  width: 30px;
 }
 
 .header-container {
   align-items: center;
-  background-color: #FDB155;
+  background-color: #fdb155;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 10px;
   padding: 10px 0;
-  width: 400px;
   position: relative;
-  
+  width: 360px;
 }
 
 .header-title {
-  font-family: Roboto Condensed, sans-serif;
-  font-size: 35px;
+  font-family: Roboto Condensed , Arial, Helvetica, sans-serif;
+  font-size: 30px;
   margin: 0;
   padding: 0;
 }

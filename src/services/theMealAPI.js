@@ -72,7 +72,7 @@ export const fetchMealsByName = (name) => {
     response.json()
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
   ));
-}
+};
 
 export const fetchMealsByFirstLetter = (letter) => {
   const urlFindByFirstLetter = `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;

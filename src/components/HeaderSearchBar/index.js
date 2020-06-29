@@ -14,7 +14,6 @@ const HeaderSearchBar = ({ history, location }) => {
   });
 
   const { setIsFetching, setData, data } = useContext(SearchBarContext);
-  console.log('context', data);
   
   const { searchParam, searchName } = state;
 
@@ -36,10 +35,9 @@ const HeaderSearchBar = ({ history, location }) => {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
     if(location.pathname === '/comidas') {
-      const data = await searchMeal[searchParam](searchName)
-      setData(data.meals)
+      const data = await searchMeal[searchParam](searchName);
+      setData(data.meals);
       setIsFetching(false);
-      console.log( 1323, history )
       if (data.meals) {
         if (data.meals.length === 1) history.push(`/comidas/${data.meals[0].idMeal}`);
         if (data.meals.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
@@ -47,8 +45,8 @@ const HeaderSearchBar = ({ history, location }) => {
     }
 
     if(location.pathname === '/bebidas') {
-      const data = await searchDrink[searchParam](searchName)
-      setData(data.drinks)
+      const data = await searchDrink[searchParam](searchName);
+      setData(data.drinks);
       setIsFetching(false);
       if (data.drinks) {
         if (data.drinks.length === 1) history.push(`/bebidas/${data.drinks[0].idDrink}`);
@@ -74,35 +72,37 @@ const HeaderSearchBar = ({ history, location }) => {
         className="search-input"
         onChange={(e) => handleChange(e)}
       />
-      <label htmlFor="ingredient" className="ingredient-search-label">
-        <input
-          type="radio"
-          name={searchParam}
-          data-testid="ingredient-search-radio"
-          onClick={(e) => handleChange(e)}
-          value="ingredients"
-        />
-        Ingrediente
-      </label>
-      <label htmlFor="name" className="name-search-label">
-        <input
-          type="radio"
-          name="searchParam"
-          value="name"
-          data-testid="name-search-radio"
-          onClick={(e) => handleChange(e)}/>
-        Nome
-      </label>
-      <label htmlFor="first-letter" className="first-letter-search-label" onClick={(e) => handleChange(e)}>
-        <input
-          type="radio"
-          name="searchParam"
-          data-testid="first-letter-search-radio"
-          onClick={(e) => handleChange(e)}
-          value="firstLetter"
-        />
-        Primeira letra
-      </label>
+      <div className="radio-container">
+        <label htmlFor="ingredient" className="search-label">
+          <input
+            type="radio"
+            name="searchParam"
+            value="ingredients"
+            data-testid="ingredient-search-radio"
+            onClick={(e) => handleChange(e)}
+          />
+          Ingrediente
+        </label>
+        <label htmlFor="name" className="search-label">
+          <input
+            type="radio"
+            name="searchParam"
+            value="name"
+            data-testid="name-search-radio"
+            onClick={(e) => handleChange(e)}/>
+          Nome
+        </label>
+        <label htmlFor="first-letter" className="search-label">
+          <input
+            type="radio"
+            name="searchParam"
+            data-testid="first-letter-search-radio"
+            onClick={(e) => handleChange(e)}
+            value="firstLetter"
+          />
+          Primeira letra
+        </label>
+      </div>
       <button
         type="button"
         name="searchParam"
