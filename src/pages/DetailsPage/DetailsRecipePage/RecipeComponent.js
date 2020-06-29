@@ -12,9 +12,7 @@ import Ingredients from './Ingredients';
 const RecipeComponent = (props) => {
   const [inProgress, setInProgress] = useState(false);
   const { data } = props;
-  const { providerData } = useContext(DetailsPageContext);
   const { name, category, img, instructions, id, type } = data;
-  console.log(type);
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
@@ -34,10 +32,12 @@ const RecipeComponent = (props) => {
         <div className="instructions-container">
           <p data-testid="instructions">{instructions}</p>
         </div>
-        {providerData.video ?
-          <div data-testid="video">
+        {data.video ?
+          <div>
             <h2>Video</h2>
-            <ReactPlayer url={providerData.video} height={200} width={400} />
+            <div data-testid="video">
+              <ReactPlayer url={data.video} height={200} width={400} />
+            </div>
           </div>
           :
           null
