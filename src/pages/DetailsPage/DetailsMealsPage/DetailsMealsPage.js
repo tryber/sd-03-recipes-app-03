@@ -18,14 +18,14 @@ const DetailsMealsPage = (props) => {
     setData(meals[0]);
     setProviderDataFunc(meals[0]);
     setPathNameFunc(pathname);
-    setIsLoading(false);
+    return setIsLoading(false);
   };
   const apiRequestSucceedDrink = ({ drinks }) => {
     if (!pathname.includes('/bebidas')) return setProviderRecommendedFunc(drinks);
     setData(drinks[0]);
     setProviderDataFunc(drinks[0]);
     setPathNameFunc(pathname);
-    setIsLoading(false);
+    return setIsLoading(false);
   };
   const apiRequestFailure = ({ message }) => {
     setErrorMessage(message);
