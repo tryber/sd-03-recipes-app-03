@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedCard from './RecommendedCard';
 import './RecommendedContainerComponent.css';
@@ -16,17 +16,16 @@ const destructureDrinks = (data) => {
 };
 
 const RecommendedContainerComponent = () => {
-  // const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(2);
 
   const { providerRecommended } = useContext(DetailsPageContext);
 
-  // const setIndexFunction = () => {
-  //   setIndex((current) => current + 2)
-  // }
+  const setIndexFunction = () => {
+    if (index === 6) return setIndex(2)
+    setIndex((current) => current + 2)
+  }
 
-  const sixRecommended = providerRecommended.slice(0, 6);
-
-  // const showingRecommendedDrinks = sixRecommendedDrinks[index];
+  const sixRecommended = providerRecommended.slice((index - 2), index);
 
   const dataRecommendedDestructure = (data) => (
     data.idMeal ? destructureMeal(data) : destructureDrinks(data)
@@ -45,9 +44,9 @@ const RecommendedContainerComponent = () => {
           )}
         </div>
       </div>
-      {/* <a className="prev" onClick={setIndexFunction}>&#10094;</a>
+      <a className="prev" onClick={setIndexFunction}>&#10094;</a>
       <a className="next" onClick={setIndexFunction}>&#10095;</a>
-      <div>
+      {/* <div>
         <span className="dot" onClick="currentSlide(1)"></span>
         <span className="dot" onClick="currentSlide(2)"></span>
         <span className="dot" onClick="currentSlide(3)"></span>
