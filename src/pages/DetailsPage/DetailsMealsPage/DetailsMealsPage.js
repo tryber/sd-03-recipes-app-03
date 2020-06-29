@@ -2,31 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import { DetailsPageContext } from '../DetailsPageProvider';
 import PropTypes from 'prop-types';
 import MealsComponent from './MealsComponent';
+import DetailsRecipesPage from './DetailsRecipesPage';
 import { fetchMealById, fetchMeals } from '../../../services/theMealAPI'
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
-
-
-const destructureMeal = (data) => {
-  const {
-    strMeal:name,strCategory:category, strMealThumb:img, strYoutube:video,
-    strInstructions:instructions, idMeal:id,
-  } = data;
-  const dataObj = {
-    name, category, img, video, instructions, id, init: 9, mid: 29, end: 49, type: 'comidas',
-  };
-  return dataObj;
-};
-
-const destructureDrinks = (data) => {
-  const {
-    strDrink:name, strAlcoholic:category, strDrinkThumb:img,
-    strInstructions:instructions, idDrink:id,
-  } = data;
-  const dataObj = {
-    name, category, img, instructions, id, init: 21, mid: 36, end: 51, type: 'bebidas',
-  }
-  return dataObj;
-};
 
 const DetailsMealsPage = (props) => {
   const [data, setData] = useState([]);
@@ -68,10 +46,13 @@ const DetailsMealsPage = (props) => {
       apiRequestFunction(fetchMeals);
     }
   }, [pathname]);
+  console.log(data)
+  console.log(errorMessage)
+  return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage, data }} /></div>
   // const dataDestructure = (data) => data.idMeal ? destructureMeal(data) : destructureDrinks(data);
-  if (isLoading) return <div>Loading...</div>;
-  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
-  return <div><MealsComponent data={dataDestructure(data)} /></div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
+  // return <div><MealsComponent data={dataDestructure(data)} /></div>;
 };
 
 export default DetailsMealsPage;
