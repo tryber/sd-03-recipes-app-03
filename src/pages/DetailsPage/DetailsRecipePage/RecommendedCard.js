@@ -13,10 +13,10 @@ const RecommendedCard = (props) => {
     return 'bebidas';
   };
   return (
-    <div data-testid={`${index}-recomendation-card`} className="recommended-drinks-card">
+    <div data-testid={`${index}-recomendation-card`} className="recommended-card">
       <Link to={`/${changePageURL()}/${id}`}>
         <div>
-          <img src={img} alt={name} width="100%" height="50%" />
+          <img src={img} alt={name} width="100%" />
           <h5>{category}</h5>
           <h4 data-testid={`${index}-recomendation-title`}>{name}</h4>
         </div>

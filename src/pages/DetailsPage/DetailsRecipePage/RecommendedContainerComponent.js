@@ -25,7 +25,8 @@ const RecommendedContainerComponent = () => {
     setIndex((current) => current + 2)
   }
 
-  const sixRecommended = providerRecommended.slice((index - 2), index);
+  // const sixRecommended = providerRecommended.slice((index - 2), index);
+  const sixRecommended = providerRecommended.slice(0, 6);
 
   const dataRecommendedDestructure = (data) => (
     data.idMeal ? destructureMeal(data) : destructureDrinks(data)
@@ -33,16 +34,14 @@ const RecommendedContainerComponent = () => {
   return (
     <div>
       <h2>Recomendadas</h2>
-      <div className="slideshow-container">
-        <div className="recommended-drinks-container">
-          {sixRecommended.map((recommended, index) =>
-            <RecommendedCard
-              key={dataRecommendedDestructure(recommended).id}
-              recommended={dataRecommendedDestructure(recommended)}
-              index={index}
-            />,
-          )}
-        </div>
+      <div className="recommended-container">
+        {sixRecommended.map((recommended, index) =>
+          <RecommendedCard
+            key={dataRecommendedDestructure(recommended).id}
+            recommended={dataRecommendedDestructure(recommended)}
+            index={index}
+          />,
+        )}
       </div>
       <a className="prev" onClick={setIndexFunction}>&#10094;</a>
       <a className="next" onClick={setIndexFunction}>&#10095;</a>

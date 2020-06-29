@@ -1,7 +1,11 @@
-.recommended-drinks-container {
+.recommended-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  width: 50%;
+}
+
+.recommended-card {
+  width: 171px;
+  height: 161px
 }
 
 .prev , .next {

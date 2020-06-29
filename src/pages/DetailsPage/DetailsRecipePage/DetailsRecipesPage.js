@@ -15,11 +15,12 @@ const destructureMeal = (data) => {
 
 const destructureDrinks = (data) => {
   const {
-    strDrink: name, strAlcoholic: category, strDrinkThumb: img,
+    strDrink: name, strAlcoholic: alcoholic, strDrinkThumb: img, strCategory: category,
     strInstructions: instructions, idDrink: id, strArea: area,
   } = data;
   const dataObj = {
-    name, category, img, instructions, id, area, init: 21, mid: 36, end: 51, type: 'bebidas',
+    name, category, alcoholic, img,
+    instructions, id, area, init: 21, mid: 36, end: 51, type: 'bebidas',
   };
   return dataObj;
 };
@@ -29,7 +30,7 @@ const DetailsRecipesPage = (props) => {
   const dataDestructure = (dataType) => (
     dataType.idMeal ? destructureMeal(data) : destructureDrinks(data)
   );
-  console.log(data)
+
   if (isLoading) return <div>Loading...</div>;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
   return <div><RecipeComponent data={dataDestructure(data)} /></div>;
