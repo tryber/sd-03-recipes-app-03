@@ -1,6 +1,6 @@
 import React from 'react';
-import MealsComponent from './MealsComponent';
 import PropTypes from 'prop-types';
+import MealsComponent from './MealsComponent';
 
 const destructureMeal = (data) => {
   const {
@@ -26,7 +26,8 @@ const destructureDrinks = (data) => {
 
 const DetailsRecipesPage = (props) => {
   const { isLoading, errorMessage, data } = props.renderControl;
-  const dataDestructure = (dataType) => dataType.idMeal ? destructureMeal(data) : destructureDrinks(data);
+  const dataDestructure = (dataType) =>
+    dataType.idMeal ? destructureMeal(data) : destructureDrinks(data);
   if (isLoading) return <div>Loading...</div>;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
   return <div><MealsComponent data={dataDestructure(data)} /></div>;

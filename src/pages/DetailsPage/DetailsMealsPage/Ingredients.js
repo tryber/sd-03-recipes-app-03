@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { DetailsPageContext } from '../DetailsPageProvider';
 import PropTypes from 'prop-types';
+import { DetailsPageContext } from '../DetailsPageProvider';
 
 const Ingredients = (props) => {
   const { providerData } = useContext(DetailsPageContext);

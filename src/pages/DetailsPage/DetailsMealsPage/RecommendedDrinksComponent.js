@@ -7,11 +7,11 @@ import './RecommendedDrinksComponent.css';
 const RecommendedDrinksComponent = (props) => {
   const { name, category, img, id } = props.recommended;
   const { index } = props;
-  const { pathName } = useContext(DetailsPageContext)
+  const { pathName } = useContext(DetailsPageContext);
   const changePageURL = () => {
     if (pathName.includes('/bebidas')) return 'comidas';
-    return 'bebidas'
-  }
+    return 'bebidas';
+  };
   return (
     <div className="recommended-drinks-card">
       <Link to={`/${changePageURL()}/${id}`}>
@@ -28,11 +28,10 @@ const RecommendedDrinksComponent = (props) => {
 export default RecommendedDrinksComponent;
 
 RecommendedDrinksComponent.propTypes = {
-  drinks: PropTypes.objectOf(PropTypes.any),
   index: PropTypes.number,
+  recommended: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 RecommendedDrinksComponent.defaultProps = {
-  drinks: {},
   index: undefined,
 };

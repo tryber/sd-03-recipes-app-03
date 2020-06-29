@@ -10,7 +10,7 @@ const DetailsMealsPage = (props) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const {
-    setProviderDataFunc, setPathNameFunc, setProviderRecommendedFunc
+    setProviderDataFunc, setPathNameFunc, setProviderRecommendedFunc,
   } = useContext(DetailsPageContext);
   const { match: { params: { id } }, location: { pathname } } = props;
   const apiRequestSucceedMeal = ({ meals }) => {

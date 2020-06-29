@@ -29,11 +29,11 @@ const FavoriteButton = (recipe, type) => {
   };
 
   const handleFavorite = () => {
-    favorited ? addToLocalStorage() : removeLocalStorage();
+    // favorited ? addToLocalStorage() : removeLocalStorage();
     setFavorited((currentState) => !currentState);
   };
 
-  // console.log(removeLocalStorage, addToLocalStorage, favorited);
+  console.log(removeLocalStorage, addToLocalStorage, favorited);
 
   return (
     <button onClick={() => handleFavorite()}>

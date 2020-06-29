@@ -4,14 +4,14 @@ import RecommendedDrinksComponent from './RecommendedDrinksComponent';
 import './RecommendedDrinks.css';
 
 const destructureMeal = (data) => {
-  const { strMeal:name,strCategory:category, strMealThumb:img, idMeal:id } = data;
+  const { strMeal: name,strCategory: category, strMealThumb: img, idMeal: id } = data;
   const dataObj = { name, category, img, id };
   return dataObj;
 };
 
 const destructureDrinks = (data) => {
-  const { strDrink:name, strAlcoholic:category, strDrinkThumb:img, idDrink:id } = data;
-  const dataObj = { name, category, img, id }
+  const { strDrink: name, strAlcoholic: category, strDrinkThumb: img, idDrink: id } = data;
+  const dataObj = { name, category, img, id };
   return dataObj;
 };
 
