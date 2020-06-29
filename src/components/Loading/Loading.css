@@ -6,7 +6,7 @@
 }
 
 .double-bounce1 , .double-bounce2 {
-  animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2s infinite ease-in-out;
   background-color: #333;
   border-radius: 50%;
   height: 100%;
@@ -26,7 +26,9 @@
 
   0% , 100% {
     transform: scale(0);
-  } 50% {
+  }
+
+  50% {
     transform: scale(1);
   }
 }
