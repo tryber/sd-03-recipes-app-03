@@ -1,6 +1,13 @@
 import { fetchRecipesByIngredient, fetchRecipesByName, fetchRecipesByFirstLetter } from '../../services/searchBarAPI';
 
-const searchButton = async ( history, location, setIsFetching, setData, searchParam, searchName) => {
+const searchButton = async (
+    history,
+    location,
+    setIsFetching,
+    setData,
+    searchParam,
+    searchName
+  ) => {
   const search = {
     ingredients: fetchRecipesByIngredient,
     name: fetchRecipesByName,

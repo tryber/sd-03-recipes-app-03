@@ -25,16 +25,14 @@ const Header = ({ title, searchIcon }) => {
         </Link>
         <h1 data-testid="page-title" className="header-title">{title}</h1>
         {searchIcon && (
-          <Link>
-            <input
-              type="image"
-              src={iconSearch}
-              data-testid="search-top-btn"
-              alt="icone de  busca"
-              onClick={() => setViewSearch(!viewSearch)}
-              className="header-icon"
-            />
-          </Link>
+          <input
+            type="image"
+            src={iconSearch}
+            data-testid="search-top-btn"
+            alt="icone de  busca"
+            onClick={() => setViewSearch(!viewSearch)}
+            className="header-icon"
+          />
         )}
       </header>
       {viewSearch && <HeaderSearchBar />}

@@ -69,7 +69,14 @@ const HeaderSearchBar = ({ history, location }) => {
         name="searchParam"
         data-testid="exec-search-btn"
         className="search-button"
-        onClick={() => searchButton(history, location, setIsFetching, setData, searchParam, searchName)}
+        onClick={() => searchButton(
+          history,
+          location,
+          setIsFetching,
+          setData,
+          searchParam,
+          searchName
+        )}
       >
         Buscar
       </button>
