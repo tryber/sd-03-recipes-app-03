@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import shareIcon from '../../images/shareIcon.svg';
 
 const ShareButton = ({ index }) => {
@@ -16,6 +17,10 @@ const ShareButton = ({ index }) => {
       {copied && <span>Link copiado!</span>}
     </button>
   );
+};
+
+ShareButton.propTypes = {
+  index: PropTypes.number.isRequired,
 };
 
 export default ShareButton;

@@ -23,30 +23,35 @@ const renderThumb = (recipe, index, favoriteds) => {
   );
 };
 
-
-const RecipeCard = ({ recipe, index, favoriteds }) => {
+const renderCardInfo = (recipe, index, favoriteds) => {
   const { name, id, type } = recipe;
+  return (
+    <React.Fragment>
+      <span data-testid={`${index}-horizontal-top-text`}>
+        {recipe.type[0] === 'c' ? `${recipe.area} - ${recipe.category}` : recipe.alcoholic}
+      </span>
+      <div className="card-title">
+        <Link to={!favoriteds ? '#' : `/${type}s/${id}`}>
+          <span
+            data-testid={favoriteds ? `${index}-horizontal-name` : `${index}-card-name`}
+          >{name}
+          </span>
+        </Link>
+        <img
+          className="recipe-icon"src={type[0] === 'c' ? garfo : beber}
+          width="20px" alt="icone de talheres"
+        />
+      </div>
+    </React.Fragment>
+  );
+};
+const RecipeCard = ({ recipe, index, favoriteds }) => {
+  const { id, type } = recipe;
   return (
     <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
       {renderThumb(recipe, index, favoriteds)}
       <div className="infoCard">
-        <span
-          data-testid={`${index}-horizontal-top-text`}
-        >
-          {recipe.type[0] === 'c' ? `${recipe.area} - ${recipe.category}` : recipe.alcoholic}
-        </span>
-        <div className="card-title">
-          <Link to={!favoriteds ? '#' : `/${type}s/${id}`}>
-            <span
-              data-testid={favoriteds ? `${index}-horizontal-name` : `${index}-card-name`}
-            >{name}
-            </span>
-          </Link>
-          <img
-            className="recipe-icon"src={type[0] === 'c' ? garfo : beber}
-            width="20px" alt="icone de talheres"
-          />
-        </div>
+        {renderCardInfo(recipe, index, favoriteds)}
         {favoriteds &&
           <div>
             <ShareButton index={index} path={`/${type}s/${id}`} />
@@ -66,7 +71,6 @@ RecipeCard.propTypes = {
   }).isRequired,
   index: PropTypes.number.isRequired,
   favoriteds: PropTypes.string.isRequired,
-  index: PropTypes.string.isRequired,
 };
 
 

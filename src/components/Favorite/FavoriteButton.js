@@ -76,6 +76,7 @@ const FavoriteButton = ({ recipe, index }) => {
 
 FavoriteButton.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default FavoriteButton;
