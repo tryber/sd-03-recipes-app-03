@@ -77,7 +77,19 @@ const FavoriteButton = ({ recipe }) => {
 };
 
 FavoriteButton.propTypes = {
-  recipe: PropTypes.object.isRequired,
+  recipe: PropTypes.shape({
+    alcoholic: PropTypes.string,
+    area: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    end: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    init: PropTypes.number.isRequired,
+    instructions: PropTypes.string.isRequired,
+    mid: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default FavoriteButton;
