@@ -1,31 +1,30 @@
-import React, { useContext, useState } from 'react';
-import { DetailsPageContext } from './DetailsPageProvider';
+import React from 'react';
+import PropTypes from 'prop-types';
+// import { DetailsPageContext } from './DetailsPageProvider';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './RecipeButtonControl.css';
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0');
-var yyyy = today.getFullYear();
-today = dd + '/' + mm + '/' + yyyy;
+const today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const yyyy = today.getFullYear();
+today = `${dd} / ${mm} / ${yyyy}`;
 
 const RecipeButtonControl = (props) => {
-  console.log(props);
-  const { recipeData: { id, type, name, area, category, alcoholic = '', img, } } = props;
-  let { recipeData: { tags = '', } } = props;
+  const { recipeData: { id, type, name, area, category, alcoholic = '', img } } = props;
+  let { recipeData: { tags = '' } } = props;
 
   if (tags !== null && tags.includes(',')) tags = tags.split(',');
 
   const startingRecipe = () => {
     const doneRecipes = {
-        id, type, area, category, alcoholicOrNot: alcoholic,
-        name, image: img, doneData: today, tags,
+      id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneData: today, tags,
     };
-    const startedRecipe =  JSON.parse(localStorage.getItem('doneRecipes'));
+    const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
     if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));
     return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
-  }
+  };
 
   if (
     JSON.parse(localStorage.getItem('doneRecipes')) &&
@@ -55,15 +54,11 @@ const RecipeButtonControl = (props) => {
 export default RecipeButtonControl;
 
 RecipeButtonControl.propTypes = {
-  type: PropTypes.string,
-  id: PropTypes.string,
+  recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
   setInProgress: PropTypes.func,
   inProgress: PropTypes.bool,
 };
 
-RecipeButtonControl.defaultProps = {
-  type: '',
-  id: undefined,
-  setInProgress: () => {},
-  inProgress: false,
-};
+// RecipeButtonControl.defaultProps = {
+
+// };

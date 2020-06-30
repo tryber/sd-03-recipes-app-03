@@ -8,8 +8,8 @@ const destructureMeal = (data) => {
     strInstructions: instructions, idMeal: id, strArea: area, strTags: tags,
   } = data;
   const dataObj = {
-    name, category, img, video, instructions, id, area, init: 9,
-    mid: 29, end: 49, type: 'comidas', tags,
+    name, category, img, video, instructions, id, area,
+    init: 9, mid: 29, end: 49, type: 'comidas', tags,
   };
   return dataObj;
 };

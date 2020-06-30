@@ -41,7 +41,7 @@ const RecipeComponent = (props) => {
           null
         }
         <RecommendedContainerComponent />
-        <RecipeButtonControl type={type} id={id} recipeData={data}/>
+        <RecipeButtonControl type={type} id={id} recipeData={data} />
       </div>
     </div>
   );

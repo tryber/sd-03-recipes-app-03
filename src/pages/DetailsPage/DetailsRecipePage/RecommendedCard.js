@@ -17,7 +17,7 @@ const RecommendedCard = (props) => {
     <div data-testid={`${index}-recomendation-card`} className="recommended-card">
       <Link to={`/${changePageURL()}/${id}`}>
         <div>
-          <img src={img} alt={name} width="200px"/>
+          <img src={img} alt={name} width="200px" />
           <h5>{alcoholic || category }</h5>
           <h4 data-testid={`${index}-recomendation-title`}>{name}</h4>
         </div>
