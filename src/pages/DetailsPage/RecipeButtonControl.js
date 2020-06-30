@@ -22,7 +22,7 @@ const RecipeButtonControl = (props) => {
     };
     const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
     if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));
-    return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
+    localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
   };
 
   if (
