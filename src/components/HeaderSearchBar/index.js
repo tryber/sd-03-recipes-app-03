@@ -77,7 +77,7 @@ const HeaderSearchBar = ({ history, location }) => {
           setIsFetching,
           setData,
           searchParam,
-          searchName
+          searchName,
         )}
       >
         Buscar
