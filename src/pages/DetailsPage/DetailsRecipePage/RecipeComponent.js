@@ -12,7 +12,7 @@ import Ingredients from './Ingredients';
 const RecipeComponent = (props) => {
   const [inProgress, setInProgress] = useState(false);
   const { data } = props;
-  const { name, category, img, instructions, id, type } = data;
+  const { name, category, img, instructions, id, type, alcoholic } = data;
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
@@ -20,7 +20,7 @@ const RecipeComponent = (props) => {
         <div className="details-meals-header">
           <div className="details-meals-titles">
             <h1 data-testid="recipe-title">{name}</h1>
-            <p data-testid="recipe-category">{category}</p>
+            <p data-testid="recipe-category">{alcoholic || category}</p>
           </div>
           <div className="fav-share-button">
             <ShareButton />

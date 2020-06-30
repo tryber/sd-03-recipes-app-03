@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './RecipeButtonControl.css';
 
 const RecipeButtonControl = (props) => {
   const { type, id, setInProgress, inProgress } = props;
@@ -17,7 +18,7 @@ const RecipeButtonControl = (props) => {
   }
   return (
     <div>
-      <Link data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
+      <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
         <button type="button" onClick={() => setInProgress(true)}>
           Iniciar Receita
         </button>

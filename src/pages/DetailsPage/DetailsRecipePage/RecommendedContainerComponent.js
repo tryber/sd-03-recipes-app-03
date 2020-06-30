@@ -10,20 +10,20 @@ const destructureMeal = (data) => {
 };
 
 const destructureDrinks = (data) => {
-  const { strDrink: name, strAlcoholic: category, strDrinkThumb: img, idDrink: id } = data;
-  const dataObj = { name, category, img, id };
+  const { strDrink: name, strAlcoholic: alcoholic, strDrinkThumb: img, idDrink: id } = data;
+  const dataObj = { name, alcoholic, img, id };
   return dataObj;
 };
 
 const RecommendedContainerComponent = () => {
-  const [index, setIndex] = useState(2);
+  // const [index, setIndex] = useState(2);
 
   const { providerRecommended } = useContext(DetailsPageContext);
 
-  const setIndexFunction = () => {
-    if (index === 6) return setIndex(2)
-    setIndex((current) => current + 2)
-  }
+  // const setIndexFunction = () => {
+  //   if (index === 6) return setIndex(2)
+  //   setIndex((current) => current + 2)
+  // }
 
   // const sixRecommended = providerRecommended.slice((index - 2), index);
   const sixRecommended = providerRecommended.slice(0, 6);
@@ -31,6 +31,7 @@ const RecommendedContainerComponent = () => {
   const dataRecommendedDestructure = (data) => (
     data.idMeal ? destructureMeal(data) : destructureDrinks(data)
   );
+
   return (
     <div>
       <h2>Recomendadas</h2>
@@ -43,8 +44,8 @@ const RecommendedContainerComponent = () => {
           />,
         )}
       </div>
-      <a className="prev" onClick={setIndexFunction}>&#10094;</a>
-      <a className="next" onClick={setIndexFunction}>&#10095;</a>
+      {/* <a className="prev" onClick={setIndexFunction}>&#10094;</a>
+      <a className="next" onClick={setIndexFunction}>&#10095;</a> */}
       {/* <div>
         <span className="dot" onClick="currentSlide(1)"></span>
         <span className="dot" onClick="currentSlide(2)"></span>

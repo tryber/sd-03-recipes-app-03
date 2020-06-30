@@ -1,11 +1,10 @@
 .recommended-container {
-  display: flex;
-  width: 50%;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .recommended-card {
-  width: 171px;
-  height: 161px
+  display: inline-block;
 }
 
 .prev , .next {
