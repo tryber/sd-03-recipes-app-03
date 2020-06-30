@@ -28,7 +28,7 @@ const performSearch = async (
   setIsFetching(false);
   if (data.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   pushRoute(history, type, data);
-}
+};
 
 const searchButton = async (
     history,
@@ -48,7 +48,7 @@ const searchButton = async (
       setData,
       searchParam,
       searchName,
-    )
+    );
   }
 };
 
