@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes, { objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import './style.css';
-import { fetchRecipesByIngredient, fetchRecipesByName, fetchRecipesByFirstLetter } from '../../services/searchBarAPI';
+import searchButton from './searchButtonFunction';
 import { SearchBarContext } from './HeaderSearchBarContext';
-import { zipObjectDeep } from 'lodash';
 
 const HeaderSearchBar = ({ history, location }) => {
   const [state, setState] = useState({
@@ -15,27 +14,6 @@ const HeaderSearchBar = ({ history, location }) => {
   const { setIsFetching, setData } = useContext(SearchBarContext);
 
   const { searchParam, searchName } = state;
-
-  const searchButton = async () => {
-    const search = {
-      ingredients: fetchRecipesByIngredient,
-      name: fetchRecipesByName,
-      firstLetter: fetchRecipesByFirstLetter,
-    };
-
-    if (searchParam === 'firstLetter' && searchName.length !== 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
-    }
-    // if (location.pathname === '/comidas') {
-    const data = await search[searchParam](searchName, (location.pathname === '/comidas' ? 'meal' : 'cocktail'));
-    const json = location.pathname === '/comidas' ? data.meals : data.drinks
-    setData(json);
-    setIsFetching(false);
-    if (json) {
-      if (json.length === 1) history.push(`/comidas/${json[0][location.pathname === '/comidas' ? 'idMeal' : 'idDrink']}`);
-      if (json.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    }
-  };
 
   const handleChange = (e) => {
     setState({
@@ -91,7 +69,7 @@ const HeaderSearchBar = ({ history, location }) => {
         name="searchParam"
         data-testid="exec-search-btn"
         className="search-button"
-        onClick={() => searchButton()}
+        onClick={() => searchButton(history, location, setIsFetching, setData, searchParam, searchName)}
       >
         Buscar
       </button>
