@@ -40,7 +40,6 @@ const FavoriteButton = ({ recipe, index }) => {
       }
     }
   }, []);
-
   const addToLocalStorage = () => {
     const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newRecipe = recipes.concat(recipeObject(recipe, recipe.type));
@@ -48,7 +47,6 @@ const FavoriteButton = ({ recipe, index }) => {
     setSrcIcon(blackHeartIcon);
     return null;
   };
-
   const removeLocalStorage = () => {
     const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newRecipe = recipes.filter((element) => element.id !== recipe.id);
@@ -56,7 +54,6 @@ const FavoriteButton = ({ recipe, index }) => {
     setSrcIcon(whiteHeartIcon);
     return null;
   };
-
   const handleFavorite = () => {
     if (NotFavorited) {
       addToLocalStorage();
@@ -65,11 +62,12 @@ const FavoriteButton = ({ recipe, index }) => {
     }
     return setNotFavorited((currentState) => !currentState);
   };
-
   return (
     <button onClick={() => handleFavorite()}>
       <img
-        data-testid={typeof(index) === 'number' ? `${index}-horizontal-favorite-btn` : "favorite-btn"}
+        data-testid={
+          typeof (index) === 'number' ? `${index}-horizontal-favorite-btn` : 'favorite-btn'
+        }
         src={srcIcon} alt="Icone para favoritar receita"
       />
     </button>

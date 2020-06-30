@@ -7,20 +7,28 @@ import './RecipeCard.css';
 import garfo from './garfo.svg';
 import beber from './beber.svg';
 
-const RecipeCard = ({ recipe, index, favoriteds }) => {
+const renderThumb = (recipe, index, favoriteds) => {
   const { img, name, id, type } = recipe;
   return (
-    <Link className={`card b-shadow`} to={favoriteds ? '#' : `/${type}/${id}`}>
-      <div data-testid={`${index}-recipe-card`}>
-        <Link to={!favoriteds ? '#' : `/${type}s/${id}`}>
+    <div data-testid={`${index}-recipe-card`}>
+      <Link to={!favoriteds ? '#' : `/${type}s/${id}`}>
         <img
           className="thumbnail"
           alt={`imagem de uma refeição: ${name}`}
           data-testid={favoriteds ? `${index}-horizontal-image` : `${index}-card-img`}
           src={img}
         />
-        </Link>
-      </div>
+      </Link>
+    </div>
+  );
+};
+
+
+const RecipeCard = ({ recipe, index, favoriteds }) => {
+  const { name, id, type } = recipe;
+  return (
+    <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
+      {renderThumb(recipe, index, favoriteds)}
       <div className="infoCard">
         <span
           data-testid={`${index}-horizontal-top-text`}
@@ -30,20 +38,20 @@ const RecipeCard = ({ recipe, index, favoriteds }) => {
         <div className="card-title">
           <Link to={!favoriteds ? '#' : `/${type}s/${id}`}>
             <span
-              data-testid={favoriteds ? `${index}-horizontal-name` : `${index}-card-name`}>{name}
+              data-testid={favoriteds ? `${index}-horizontal-name` : `${index}-card-name`}
+            >{name}
             </span>
-            </Link>
+          </Link>
           <img
-            className="recipe-icon"src={type[0] === 'c' ? garfo : beber }
+            className="recipe-icon"src={type[0] === 'c' ? garfo : beber}
             width="20px" alt="icone de talheres"
           />
         </div>
         {favoriteds &&
           <div>
-            <ShareButton index={index} path={`/${type}s/${id}`}/>
+            <ShareButton index={index} path={`/${type}s/${id}`} />
             <FavoriteButton recipe={recipe} index={index} />
           </div>}
-        <span></span>
       </div>
     </Link>
   );
@@ -58,6 +66,7 @@ RecipeCard.propTypes = {
   }).isRequired,
   index: PropTypes.number.isRequired,
   favoriteds: PropTypes.string.isRequired,
+  index: PropTypes.string.isRequired,
 };
 
 

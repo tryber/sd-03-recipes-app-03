@@ -10,7 +10,7 @@ const ShareButton = ({ index }) => {
   return (
     <button onClick={() => handleShareButton()}>
       <img
-        data-testid={typeof(index) === 'number' ? `${index}-horizontal-share-btn` : "share-btn"}
+        data-testid={typeof (index) === 'number' ? `${index}-horizontal-share-btn` : 'share-btn'}
         src={shareIcon} alt="Icone para compartilhar receita"
       />
       {copied && <span>Link copiado!</span>}
