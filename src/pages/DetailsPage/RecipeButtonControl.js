@@ -25,7 +25,7 @@ const startingRecipe = (recipeObj) => {
 };
 
 const RecipeButtonControl = (props) => {
-  const { recipeData } = props
+  const { recipeData } = props;
   const { id, type } = recipeData;
 
   if (
