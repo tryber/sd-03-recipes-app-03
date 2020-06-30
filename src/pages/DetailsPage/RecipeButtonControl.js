@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { DetailsPageContext } from './DetailsPageProvider';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './RecipeButtonControl.css';
 
-const today = new Date();
+let today = new Date();
 const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const yyyy = today.getFullYear();
@@ -55,8 +54,6 @@ export default RecipeButtonControl;
 
 RecipeButtonControl.propTypes = {
   recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
-  setInProgress: PropTypes.func,
-  inProgress: PropTypes.bool,
 };
 
 // RecipeButtonControl.defaultProps = {
