@@ -7,6 +7,9 @@ export const DetailsPageProvider = ({ children }) => {
   const [providerData, setProviderData] = useState([]);
   const [providerRecommended, setProviderRecommended] = useState([]);
   const [pathName, setPathName] = useState('');
+  // const [startedRecipes, setStartedRecipes] = useState([]);
+
+  // const setStartedRecipesFunc = (id) => setStartedRecipes((currentArray) => [...currentArray, id])
 
   const setProviderRecommendedFunc = (recommendedData) => setProviderRecommended(recommendedData);
 
@@ -17,6 +20,8 @@ export const DetailsPageProvider = ({ children }) => {
   const setPathNameFunc = (path) => setPathName(path);
 
   const detailsPageObj = {
+    // setStartedRecipesFunc,
+    // startedRecipes,
     setPathNameFunc,
     pathName,
     setProviderDataFunc,

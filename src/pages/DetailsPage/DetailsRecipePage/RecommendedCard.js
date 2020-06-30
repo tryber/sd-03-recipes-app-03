@@ -6,7 +6,6 @@ import './RecommendedCard.css';
 
 const RecommendedCard = (props) => {
   const { name, category, img, id, alcoholic } = props.recommended;
-  console.log(props);
   const { index } = props;
   const { pathName } = useContext(DetailsPageContext);
   const changePageURL = () => {

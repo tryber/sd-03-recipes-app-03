@@ -5,10 +5,11 @@ import RecipeComponent from './RecipeComponent';
 const destructureMeal = (data) => {
   const {
     strMeal: name, strCategory: category, strMealThumb: img, strYoutube: video,
-    strInstructions: instructions, idMeal: id, strArea: area,
+    strInstructions: instructions, idMeal: id, strArea: area, strTags: tags,
   } = data;
   const dataObj = {
-    name, category, img, video, instructions, id, area, init: 9, mid: 29, end: 49, type: 'comidas',
+    name, category, img, video, instructions, id, area, init: 9,
+    mid: 29, end: 49, type: 'comidas', tags,
   };
   return dataObj;
 };

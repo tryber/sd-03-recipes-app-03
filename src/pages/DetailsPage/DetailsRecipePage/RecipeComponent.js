@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-import { DetailsPageContext } from '../DetailsPageProvider';
 import RecommendedContainerComponent from './RecommendedContainerComponent';
 import RecipeButtonControl from '../RecipeButtonControl';
 import ShareButton from '../../../components/Share/ShareButton';
@@ -10,7 +9,6 @@ import './RecipeComponent.css';
 import Ingredients from './Ingredients';
 
 const RecipeComponent = (props) => {
-  const [inProgress, setInProgress] = useState(false);
   const { data } = props;
   const { name, category, img, instructions, id, type, alcoholic } = data;
   return (
@@ -43,12 +41,7 @@ const RecipeComponent = (props) => {
           null
         }
         <RecommendedContainerComponent />
-        <RecipeButtonControl
-          type={type}
-          id={id}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <RecipeButtonControl type={type} id={id} recipeData={data}/>
       </div>
     </div>
   );
