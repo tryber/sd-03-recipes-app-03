@@ -31,5 +31,4 @@ const searchButton = async (
   }
 };
 
-
 export default searchButton;
