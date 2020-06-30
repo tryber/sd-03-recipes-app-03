@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
@@ -13,30 +14,29 @@ const recipeObject = (recipe, type) => {
       name: recipe.name,
       image: recipe.img,
     };
-  } else {
-    return {
-      id: recipe.id,
-      type: 'bebida',
-      area: '',
-      category: recipe.category,
-      alcoholicOrNot: recipe.alcoholic,
-      name: recipe.name,
-      image: recipe.img,
-    };
   }
-}
+  return {
+    id: recipe.id,
+    type: 'bebida',
+    area: '',
+    category: recipe.category,
+    alcoholicOrNot: recipe.alcoholic,
+    name: recipe.name,
+    image: recipe.img,
+  };
+};
 
 const FavoriteButton = ({ recipe }) => {
   const [NotFavorited, setNotFavorited] = useState(true);
   const [srcIcon, setSrcIcon] = useState(whiteHeartIcon);
   useEffect(() => {
-    if(!localStorage.getItem('favoriteRecipes')) {
+    if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     } else {
       const favoriteds = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      if(favoriteds.some((favorited) => favorited.id === recipe.id)) {
+      if (favoriteds.some((favorited) => favorited.id === recipe.id)) {
         setNotFavorited(false);
-        setSrcIcon(blackHeartIcon)
+        setSrcIcon(blackHeartIcon);
       }
     }
   }, []);
@@ -50,7 +50,7 @@ const FavoriteButton = ({ recipe }) => {
   };
 
   const removeLocalStorage = () => {
-    let recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newRecipe = recipes.filter((element) => element.id !== recipe.id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newRecipe));
     setSrcIcon(whiteHeartIcon);
@@ -58,18 +58,25 @@ const FavoriteButton = ({ recipe }) => {
   };
 
   const handleFavorite = () => {
-    NotFavorited ? addToLocalStorage() : removeLocalStorage();
+    if (NotFavorited) {
+      addToLocalStorage();
+    }
+    removeLocalStorage();
     setNotFavorited((currentState) => !currentState);
     return null;
   };
 
   return (
-      <img
-        onClick={() => handleFavorite()}
-        data-testid="favorite-btn"
-        src={srcIcon} alt="Icone para favoritar receita"
-      />
+    <img
+      onClick={() => handleFavorite()}
+      data-testid="favorite-btn"
+      src={srcIcon} alt="Icone para favoritar receita"
+    />
   );
 };
+
+FavoriteButton.propTypes = {
+  recipe: PropTypes.object.isRequired,
+}
 
 export default FavoriteButton;
