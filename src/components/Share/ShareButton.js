@@ -8,13 +8,13 @@ const ShareButton = () => {
     setCopied(true);
   };
   return (
-    <div>
-        <img
-          data-testid="share-btn" onClick={() => handleShareButton()}
-          src={shareIcon} alt="Icone para compartilhar receita"
-        />
+    <button onClick={() => handleShareButton()}>
+      <img
+        data-testid="share-btn"
+        src={shareIcon} alt="Icone para compartilhar receita"
+      />
       {copied && <span>Link copiado!</span>}
-    </div>
+    </button>
   );
 };
 

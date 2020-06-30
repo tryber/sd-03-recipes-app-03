@@ -60,10 +60,10 @@ const FavoriteButton = ({ recipe }) => {
   const handleFavorite = () => {
     if (NotFavorited) {
       addToLocalStorage();
+    } else {
+      removeLocalStorage();
     }
-    removeLocalStorage();
-    setNotFavorited((currentState) => !currentState);
-    return null;
+    return setNotFavorited((currentState) => !currentState);
   };
 
   return (
@@ -78,6 +78,6 @@ const FavoriteButton = ({ recipe }) => {
 
 FavoriteButton.propTypes = {
   recipe: PropTypes.object.isRequired,
-}
+};
 
 export default FavoriteButton;
