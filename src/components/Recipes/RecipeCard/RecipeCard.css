@@ -15,7 +15,6 @@
   display: flex;
   justify-content: space-between;
   margin: 15px;
-  width: 100%;
 }
 
 .thumbnail {
@@ -29,4 +28,12 @@
   bottom: 2px;
   padding: 2px;
   position: relative;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.infoCard {
+  width: 100%;
 }

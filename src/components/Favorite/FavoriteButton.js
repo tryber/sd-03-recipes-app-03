@@ -26,7 +26,7 @@ const recipeObject = (recipe, type) => {
   };
 };
 
-const FavoriteButton = ({ recipe }) => {
+const FavoriteButton = ({ recipe, index }) => {
   const [NotFavorited, setNotFavorited] = useState(true);
   const [srcIcon, setSrcIcon] = useState(whiteHeartIcon);
   useEffect(() => {
@@ -69,7 +69,7 @@ const FavoriteButton = ({ recipe }) => {
   return (
     <button onClick={() => handleFavorite()}>
       <img
-        data-testid="favorite-btn"
+        data-testid={typeof(index) === 'number' ? `${index}-horizontal-favorite-btn` : "favorite-btn"}
         src={srcIcon} alt="Icone para favoritar receita"
       />
     </button>

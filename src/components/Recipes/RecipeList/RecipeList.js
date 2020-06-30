@@ -10,6 +10,7 @@ import { destructureMeal, destructureDrinks } from '../../../untils/destructureO
 const recipeModal = (recipe) => ({
   ...recipe,
   img: recipe.image,
+  alcoholic: recipe.alcoholicOrNot,
 });
 
 const RecipeList = ({ recipes, type }) => {
@@ -44,6 +45,7 @@ const RecipeList = ({ recipes, type }) => {
         ))}
         {favoriteds && recipes.map((recipe, index) => (
           <RecipeCard
+            favoriteds="disabled-link"
             key={Object.values(recipe)[0]}
             recipe={recipeModal(recipe)}
             index={index}
