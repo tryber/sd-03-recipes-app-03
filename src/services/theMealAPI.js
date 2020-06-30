@@ -60,23 +60,26 @@ export const fetchIngredientsList = () => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlFindMealsByIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
-export const fetchMealsByIngredients = (ingredient) => (
-  fetch(`${urlFindMealsByIngredients}${ingredient}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByIngredients = (ingredient) => {
+  const urlFindMealsByIngredients = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  return fetch(urlFindMealsByIngredients).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
-const urlFindMealsByName = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-export const fetchMealsByName = (name) => (
-  fetch(`${urlFindMealsByName}${name}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByName = (name) => {
+  const urlFindMealsByName = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
+  return fetch(urlFindMealsByName).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
-const urlFindByFirstLetter = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
-export const fetchMealsByFirstLetter = (letter) => (
-  fetch(`${urlFindByFirstLetter}${letter}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByFirstLetter = (letter) => {
+  const urlFindByFirstLetter = `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+  return fetch(urlFindByFirstLetter).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};

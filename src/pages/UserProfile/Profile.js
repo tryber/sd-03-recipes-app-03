@@ -19,7 +19,7 @@ const Profile = () => {
   if (rote !== '') return <Redirect to={`${rote}`} />;
   return (
     <div className="profile b-shadow">
-      <Heading title="Profile" />
+      <Heading title="Perfil" />
       <label htmlFor="email">E-mail</label>
       <span data-testid="profile-email">{email}</span>
       <button

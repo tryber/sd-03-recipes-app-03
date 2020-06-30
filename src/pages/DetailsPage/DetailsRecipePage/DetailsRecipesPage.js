@@ -8,8 +8,18 @@ const destructureMeal = (data) => {
     strInstructions: instructions, idMeal: id, strArea: area, strTags: tags,
   } = data;
   const dataObj = {
-    name, category, img, video, instructions, id, area, init: 9,
-    mid: 29, end: 49, type: 'comidas', tags,
+    name,
+    category,
+    img,
+    video,
+    instructions,
+    id,
+    area,
+    init: 9,
+    mid: 29,
+    end: 49,
+    type: 'comidas',
+    tags,
   };
   return dataObj;
 };
@@ -20,8 +30,18 @@ const destructureDrinks = (data) => {
     strInstructions: instructions, idDrink: id, strArea: area,
   } = data;
   const dataObj = {
-    name, category, alcoholic, img,
-    instructions, id, area, init: 21, mid: 36, end: 51, type: 'bebidas',
+    name,
+    category,
+    alcoholic,
+    img,
+    instructions,
+    id,
+    area,
+    init: 21,
+    mid: 36,
+    end: 51,
+    type:
+    'bebidas',
   };
   return dataObj;
 };
