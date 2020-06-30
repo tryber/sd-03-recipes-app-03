@@ -13,7 +13,7 @@ const recipeModal = (recipe) => ({
 });
 
 const RecipeList = ({ recipes, type }) => {
-  const [categories, setCategories] = useState({ recipes: []});
+  const [categories, setCategories] = useState({ recipes: [] });
   const [favoriteds, setFavoriteds] = useState(false);
   useEffect(() => {
     if (type === 'favoriteds') {
@@ -37,14 +37,14 @@ const RecipeList = ({ recipes, type }) => {
       <div className="foodList">
         {!favoriteds && recipes.slice(0, 12).map((recipe, index) => (
           <RecipeCard
-            key={index}
+            key={Object.values(recipe)[0]}
             recipe={type === 'meal' ? destructureMeal(recipe) : destructureDrinks(recipe)}
             index={index}
           />
         ))}
         {favoriteds && recipes.map((recipe, index) => (
           <RecipeCard
-            key={index}
+            key={Object.values(recipe)[0]}
             recipe={recipeModal(recipe)}
             index={index}
           />
@@ -56,6 +56,7 @@ const RecipeList = ({ recipes, type }) => {
 
 RecipeList.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default RecipeList;
