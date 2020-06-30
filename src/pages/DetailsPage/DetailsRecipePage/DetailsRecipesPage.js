@@ -30,8 +30,18 @@ const destructureDrinks = (data) => {
     strInstructions: instructions, idDrink: id, strArea: area,
   } = data;
   const dataObj = {
-    name, category, alcoholic, img,
-    instructions, id, area, init: 21, mid: 36, end: 51, type: 'bebidas',
+    name,
+    category,
+    alcoholic,
+    img,
+    instructions,
+    id,
+    area,
+    init: 21,
+    mid: 36,
+    end: 51,
+    type:
+    'bebidas',
   };
   return dataObj;
 };
