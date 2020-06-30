@@ -11,6 +11,8 @@ const HeaderSearchBar = ({ history, location }) => {
     searchName: '',
   });
 
+  const type = location.pathname === '/comidas' ? 'meal' : 'cocktail';
+
   const { setIsFetching, setData } = useContext(SearchBarContext);
 
   const { searchParam, searchName } = state;
@@ -71,7 +73,7 @@ const HeaderSearchBar = ({ history, location }) => {
         className="search-button"
         onClick={() => searchButton(
           history,
-          location,
+          type,
           setIsFetching,
           setData,
           searchParam,
