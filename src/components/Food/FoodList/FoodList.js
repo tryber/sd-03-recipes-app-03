@@ -9,7 +9,7 @@ const FoodList = ({ meals }) => {
   const [categories, setCategories] = useState({ meals: [] });
   useEffect(() => {
     fetchCategoriesMeals()
-      .then((resp) => resp, (resp) => setCategories(resp));
+      .then((resp) => setCategories(resp), (resp) => resp);
   }, []);
   return (
     <section>

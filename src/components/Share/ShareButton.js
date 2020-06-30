@@ -6,15 +6,15 @@ const ShareButton = () => {
   const handleShareButton = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
-    setTimeout(() => setCopied(false), 5000);
   };
   return (
-    <div>
-      <button onClick={() => handleShareButton()}>
-        <img src={shareIcon} alt="Icone para compartilhar receita" />
-      </button>
+    <button onClick={() => handleShareButton()}>
+      <img
+        data-testid="share-btn"
+        src={shareIcon} alt="Icone para compartilhar receita"
+      />
       {copied && <span>Link copiado!</span>}
-    </div>
+    </button>
   );
 };
 

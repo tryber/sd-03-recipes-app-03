@@ -7,11 +7,10 @@ import './ListCategories.css';
 
 const handleCategories = (category, fetchCallBack, setCallBack) => {
   fetchCallBack(category)
-    .then((err) => err, (response) => setCallBack(Object.values(response)[0]));
+    .then((response) => setCallBack(Object.values(response)[0]), (err) => err);
 };
 
 const handleAllCategory = (callback, data, category, allCategories) => {
-  console.log(allCategories);
   if (allCategories === category || category === 'All') {
     callback(data);
     return true;
