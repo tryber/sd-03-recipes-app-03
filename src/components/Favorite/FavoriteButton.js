@@ -67,11 +67,12 @@ const FavoriteButton = ({ recipe }) => {
   };
 
   return (
-    <img
-      onClick={() => handleFavorite()}
-      data-testid="favorite-btn"
-      src={srcIcon} alt="Icone para favoritar receita"
-    />
+    <button onClick={() => handleFavorite()}>
+      <img
+        data-testid="favorite-btn"
+        src={srcIcon} alt="Icone para favoritar receita"
+      />
+    </button>
   );
 };
 
