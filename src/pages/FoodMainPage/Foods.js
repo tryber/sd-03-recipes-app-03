@@ -13,7 +13,7 @@ const Foods = () => {
   }, []);
   if (mealsData.length === 0) return <Loading />;
   return (
-    <div>
+    <div className="recipes-container">
       <Header title="Comidas" searchIcon />
       <RecipeList recipes={data.length ? data : mealsData} type="meal" />
     </div>

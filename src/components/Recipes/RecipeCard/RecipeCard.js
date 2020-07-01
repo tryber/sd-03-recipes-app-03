@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ShareButton from '../../../components/Share/ShareButton';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import './RecipeCard.css';
+
 import garfo from './garfo.svg';
 import beber from './beber.svg';
 
@@ -24,7 +25,7 @@ const renderThumb = (recipe, index, favoriteds, setRedirect) => {
 };
 
 const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
-  const { name, type, area, category, alcoholic } = recipe;
+  const { name, type, id } = recipe;
   return (
     <React.Fragment>
       <div className="card-title">
@@ -40,27 +41,31 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
         />
       </div>
       {favoriteds &&
-        <span data-testid={`${index}-horizontal-top-text`}>
-          {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
-        </span>
+        <div>
+          <ShareButton index={index} path={`/${type}s/${id}`} />
+          <FavoriteButton recipe={recipe} index={index} />
+        </div>
       }
     </React.Fragment>
   );
 };
 const RecipeCard = ({ recipe, index, favoriteds }) => {
   const [redirect, setRedirect] = useState(false);
-  const { id, type } = recipe;
+  const { id, type, area, category, alcoholic } = recipe;
   if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />;
   return (
     <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
       {renderThumb(recipe, index, favoriteds, setRedirect)}
       <div className="infoCard">
         {renderCardInfo(recipe, index, favoriteds, setRedirect)}
-        {favoriteds &&
-          <div>
-            <ShareButton index={index} path={`/${type}s/${id}`} />
-            <FavoriteButton recipe={recipe} index={index} />
-          </div>}
+      {favoriteds &&
+        <span
+          className="subtitle-card"
+          data-testid={`${index}-horizontal-top-text`}
+        >
+          {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
+        </span>
+      }
       </div>
     </Link>
   );

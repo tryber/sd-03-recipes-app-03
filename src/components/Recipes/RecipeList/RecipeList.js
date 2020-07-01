@@ -5,6 +5,7 @@ import { fetchCategoriesDrinks } from '../../../services/theCockTailAPI';
 import ListCategories from '../../Categories/ListCategories';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import './RecipeList.css';
+import '../../Categories/ListCategories.css';
 import { destructureMeal, destructureDrinks } from '../../../untils/destructureObject';
 
 const recipeModal = (recipe) => ({
@@ -20,9 +21,10 @@ const renderFavoriteCategories = (setFilteredRecipes, recipes) => {
     return recipes.filter((recipe) => recipe.type === value);
   };
   return (
-    <div>
+    <div className="categories">
       {categories.map((category) => (
         <button
+          className="categoryBtn"
           data-testid={`filter-by-${Object.keys(category)}-btn`}
           onClick={() => setFilteredRecipes(filterRecipes(Object.values(category)[0]))}
           key={Object.values(category)}
