@@ -24,12 +24,9 @@ const renderThumb = (recipe, index, favoriteds, setRedirect) => {
 };
 
 const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
-  const { name, type } = recipe;
+  const { name, type, area, category, alcoholic } = recipe;
   return (
     <React.Fragment>
-      <span data-testid={`${index}-horizontal-top-text`}>
-        {recipe.type[0] === 'c' ? `${recipe.area} - ${recipe.category}` : recipe.alcoholic}
-      </span>
       <div className="card-title">
         <button onClick={() => setRedirect(true)} className="buttonCard">
           <span
@@ -42,6 +39,11 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
           width="20px" alt="icone de talheres"
         />
       </div>
+      {favoriteds &&
+        <span data-testid={`${index}-horizontal-top-text`}>
+        {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
+        </span>
+      }
     </React.Fragment>
   );
 };
