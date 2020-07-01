@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Loading from '../../../components/Loading/Loading';
-import { RecipeInProgressContext } from '../RecipeInProgressProvider';
+import PropTypes from 'prop-types';
+// import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 import RecipeInProgressComponent from './RecipeInProgressComponent';
 
 const RecipesInProgressPage = (props) => {
@@ -12,3 +13,7 @@ const RecipesInProgressPage = (props) => {
 };
 
 export default RecipesInProgressPage;
+
+RecipesInProgressPage.propTypes = {
+  renderControl: PropTypes.objectOf(PropTypes.any).isRequired,
+};

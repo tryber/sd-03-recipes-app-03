@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import ShareButton from '../../../components/Share/ShareButton';
 import { RecipeInProgressContext } from '../RecipeInProgressProvider';
@@ -12,7 +12,7 @@ const RecipeInProgressComponent = () => {
 
   return (
     <div>
-      <img src={img} alt={name} width="15%"/>
+      <img src={img} alt={name} width="15%" />
       <h1>{name}</h1>
       <FavoriteButton recipe={recipeData} />
       <ShareButton path={pathname} />

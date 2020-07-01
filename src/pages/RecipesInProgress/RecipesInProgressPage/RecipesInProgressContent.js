@@ -7,8 +7,8 @@ import { fetchMealById } from '../../../services/theMealAPI';
 import { fetchDrinkById } from '../../../services/theCockTailAPI';
 import RecipesInProgressPage from './RecipesInProgressPage';
 
-const RecipesInProgressContent = (props) => {
-  const { recipeData, setRecipeDataFunc  } = useContext(RecipeInProgressContext);
+const RecipesInProgressContent = () => {
+  const { setRecipeDataFunc } = useContext(RecipeInProgressContext);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { pathname } = useLocation();
@@ -53,7 +53,6 @@ const RecipesInProgressContent = (props) => {
 
 export default RecipesInProgressContent;
 
-RecipesInProgressContent.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-  location: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// RecipesInProgressContent.propTypes = {
+
+// };

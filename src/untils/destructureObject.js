@@ -1,4 +1,4 @@
-import { ingredientsWithQuantity } from '../untils/ingredientsWithQuantity'
+import { ingredientsWithQuantity } from '../untils/ingredientsWithQuantity';
 
 export const destructureAPI = (data) => {
   let apiType = 'Drink';
@@ -12,7 +12,7 @@ export const destructureAPI = (data) => {
     mid = 29;
     end = 49;
     type = 'comidas';
-  };
+  }
 
   const ingredientsValues = Object.values(data).slice(init, mid);
   const ingredientsQuantity = Object.values(data).slice(mid, end);

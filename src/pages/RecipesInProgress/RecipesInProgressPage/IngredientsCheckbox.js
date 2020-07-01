@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { ingredientsWithQuantity } from '../../../untils/ingredientsWithQuantity';
 import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
 const IngredientsCheckbox = () => {
@@ -8,17 +7,14 @@ const IngredientsCheckbox = () => {
   return (
     <div>
       <h2>Ingredients</h2>
-      {ingredients.map(([ingredients, quantity]) => {
-        return (
-          <div key={ingredients}>
-            <label htmlFor={ingredients}>
-              <input type="checkbox" id={ingredients} />
-              {ingredients} - {quantity}
-            </label>
-          </div>
-        )
-      })
-      }
+      {ingredients.map(([ingredient, quantity]) => (
+        <div key={ingredient}>
+          <label htmlFor={ingredient}>
+            <input type="checkbox" id={ingredient} />
+            {ingredient} - {quantity}
+          </label>
+        </div>)
+      )}
     </div>
   );
 };
