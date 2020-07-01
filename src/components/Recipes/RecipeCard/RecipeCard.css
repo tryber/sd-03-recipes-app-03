@@ -37,3 +37,10 @@
 .infoCard {
   width: 100%;
 }
+
+.buttonCard {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

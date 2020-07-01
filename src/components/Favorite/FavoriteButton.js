@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
+import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 
 const recipeObject = (recipe, type) => {
   if (type === 'comidas') {
@@ -29,6 +30,7 @@ const recipeObject = (recipe, type) => {
 const FavoriteButton = ({ recipe, index }) => {
   const [NotFavorited, setNotFavorited] = useState(true);
   const [srcIcon, setSrcIcon] = useState(whiteHeartIcon);
+  const { setStorage } = useContext(FoodContext);
   useEffect(() => {
     if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
@@ -60,6 +62,7 @@ const FavoriteButton = ({ recipe, index }) => {
     } else {
       removeLocalStorage();
     }
+    setStorage(() => JSON.parse(localStorage.getItem('favoriteRecipes')));
     return setNotFavorited((currentState) => !currentState);
   };
   return (
@@ -74,9 +77,13 @@ const FavoriteButton = ({ recipe, index }) => {
   );
 };
 
+FavoriteButton.defaultProps = {
+  index: undefined,
+}
+
 FavoriteButton.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
 };
 
 export default FavoriteButton;

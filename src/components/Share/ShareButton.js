@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import shareIcon from '../../images/shareIcon.svg';
 
-const ShareButton = ({ index }) => {
+const ShareButton = ({ index, path }) => {
   const [copied, setCopied] = useState(false);
   const handleShareButton = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(`${window.location.origin}${path}`);
     setCopied(true);
   };
   return (
@@ -19,8 +19,12 @@ const ShareButton = ({ index }) => {
   );
 };
 
+ShareButton.defaultProps = {
+  index: undefined,
+}
+
 ShareButton.propTypes = {
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
 };
 
 export default ShareButton;

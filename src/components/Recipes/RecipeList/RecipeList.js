@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { fetchCategoriesMeals } from '../../../services/theMealAPI';
 import { fetchCategoriesDrinks } from '../../../services/theCockTailAPI';
@@ -13,9 +13,29 @@ const recipeModal = (recipe) => ({
   alcoholic: recipe.alcoholicOrNot,
 });
 
+const renderFavoriteCategories = (setFilteredRecipes, recipes) => {
+  const categories = [{ all: 'todos' }, { food: 'comida' }, { drink: 'bebida' }];
+  const filterRecipes = (value) => {
+    if (value === 'todos') return recipes;
+    return recipes.filter((recipe) => recipe.type === value);
+  }
+  return (
+    <div>
+      {categories.map((category) => (
+        <button
+          data-testid={`filter-by-${Object.keys(category)}-btn`}
+          onClick={() => setFilteredRecipes(filterRecipes(Object.values(category)[0]))}
+          key={Object.values(category)}>{Object.keys(category)}
+        </button>
+      ))}
+    </div>
+  );
+};
+
 const RecipeList = ({ recipes, type }) => {
   const [categories, setCategories] = useState({ recipes: [] });
   const [favoriteds, setFavoriteds] = useState(false);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
   useEffect(() => {
     if (type === 'favoriteds') {
       setFavoriteds(true);
@@ -29,12 +49,19 @@ const RecipeList = ({ recipes, type }) => {
       .then((resp) => setCategories({ recipes: resp.drinks }), (resp) => resp);
     }
   }, []);
+  useEffect(() => {
+    setFilteredRecipes(recipes);
+  }, [recipes]);
+
   return (
     <section>
-      <ListCategories
+      {!favoriteds &&
+        <ListCategories
         strCategories={[{ strCategory: 'All' }, ...categories.recipes]}
         type={type}
-      />
+        />
+      }
+      {favoriteds && renderFavoriteCategories(setFilteredRecipes, recipes)}
       <div className="foodList">
         {!favoriteds && recipes.slice(0, 12).map((recipe, index) => (
           <RecipeCard
@@ -43,7 +70,7 @@ const RecipeList = ({ recipes, type }) => {
             index={index}
           />
         ))}
-        {favoriteds && recipes.map((recipe, index) => (
+        {favoriteds && filteredRecipes.map((recipe, index) => (
           <RecipeCard
             favoriteds="disabled-link"
             key={Object.values(recipe)[0]}
