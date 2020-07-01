@@ -48,7 +48,7 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
 const RecipeCard = ({ recipe, index, favoriteds }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;
-  if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />
+  if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />;
   return (
     <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
       {renderThumb(recipe, index, favoriteds, setRedirect)}
