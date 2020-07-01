@@ -32,11 +32,10 @@ export const fetchMealById = (id) => {
   ));
 };
 
-
 const urlAllMeal = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 export const fetchAllMeals = async () => {
-    const response = await fetch(`${urlAllMeal}`);
-    return response.json();
+  const response = await fetch(`${urlAllMeal}`);
+  return response.json();
 };
 
 const urlRandomMeal = 'https://www.themealdb.com/api/json/v1/1/random.php';
