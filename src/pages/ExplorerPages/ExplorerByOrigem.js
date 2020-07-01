@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Explorer.css';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/index';
@@ -19,14 +19,39 @@ const fetchMeals = async (setMeals, option) => {
   }
 };
 
+function renderRecipe(meals) {
+  return (
+     meals && meals.map((ele, index) => (
+      index < 12 &&
+      <div
+        data-testid={`${index}-recipe-card`}
+        className="explorer-container"
+        key={`${ele}*3`}
+      >
+        <img
+          src={`${ele.strMealThumb}`}
+          alt={`${ele.strMeal}`}
+          data-testid={`${index}-card-img`}
+        />
+        <span
+          data-testid={`${index}-card-name`}
+        >
+          {`${ele.strMeal}`}
+        </span>
+      </div>
+     ))
+  );
+}
+
+
 function ExplorerByArea() {
   const [countryList, setCountryList] = useState(undefined);
   const [meals, setMeals] = useState(undefined);
   const [option, setOption] = useState('All');
-  
+
   useEffect(() => {
     fetchCountryList(setCountryList);
-  }, []); 
+  }, []);
 
   useEffect(() => {
     fetchMeals(setMeals, option);
@@ -37,36 +62,18 @@ function ExplorerByArea() {
     <div>
       <Header title="Explorar Origem" searchIcon />
       <div className="explorer-container">
-      { 
-      <select
-        key="area"
-        onChange={(e) => setOption(e.target.value)} data-testid="explore-by-area-dropdown"
-      >
-        <option value="All" data-testid="All-option">All</option>
-        {countryList.map((country) => (
-          <option key={country} value={country} data-testid={`${country}-option`}>{country}</option>
-        ))}
-      </select>
-      }
-      { meals && meals.map((ele, index) => (
-          index < 12 &&
-          <div 
-            data-testid={`${index}-recipe-card`}
-            className="explorer-container"
-            key={`${index}`}
+        {
+          <select
+            key="area"
+            onChange={(e) => setOption(e.target.value)} data-testid="explore-by-area-dropdown"
           >
-            <img
-              src={`${ele.strMealThumb}`}
-              alt={`${ele.strMeal}`}
-              data-testid={`${index}-card-img`}
-            />
-            <span
-            data-testid={`${index}-card-name`}
-            >
-              {`${ele.strMeal}`}
-            </span>
-          </div>
-        ))}
+            <option value="All" data-testid="All-option">All</option>
+            {countryList.map((country) => (
+              <option key={country} value={country} data-testid={`${country}-option`}>{country}</option>
+            ))}
+          </select>
+        }
+        {renderRecipe(meals)}
       </div>
       <Footer />
     </div>
