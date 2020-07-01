@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import Header from '../../components/Header';
+import Heading from '../../components/Heading/Heading';
 import './Profile.css';
 import '../../App.css';
+import Footer from '../../components/Footer/Footer';
 
 const Profile = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ const Profile = () => {
   if (rote !== '') return <Redirect to={`${rote}`} />;
   return (
     <div className="profile b-shadow">
-      <Header title="Comidas" />
+      <Heading title="Perfil" />
       <label htmlFor="email">E-mail</label>
       <span data-testid="profile-email">{email}</span>
       <button
@@ -41,6 +42,7 @@ const Profile = () => {
       >
         Sair
       </button>
+      <Footer />
     </div>
   );
 };

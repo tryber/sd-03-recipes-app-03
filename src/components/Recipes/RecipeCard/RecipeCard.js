@@ -4,7 +4,6 @@ import { Link, Redirect } from 'react-router-dom';
 import ShareButton from '../../../components/Share/ShareButton';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import './RecipeCard.css';
-
 import garfo from './garfo.svg';
 import beber from './beber.svg';
 
@@ -25,7 +24,7 @@ const renderThumb = (recipe, index, favoriteds, setRedirect) => {
 };
 
 const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
-  const { name, type, id } = recipe;
+  const { name, type, area, category, alcoholic } = recipe;
   return (
     <React.Fragment>
       <div className="card-title">
@@ -41,24 +40,7 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
         />
       </div>
       {favoriteds &&
-        <div>
-          <ShareButton index={index} path={`/${type}s/${id}`} />
-          <FavoriteButton recipe={recipe} index={index} />
-        </div>
-      }
-    </React.Fragment>
-  );
-};
-
-const renderSubtitleCard = (recipe, index, favoriteds) => {
-  const { area, category, alcoholic } = recipe;
-  return (
-    <React.Fragment>
-      {favoriteds &&
-        <span
-          className="subtitle-card"
-          data-testid={`${index}-horizontal-top-text`}
-        >
+        <span data-testid={`${index}-horizontal-top-text`}>
           {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
         </span>
       }
@@ -74,7 +56,11 @@ const RecipeCard = ({ recipe, index, favoriteds }) => {
       {renderThumb(recipe, index, favoriteds, setRedirect)}
       <div className="infoCard">
         {renderCardInfo(recipe, index, favoriteds, setRedirect)}
-        {renderSubtitleCard(recipe, index, favoriteds)}
+        {favoriteds &&
+          <div>
+            <ShareButton index={index} path={`/${type}s/${id}`} />
+            <FavoriteButton recipe={recipe} index={index} />
+          </div>}
       </div>
     </Link>
   );

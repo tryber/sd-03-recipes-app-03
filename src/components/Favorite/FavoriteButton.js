@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
-import './FavoriteButton.css';
 
 const recipeObject = (recipe, type) => {
   if (type === 'comidas') {
@@ -67,7 +66,7 @@ const FavoriteButton = ({ recipe, index }) => {
     return setNotFavorited((currentState) => !currentState);
   };
   return (
-    <button className="transparentBtn" onClick={() => handleFavorite()}>
+    <button onClick={() => handleFavorite()}>
       <img
         data-testid={
           typeof (index) === 'number' ? `${index}-horizontal-favorite-btn` : 'favorite-btn'

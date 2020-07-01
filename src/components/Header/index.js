@@ -34,6 +34,7 @@ const Header = ({ title, searchIcon }) => {
             className="header-icon"
           />
         )}
+        {!searchIcon && (<p />)}
       </header>
       {viewSearch && <HeaderSearchBar />}
     </div>

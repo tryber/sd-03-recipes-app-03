@@ -38,11 +38,10 @@ export const fetchRandomDrink = () => (
 );
 
 const urlListDrinksIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
-export const fetchListDrinksIngredients = () => (
-  fetch(urlListDrinksIngredients)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchListDrinksIngredients = async () => {
+  const response = await fetch(urlListDrinksIngredients);
+  return response.json();
+};
 
 const urlFindDrinkByIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 export const fetchDrinksByIngredient = (ingredient) => (

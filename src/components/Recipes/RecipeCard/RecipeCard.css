@@ -1,6 +1,8 @@
 .card {
   border-radius: 10px;
+  color: #181919;
   display: flex;
+  font-weight: 700;
   height: 150px;
   margin: 15px auto;
   overflow: hidden;
@@ -33,23 +35,12 @@
 }
 
 .infoCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: 100%;
-}
-
-.subtitle-card {
-  color: lightgray;
-  font-style: italic;
-  margin: 3px;
 }
 
 .buttonCard {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.2em;
-  font-weight: 700;
   padding: 0;
 }
