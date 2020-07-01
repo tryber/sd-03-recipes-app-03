@@ -8,16 +8,18 @@ export const fetchDrinks = () => {
 
 const urlCategoriesDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesDrinks = () => (
-  fetch(urlCategoriesDrinks)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(urlCategoriesDrinks).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 const urlCategoryDrinksButton = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=';
 export const fetchDrinkByCategoryButton = (category) => (
-  fetch(`${urlCategoryDrinksButton}${category}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(`${urlCategoryDrinksButton}${category}`).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 export const fetchDrinkById = (id) => {
@@ -42,7 +44,7 @@ export const fetchListDrinksIngredients = () => (
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
 
-const urlFindDrinkByIngredients = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
+const urlFindDrinkByIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 export const fetchDrinksByIngredient = (ingredient) => (
   fetch(`${urlFindDrinkByIngredients}${ingredient}`)
     .then((response) => response.json())
@@ -52,6 +54,13 @@ export const fetchDrinksByIngredient = (ingredient) => (
 const urlFindDrinksByName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 export const fetchDrinksByName = (name) => (
   fetch(`${urlFindDrinksByName}${name}`)
+    .then((response) => response.json())
+    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+);
+
+const urlFindByFirstLetter = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
+export const fetchDrinksByFirstLetter = (letter) => (
+  fetch(`${urlFindByFirstLetter}${letter}`)
     .then((response) => response.json())
     .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
 );
