@@ -17,8 +17,6 @@ export const DetailsPageProvider = ({ children }) => {
   const setPathNameFunc = (path) => setPathName(path);
 
   const detailsPageObj = {
-    // setStartedRecipesFunc,
-    // startedRecipes,
     setPathNameFunc,
     pathName,
     setProviderDataFunc,

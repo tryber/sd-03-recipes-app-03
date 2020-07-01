@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeComponent from './RecipeComponent';
+import Loading from '../../../components/Loading/Loading'
 
 const destructureMeal = (data) => {
   const {
@@ -52,7 +53,7 @@ const DetailsRecipesPage = (props) => {
     dataType.idMeal ? destructureMeal(data) : destructureDrinks(data)
   );
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
   return <div><RecipeComponent data={dataDestructure(data)} /></div>;
 };
