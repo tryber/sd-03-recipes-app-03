@@ -8,10 +8,7 @@ const FoodProvider = ({ children }) => {
   const [dataBase, setDataBase] = useState({ drinks: [], meals: [] });
   const [mealsData, setMealsData] = useState([]);
   const [drinksData, setDrinksData] = useState([]);
-  const [error, setError] = useState([{ toDrink: '', toMeals: '' }]);
-  const handleMealsFailure = (err) => {
-    setError((currentState) => ({ ...currentState, toMeals: err }));
-  };
+  const [storage, setStorage] = useState([]);
   const handleMealsSuccess = (response) => {
     const { meals } = response;
     setMealsData(meals);
@@ -19,10 +16,7 @@ const FoodProvider = ({ children }) => {
   };
   const fetch12Meals = () => {
     fetchMeals()
-      .then(handleMealsSuccess, handleMealsFailure);
-  };
-  const handleDrinksFailure = (err) => {
-    setError((currentState) => ({ ...currentState, toDrink: err }));
+      .then(handleMealsSuccess, (e) => e);
   };
   const handleDrinksSuccess = (response) => {
     const { drinks } = response;
@@ -31,7 +25,7 @@ const FoodProvider = ({ children }) => {
   };
   const fetch12Drinks = () => {
     fetchDrinks()
-      .then(handleDrinksSuccess, handleDrinksFailure);
+      .then(handleDrinksSuccess, (e) => e);
   };
   const context = {
     get12Meals: fetch12Meals,
@@ -40,7 +34,8 @@ const FoodProvider = ({ children }) => {
     drinksData,
     setMealsData,
     setDrinksData,
-    error,
+    storage,
+    setStorage,
     dataBase,
   };
   return (

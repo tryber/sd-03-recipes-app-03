@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import shareIcon from '../../images/shareIcon.svg';
 
-const ShareButton = () => {
+const ShareButton = ({ index, path }) => {
   const [copied, setCopied] = useState(false);
   const handleShareButton = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(`${window.location.origin}${path}`);
     setCopied(true);
-    setTimeout(() => setCopied(false), 5000);
   };
   return (
-    <div>
-      <button onClick={() => handleShareButton()}>
-        <img src={shareIcon} alt="Icone para compartilhar receita" />
-      </button>
+    <button onClick={() => handleShareButton()}>
+      <img
+        data-testid={typeof (index) === 'number' ? `${index}-horizontal-share-btn` : 'share-btn'}
+        src={shareIcon} alt="Icone para compartilhar receita"
+      />
       {copied && <span>Link copiado!</span>}
-    </div>
+    </button>
   );
+};
+
+ShareButton.defaultProps = {
+  index: undefined,
+};
+
+ShareButton.propTypes = {
+  index: PropTypes.number,
+  path: PropTypes.string.isRequired,
 };
 
 export default ShareButton;

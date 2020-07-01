@@ -1,17 +1,23 @@
 import React, { useContext, useEffect } from 'react';
 import FoodContext from './Context/FoodContext';
-import FoodList from '../../components/Food/FoodList/FoodList';
+import RecipeList from '../../components/Recipes/RecipeList/RecipeList';
+import Header from '../../components/Header';
+import { SearchBarContext } from '../../components/HeaderSearchBar/HeaderSearchBarContext';
+import Loading from '../../components/Loading/Loading';
 import Footer from '../../components/Footer/Footer';
 
 const Foods = () => {
-  const { get12Meals, mealsData, get12Drinks } = useContext(FoodContext);
+  const { data } = useContext(SearchBarContext);
+  const { get12Meals, mealsData } = useContext(FoodContext);
   useEffect(() => {
     get12Meals();
-    get12Drinks();
   }, []);
+  if (mealsData.length === 0) return <Loading />;
   return (
     <div>
-      <FoodList meals={mealsData} />
+      {console.log('mealsData=', mealsData)}
+      <Header title="Comidas" searchIcon />
+      <RecipeList recipes={data.length ? data : mealsData} type="meal" />
       <Footer />
     </div>
   );

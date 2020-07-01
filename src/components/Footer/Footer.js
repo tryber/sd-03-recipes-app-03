@@ -5,11 +5,16 @@ import mealIcon from '../../images/mealIcon.svg';
 import drinkIcon from '../../images/drinkIcon.svg';
 import './Footer.css';
 
-function renderIconToRote(rote, icon) {
+function renderIconToRoute(route, icon, testid) {
   return (
-    <Link to={`/${rote}`}>
+    <Link to={`/${route}`}>
       <div>
-        <img className="icon-footer" src={icon} alt={icon} />
+        <img
+          className="icon-footer"
+          src={icon}
+          alt={icon}
+          data-testid={`${testid}-bottom-btn`}
+        />
       </div>
     </Link>
   );
@@ -17,11 +22,11 @@ function renderIconToRote(rote, icon) {
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <div className="footer" data-testid="footer">
       <div className="footer-container">
-        {renderIconToRote('bebidas', drinkIcon)}
-        {renderIconToRote('explorar', exploreIcon)}
-        {renderIconToRote('comidas', mealIcon)}
+        {renderIconToRoute('bebidas', drinkIcon, 'drinks')}
+        {renderIconToRoute('explorar', exploreIcon, 'explore')}
+        {renderIconToRoute('comidas', mealIcon, 'food')}
       </div>
     </div>
   );

@@ -8,18 +8,20 @@ export const fetchMeals = () => {
 
 const urlCategoriesMeals = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 export const fetchCategoriesMeals = () => (
-  fetch(urlCategoriesMeals)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(urlCategoriesMeals).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 // Buscar Meals por categoria específica
 
 const urlCategoryMealsButton = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 export const fetchCategoryMealsButton = (category) => (
-  fetch(`${urlCategoryMealsButton}${category}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
+  fetch(`${urlCategoryMealsButton}${category}`).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ))
 );
 
 export const fetchMealById = (id) => {
@@ -52,29 +54,31 @@ export const fetchMealsByCountry = (country) => (
 );
 
 const urlListMealsIngredients = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
-export const fetchIngredientsList = () => (
-  fetch(urlListMealsIngredients)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchIngredientsList = async () => {
+  const response = await fetch(urlListMealsIngredients);
+  return response.json();
+};
 
-const urlFindMealsByIngredients = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
-export const fetchMealsByIngredients = (ingredient) => (
-  fetch(`${urlFindMealsByIngredients}${ingredient}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByIngredients = (ingredient) => {
+  const urlFindMealsByIngredients = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  return fetch(urlFindMealsByIngredients).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
-const urlFindMealsByName = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-export const fetchMealsByName = (name) => (
-  fetch(`${urlFindMealsByName}${name}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByName = (name) => {
+  const urlFindMealsByName = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
+  return fetch(urlFindMealsByName).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
 
-const urlFindByFirstLetter = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
-export const fetchMealsByFirstLetter = (letter) => (
-  fetch(`${urlFindByFirstLetter}${letter}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByFirstLetter = (letter) => {
+  const urlFindByFirstLetter = `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+  return fetch(urlFindByFirstLetter).then((response) => (
+    response.json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+  ));
+};
