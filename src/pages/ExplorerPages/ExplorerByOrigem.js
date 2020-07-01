@@ -26,7 +26,7 @@ function renderRecipe(meals) {
       <div
         data-testid={`${index}-recipe-card`}
         className="explorer-container"
-        key={`${ele}*3`}
+        key={`${ele}`}
       >
         <img
           src={`${ele.strMealThumb}`}
