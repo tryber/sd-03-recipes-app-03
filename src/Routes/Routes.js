@@ -6,6 +6,7 @@ import DetailsRecipeContent from '../pages/DetailsPage/DetailsRecipePage/Details
 import Foods from '../pages/FoodMainPage/Foods';
 import Drinks from '../pages/DrinkMainPage/Drinks';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
+import DoneRecipes from '../pages/DoneRecipes';
 
 const Routes = () => (
   <BrowserRouter basename="/">
@@ -15,6 +16,7 @@ const Routes = () => (
       <Route exact path="/comidas" component={Foods} />
       <Route exact path="/bebidas" component={Drinks} />
       <Route exact path="/receitas-favoritas" component={FavoriteRecipes} />
+      <Route exact path="/receitas-feitas" component={DoneRecipes} />
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/" component={Login} />
     </Switch>
