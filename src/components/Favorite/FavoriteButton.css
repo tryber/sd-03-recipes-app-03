@@ -3,9 +3,9 @@
   border: none;
   cursor: pointer;
   min-height: 40px;
-
 }
 
 .transparentBtn:focus {
+  border-radius: 50%;
   outline: 0;
 }
