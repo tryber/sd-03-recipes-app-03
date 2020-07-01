@@ -79,7 +79,7 @@ const FavoriteButton = ({ recipe, index }) => {
 
 FavoriteButton.defaultProps = {
   index: undefined,
-}
+};
 
 FavoriteButton.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,

@@ -21,10 +21,11 @@ const ShareButton = ({ index, path }) => {
 
 ShareButton.defaultProps = {
   index: undefined,
-}
+};
 
 ShareButton.propTypes = {
   index: PropTypes.number,
+  path: PropTypes.string.isRequired,
 };
 
 export default ShareButton;

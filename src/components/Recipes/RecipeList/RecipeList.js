@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchCategoriesMeals } from '../../../services/theMealAPI';
 import { fetchCategoriesDrinks } from '../../../services/theCockTailAPI';
@@ -18,14 +18,16 @@ const renderFavoriteCategories = (setFilteredRecipes, recipes) => {
   const filterRecipes = (value) => {
     if (value === 'todos') return recipes;
     return recipes.filter((recipe) => recipe.type === value);
-  }
+  };
   return (
     <div>
       {categories.map((category) => (
         <button
           data-testid={`filter-by-${Object.keys(category)}-btn`}
           onClick={() => setFilteredRecipes(filterRecipes(Object.values(category)[0]))}
-          key={Object.values(category)}>{Object.keys(category)}
+          key={Object.values(category)}
+        >
+          {Object.keys(category)}
         </button>
       ))}
     </div>
@@ -57,8 +59,8 @@ const RecipeList = ({ recipes, type }) => {
     <section>
       {!favoriteds &&
         <ListCategories
-        strCategories={[{ strCategory: 'All' }, ...categories.recipes]}
-        type={type}
+          strCategories={[{ strCategory: 'All' }, ...categories.recipes]}
+          type={type}
         />
       }
       {favoriteds && renderFavoriteCategories(setFilteredRecipes, recipes)}
