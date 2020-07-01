@@ -13,7 +13,6 @@ const RecipesInProgressContent = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { pathname } = useLocation();
   const { id } = useParams();
-  console.log(props);
 
   const apiRequestSucceedMeal = ({ meals }) => {
     setRecipeDataFunc(meals[0]);
@@ -45,12 +44,10 @@ const RecipesInProgressContent = (props) => {
     }
   }, [pathname]);
 
-  // console.log(isLoading)
-
   return (
     <div>
       Hello
-      <RecipesInProgressPage isLoading={isLoading} />
+      <RecipesInProgressPage renderControl={{ isLoading, errorMessage }} />
     </div>
   );
 };

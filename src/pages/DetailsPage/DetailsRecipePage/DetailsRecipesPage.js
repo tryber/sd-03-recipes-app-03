@@ -1,51 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeComponent from './RecipeComponent';
-import Loading from '../../../components/Loading/Loading'
-
-const destructureMeal = (data) => {
-  const {
-    strMeal: name, strCategory: category, strMealThumb: img, strYoutube: video,
-    strInstructions: instructions, idMeal: id, strArea: area, strTags: tags,
-  } = data;
-  const dataObj = {
-    name,
-    category,
-    img,
-    video,
-    instructions,
-    id,
-    area,
-    init: 9,
-    mid: 29,
-    end: 49,
-    type: 'comidas',
-    tags,
-  };
-  return dataObj;
-};
-
-const destructureDrinks = (data) => {
-  const {
-    strDrink: name, strAlcoholic: alcoholic, strDrinkThumb: img, strCategory: category,
-    strInstructions: instructions, idDrink: id, strArea: area,
-  } = data;
-  const dataObj = {
-    name,
-    category,
-    alcoholic,
-    img,
-    instructions,
-    id,
-    area,
-    init: 21,
-    mid: 36,
-    end: 51,
-    type:
-    'bebidas',
-  };
-  return dataObj;
-};
+import Loading from '../../../components/Loading/Loading';
+import { destructureMeal, destructureDrinks } from '../../../untils/destructureObject';
 
 const DetailsRecipesPage = (props) => {
   const { isLoading, errorMessage, data } = props.renderControl;

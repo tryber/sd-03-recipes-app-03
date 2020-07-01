@@ -4,12 +4,11 @@ import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 import RecipeInProgressComponent from './RecipeInProgressComponent';
 
 const RecipesInProgressPage = (props) => {
-  const { isLoading } = props.isLoading;
-  // console.log(isLoading)
+  const { isLoading, errorMessage } = props.renderControl;
+
   if (isLoading) return <Loading />;
-  // if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
-  return <div>kkk</div>
-  // return <div><RecipeInProgressComponent /></div>;
+  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
+  return <div><RecipeInProgressComponent /></div>;
 };
 
 export default RecipesInProgressPage;

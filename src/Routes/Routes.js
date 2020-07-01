@@ -6,6 +6,7 @@ import DetailsRecipeContent from '../pages/DetailsPage/DetailsRecipePage/Details
 import RecipesInProgressContent from '../pages/RecipesInProgress/RecipesInProgressPage/RecipesInProgressContent';
 import Foods from '../pages/FoodMainPage/Foods';
 import Drinks from '../pages/DrinkMainPage/Drinks';
+import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
 
 const Routes = () => (
   <BrowserRouter basename="/">
@@ -16,6 +17,7 @@ const Routes = () => (
       <Route exact path="/bebidas/:id/in-progress" component={RecipesInProgressContent} />
       <Route exact path="/comidas" component={Foods} />
       <Route exact path="/bebidas" component={Drinks} />
+      <Route exact path="/receitas-favoritas" component={FavoriteRecipes} />
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/" component={Login} />
     </Switch>

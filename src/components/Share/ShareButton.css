@@ -1,0 +1,8 @@
+.copied-link {
+  background-color: white;
+  border: 1px solid #fdb155;
+  border-radius: 0 15px;
+  margin: 30px -15px;
+  padding: 4px;
+  position: absolute;
+}
