@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeComponent from './RecipeComponent';
 import Loading from '../../../components/Loading/Loading';
-import { destructureAPI } from '../../../untils/destructureObject';
+import destructureAPI from '../../../untils/destructureObject';
 
 const DetailsRecipesPage = (props) => {
   const { isLoading, errorMessage, data } = props.renderControl;

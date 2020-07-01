@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { DetailsPageContext } from '../DetailsPageProvider';
-import { ingredientsWithQuantity } from '../../../untils/ingredientsWithQuantity';
+import ingredientsWithQuantity from '../../../untils/ingredientsWithQuantity';
 
 const Ingredients = (props) => {
   const { providerData } = useContext(DetailsPageContext);

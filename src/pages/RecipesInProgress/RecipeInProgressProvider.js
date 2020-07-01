@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { destructureAPI } from '../../untils/destructureObject';
+import destructureAPI from '../../untils/destructureObject';
 
 export const RecipeInProgressContext = createContext();
 

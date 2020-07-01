@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import { DetailsPageContext } from '../DetailsPage/DetailsPageProvider';
 import { useLocation, useParams } from 'react-router-dom';
 import { RecipeInProgressContext } from '../RecipeInProgressProvider';

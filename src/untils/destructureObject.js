@@ -1,6 +1,6 @@
-import { ingredientsWithQuantity } from '../untils/ingredientsWithQuantity';
+import ingredientsWithQuantity from '../untils/ingredientsWithQuantity';
 
-export const destructureAPI = (data) => {
+const destructureAPI = (data) => {
   let apiType = 'Drink';
   let init = 21;
   let mid = 36;
@@ -41,3 +41,5 @@ export const destructureAPI = (data) => {
 
   return dataObj;
 };
+
+export default destructureAPI;

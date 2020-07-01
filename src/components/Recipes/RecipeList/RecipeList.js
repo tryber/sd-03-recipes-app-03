@@ -6,7 +6,7 @@ import ListCategories from '../../Categories/ListCategories';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import './RecipeList.css';
 import '../../Categories/ListCategories.css';
-import { destructureAPI } from '../../../untils/destructureObject';
+import destructureAPI from '../../../untils/destructureObject';
 
 const recipeModal = (recipe) => ({
   ...recipe,

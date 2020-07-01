@@ -13,7 +13,7 @@ const IngredientsCheckbox = () => {
             <input type="checkbox" id={ingredient} />
             {ingredient} - {quantity}
           </label>
-        </div>)
+        </div>),
       )}
     </div>
   );

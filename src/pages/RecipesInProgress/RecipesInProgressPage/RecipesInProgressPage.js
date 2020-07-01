@@ -1,6 +1,6 @@
 import React from 'react';
-import Loading from '../../../components/Loading/Loading';
 import PropTypes from 'prop-types';
+import Loading from '../../../components/Loading/Loading';
 // import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 import RecipeInProgressComponent from './RecipeInProgressComponent';
 
