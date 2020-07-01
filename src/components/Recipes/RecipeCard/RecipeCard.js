@@ -64,7 +64,7 @@ const renderSubtitleCard = (recipe, index, favoriteds) => {
       }
     </React.Fragment>
   );
-}
+};
 const RecipeCard = ({ recipe, index, favoriteds }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;

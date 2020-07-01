@@ -3,5 +3,9 @@
   border: none;
   cursor: pointer;
   min-height: 40px;
-  outline: none;
+
+}
+
+.transparentBtn:focus {
+  outline: 0;
 }
