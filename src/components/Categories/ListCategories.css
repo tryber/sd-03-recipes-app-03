@@ -2,7 +2,7 @@
   background-color: #181919;
   box-shadow: 0 1px 1px #181919 , 0 2px 8px 0 #181919;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 2px;
 }
 

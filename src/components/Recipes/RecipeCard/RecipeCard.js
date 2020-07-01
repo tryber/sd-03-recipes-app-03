@@ -49,15 +49,11 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
     </React.Fragment>
   );
 };
-const RecipeCard = ({ recipe, index, favoriteds }) => {
-  const [redirect, setRedirect] = useState(false);
-  const { id, type, area, category, alcoholic } = recipe;
-  if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />;
+
+const renderSubtitleCard = (recipe, index, favoriteds) => {
+  const { area, category, alcoholic } = recipe;
   return (
-    <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
-      {renderThumb(recipe, index, favoriteds, setRedirect)}
-      <div className="infoCard">
-        {renderCardInfo(recipe, index, favoriteds, setRedirect)}
+    <React.Fragment>
       {favoriteds &&
         <span
           className="subtitle-card"
@@ -66,6 +62,19 @@ const RecipeCard = ({ recipe, index, favoriteds }) => {
           {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
         </span>
       }
+    </React.Fragment>
+  );
+}
+const RecipeCard = ({ recipe, index, favoriteds }) => {
+  const [redirect, setRedirect] = useState(false);
+  const { id, type } = recipe;
+  if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />;
+  return (
+    <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
+      {renderThumb(recipe, index, favoriteds, setRedirect)}
+      <div className="infoCard">
+        {renderCardInfo(recipe, index, favoriteds, setRedirect)}
+        {renderSubtitleCard(recipe, index, favoriteds)}
       </div>
     </Link>
   );
