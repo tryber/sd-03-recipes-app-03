@@ -1,6 +1,6 @@
 .categories {
-  background-color: #FDB155;
-  box-shadow: 0 1px 1px rgb(243, 166, 72) , 0 2px 8px 0 rgb(243, 166, 72);
+  background-color: #181919;
+  box-shadow: 0 1px 1px #181919 , 0 2px 8px 0 #181919;
   display: flex;
   justify-content: space-evenly;
   padding: 2px;
@@ -10,6 +10,7 @@
   background-color: transparent;
   border: none;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
   font-weight: 700;
   margin: 1px 4px;
@@ -19,5 +20,5 @@
 }
 
 .categoryBtn:hover {
-  color: white;
+  color: #fdb155;
 }
