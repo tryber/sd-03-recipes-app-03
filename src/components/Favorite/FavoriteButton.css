@@ -6,6 +6,6 @@
 }
 
 .transparentBtn:focus {
-  border-radius: 50%;
+  opacity: 0.5;
   outline: 0;
 }
