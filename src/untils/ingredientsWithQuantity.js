@@ -1,6 +1,6 @@
 
 const ingredientsWithQuantity = (namesArray, arrayOfQuantity) => {
-  const quantityArray = [...arrayOfQuantity]
+  const quantityArray = [...arrayOfQuantity];
   return namesArray.reduce((acc, currentElement, index) => {
     if (currentElement !== '' && currentElement !== null) {
       quantityArray[index] = quantityArray[index] || 'A seu gosto';
@@ -8,7 +8,7 @@ const ingredientsWithQuantity = (namesArray, arrayOfQuantity) => {
     }
     return acc;
   }, []);
-}
+};
 
 
 export default ingredientsWithQuantity;
