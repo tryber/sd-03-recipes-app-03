@@ -8,4 +8,4 @@ const ingredientsWithQuantity = (namesArray, quantityArray) =>
     return acc;
   }, []);
 
-  export default ingredientsWithQuantity;
+export default ingredientsWithQuantity;
