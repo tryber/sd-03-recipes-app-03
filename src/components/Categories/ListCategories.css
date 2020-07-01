@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-around;
   padding: 2px;
+  width: 100%;
 }
 
 .categoryBtn {
@@ -17,6 +18,17 @@
   outline: 0 auto;
   padding: 5px;
   width: 100px;
+}
+
+@media screen and ( max-width: 361px ) {
+
+  .categoryBtn {
+    font-size: 0.6em;
+  }
+
+  .categories {
+    width: 360px;
+  }
 }
 
 .categoryBtn:hover {

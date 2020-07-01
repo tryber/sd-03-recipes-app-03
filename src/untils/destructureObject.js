@@ -17,7 +17,6 @@ export const destructureMeal = (data) => {
     type: 'comidas',
     tags,
   };
-  console.log('destructureNEW:', dataObj);
   return dataObj;
 };
 
