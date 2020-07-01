@@ -20,15 +20,12 @@
   width: 100px;
 }
 
-@media screen and ( max-width: 361px ) {
+@media screen and ( max-width: 385px ) {
 
   .categoryBtn {
     font-size: 0.6em;
   }
 
-  .categories {
-    width: 360px;
-  }
 }
 
 .categoryBtn:hover {
