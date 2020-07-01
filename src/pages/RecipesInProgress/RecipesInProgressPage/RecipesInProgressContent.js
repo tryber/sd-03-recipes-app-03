@@ -46,7 +46,6 @@ const RecipesInProgressContent = (props) => {
 
   return (
     <div>
-      Hello
       <RecipesInProgressPage renderControl={{ isLoading, errorMessage }} />
     </div>
   );

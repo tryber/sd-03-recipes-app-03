@@ -6,7 +6,7 @@ import ListCategories from '../../Categories/ListCategories';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import './RecipeList.css';
 import '../../Categories/ListCategories.css';
-import { destructureMeal, destructureDrinks } from '../../../untils/destructureObject';
+import { destructureAPI } from '../../../untils/destructureObject';
 
 const recipeModal = (recipe) => ({
   ...recipe,
@@ -70,7 +70,7 @@ const RecipeList = ({ recipes, type }) => {
         {!favoriteds && recipes.slice(0, 12).map((recipe, index) => (
           <RecipeCard
             key={Object.values(recipe)[0]}
-            recipe={type === 'meal' ? destructureMeal(recipe) : destructureDrinks(recipe)}
+            recipe={destructureAPI(recipe)}
             index={index}
           />
         ))}

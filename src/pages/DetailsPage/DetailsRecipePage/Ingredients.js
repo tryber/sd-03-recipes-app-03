@@ -9,13 +9,6 @@ const Ingredients = (props) => {
   const ingredientsValues = Object.values(providerData).slice(init, mid);
   const ingredientsQuantity = Object.values(providerData).slice(mid, end);
 
-  // const ingredientsWithQuantity = ingredientsValues.reduce((acc, currentElement, index) => {
-  //   if (currentElement !== '' && currentElement !== null) {
-  //     ingredientsQuantity[index] = ingredientsQuantity[index] || 'A seu gosto';
-  //     acc.push([currentElement, ingredientsQuantity[index]]);
-  //   }
-  //   return acc;
-  // }, []);
   return (
     <div>
       <h2>Ingredients</h2>
