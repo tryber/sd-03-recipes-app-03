@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
+import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
+import './FavoriteButton.css';
 
 const recipeObject = (recipe, type) => {
   if (type === 'comidas') {
@@ -26,9 +28,10 @@ const recipeObject = (recipe, type) => {
   };
 };
 
-const FavoriteButton = ({ recipe }) => {
+const FavoriteButton = ({ recipe, index }) => {
   const [NotFavorited, setNotFavorited] = useState(true);
   const [srcIcon, setSrcIcon] = useState(whiteHeartIcon);
+  const { setStorage } = useContext(FoodContext);
   useEffect(() => {
     if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
@@ -40,7 +43,6 @@ const FavoriteButton = ({ recipe }) => {
       }
     }
   }, []);
-
   const addToLocalStorage = () => {
     const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newRecipe = recipes.concat(recipeObject(recipe, recipe.type));
@@ -48,7 +50,6 @@ const FavoriteButton = ({ recipe }) => {
     setSrcIcon(blackHeartIcon);
     return null;
   };
-
   const removeLocalStorage = () => {
     const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newRecipe = recipes.filter((element) => element.id !== recipe.id);
@@ -56,28 +57,34 @@ const FavoriteButton = ({ recipe }) => {
     setSrcIcon(whiteHeartIcon);
     return null;
   };
-
   const handleFavorite = () => {
     if (NotFavorited) {
       addToLocalStorage();
     } else {
       removeLocalStorage();
     }
+    setStorage(() => JSON.parse(localStorage.getItem('favoriteRecipes')));
     return setNotFavorited((currentState) => !currentState);
   };
-
   return (
-    <button onClick={() => handleFavorite()}>
+    <button className="transparentBtn" onClick={() => handleFavorite()}>
       <img
-        data-testid="favorite-btn"
+        data-testid={
+          typeof (index) === 'number' ? `${index}-horizontal-favorite-btn` : 'favorite-btn'
+        }
         src={srcIcon} alt="Icone para favoritar receita"
       />
     </button>
   );
 };
 
+FavoriteButton.defaultProps = {
+  index: undefined,
+};
+
 FavoriteButton.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  index: PropTypes.number,
 };
 
 export default FavoriteButton;

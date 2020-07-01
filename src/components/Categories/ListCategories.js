@@ -49,7 +49,7 @@ const ListCategories = ({ strCategories, type }) => {
   };
 
   return (
-    <div>
+    <div className="categories">
       {strCategories.slice(0, 6).map(({ strCategory }) => (
         <button
           className="categoryBtn"

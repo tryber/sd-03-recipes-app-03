@@ -1,0 +1,11 @@
+.transparentBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.transparentBtn:focus {
+  opacity: 0.7;
+  outline: 0;
+}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import FoodContext from '../FoodMainPage/Context/FoodContext';
-import DrinkList from '../../components/Drink/DrinkList/DrinkList';
+import RecipeList from '../../components/Recipes/RecipeList/RecipeList';
 import Header from '../../components/Header';
 import { SearchBarContext } from '../../components/HeaderSearchBar/HeaderSearchBarContext';
 
@@ -12,8 +12,8 @@ const Drinks = () => {
   }, []);
   return (
     <div>
-      <Header title="Comidas" searchIcon />
-      <DrinkList drinks={data.length ? data : drinksData} />
+      <Header title="Bebidas" searchIcon />
+      <RecipeList recipes={data.length ? data : drinksData} type="drink" />
     </div>
   );
 };
