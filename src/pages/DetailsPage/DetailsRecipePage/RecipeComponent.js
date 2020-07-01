@@ -21,7 +21,7 @@ const RecipeComponent = (props) => {
             <p data-testid="recipe-category">{alcoholic || category}</p>
           </div>
           <div className="fav-share-button">
-            <ShareButton path={`/${type}/${id}`}/>
+            <ShareButton path={`/${type}/${id}`} />
             <FavoriteButton recipe={data} />
           </div>
         </div>

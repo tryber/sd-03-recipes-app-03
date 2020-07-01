@@ -41,7 +41,7 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
       </div>
       {favoriteds &&
         <span data-testid={`${index}-horizontal-top-text`}>
-        {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
+          {recipe.type[0] === 'c' ? `${area} - ${category}` : alcoholic}
         </span>
       }
     </React.Fragment>
