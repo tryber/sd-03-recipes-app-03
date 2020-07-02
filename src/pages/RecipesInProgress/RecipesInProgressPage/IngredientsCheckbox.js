@@ -1,30 +1,16 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const { ingredient, index, quantity, type, id } = props;
 
+
   const riskIngredient = () => {
-    if (type === 'comidas') {
-      const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'))
-      console.log(inProgressRecipes.meals[id])
-      if (inProgressRecipes.meals[id]) {
-        console.log('kkk')
-        inProgressRecipes.meals.id.push(ingredient[0])
-        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
-      }
-      return console.log('kkk')
-    }
-
-
     if (textDecorationState === 'line-through') {
-
       return setTextDecorationState('')
     }
-    // const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
-    // if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));
-    // return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
     return setTextDecorationState('line-through')
   }
 
@@ -46,3 +32,11 @@ const IngredientsCheckbox = (props) => {
 };
 
 export default IngredientsCheckbox;
+
+IngredientsCheckbox.propTypes = {
+  ingredient: PropTypes.arrayOf(PropTypes.string).isRequired,
+  index: PropTypes.number.isRequired,
+  quantity: PropTypes.arrayOf(PropTypes.string).isRequired,
+  type: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
