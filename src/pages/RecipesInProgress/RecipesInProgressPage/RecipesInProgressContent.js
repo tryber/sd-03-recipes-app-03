@@ -33,7 +33,7 @@ const createLocalStorage = (id, type) => {
       return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
     }
     const inProgressRecipes = { cocktails: {}, meals: {} }
-    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
   }
 }
 
