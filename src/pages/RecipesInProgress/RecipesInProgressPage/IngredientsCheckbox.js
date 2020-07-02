@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { RecipeInProgressContext } from '../RecipeInProgressProvider';
+// import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const { ingredient, index, quantity, type, id } = props;
 
-
+  console.log(type, id)
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
-      return setTextDecorationState('')
+      return setTextDecorationState('');
     }
-    return setTextDecorationState('line-through')
-  }
+    return setTextDecorationState('line-through');
+  };
 
   return (
     <div>
       <div key={ingredient + quantity}>
-        <label style={{textDecoration: textDecorationState }} htmlFor={ingredient}>
+        <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             data-testid={`${index}-ingredient-step`}
             onClick={riskIngredient}

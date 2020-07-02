@@ -10,21 +10,21 @@ import RecipesInProgressPage from './RecipesInProgressPage';
 const createLocalStorage = (id, type) => {
   if (JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id]
     || JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id]
-  ) return null
+  ) return null;
   if (JSON.parse(localStorage.getItem('inProgressRecipes'))) {
-    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'))
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const inProgressRecipes = {
       ...inProgress,
       [type]: {
         ...inProgress[type],
         [id]: [],
-      }
-    }
-    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+      },
+    };
+    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   }
-  const inProgressRecipes = { cocktails: {}, meals: {} }
-  return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
-}
+  const inProgressRecipes = { cocktails: {}, meals: {} };
+  return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+};
 
 
 const RecipesInProgressContent = () => {

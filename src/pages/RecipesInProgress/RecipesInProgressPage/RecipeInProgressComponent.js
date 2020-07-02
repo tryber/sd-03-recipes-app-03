@@ -9,7 +9,7 @@ const RecipeInProgressComponent = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
 
   const { name, category, alcoholic = '', img,
-    instructions, ingredients = [], type, id
+    instructions, ingredients = [], type, id,
   } = recipeData;
 
   const { pathname } = useLocation();
@@ -31,7 +31,7 @@ const RecipeInProgressComponent = () => {
           type={type}
           index={index}
           id={id}
-        />
+        />,
       )}
       <h2>Instructions</h2>
       <p data-testid="instructions">{instructions}</p>
