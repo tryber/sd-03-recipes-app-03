@@ -6,7 +6,7 @@ const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const { ingredient, index, quantity, type, id } = props;
 
-  console.log(type, id)
+  console.log(type, id);
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
       return setTextDecorationState('');
