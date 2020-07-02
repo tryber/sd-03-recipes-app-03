@@ -7,6 +7,36 @@ import { fetchMealById } from '../../../services/theMealAPI';
 import { fetchDrinkById } from '../../../services/theCockTailAPI';
 import RecipesInProgressPage from './RecipesInProgressPage';
 
+const createLocalStorage = (id, type) => {
+  if (JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails.id
+    || JSON.parse(localStorage.getItem('inProgressRecipes')).meals.id
+  ) return null
+  if (JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'))
+    if (type === 'comidas') {
+      const inProgressRecipes = {
+        ...inProgress,
+        meals: {
+          ...inProgress.meals,
+          [id]: [],
+        }
+      }
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+    } else if (type !== 'comidas') {
+      const inProgressRecipes = {
+        ...inProgress,
+        cocktails: {
+          ...inProgress.cocktails,
+          [id]: [],
+        }
+      }
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+    }
+    const inProgressRecipes = { cocktails: {}, meals: {} }
+    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+  }
+}
+
 const RecipesInProgressContent = () => {
   const { setRecipeDataFunc } = useContext(RecipeInProgressContext);
   const [errorMessage, setErrorMessage] = useState('');
@@ -39,8 +69,10 @@ const RecipesInProgressContent = () => {
     };
     if (pathname.includes('/comidas')) {
       apiRequestFunction(fetchMealById, id);
+      createLocalStorage(id, 'comidas');
     } else {
       apiRequestFunction(fetchDrinkById, id);
+      createLocalStorage(id);
     }
   }, [pathname]);
 
