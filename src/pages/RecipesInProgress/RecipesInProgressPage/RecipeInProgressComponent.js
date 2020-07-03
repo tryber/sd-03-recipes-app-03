@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import ShareButton from '../../../components/Share/ShareButton';
@@ -14,6 +14,17 @@ const RecipeInProgressComponent = () => {
   } = recipeData;
 
   const { pathname } = useLocation();
+
+  const finishButton = () => {
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    console.log(inProgress.cocktails[id].length)
+    if (type === 'comidas') {
+      if (inProgress.meals[id].length === ingredients.length) return setDisabled(false);
+    }
+    else if (inProgress.cocktails[id].length === ingredients.length) return setDisabled(false);
+    // return null
+  }
+
 
   // console.log(recipeData)
   return (
@@ -32,11 +43,18 @@ const RecipeInProgressComponent = () => {
           type={type}
           index={index}
           id={id}
+          finishButton={finishButton}
         />,
       )}
       <h2>Instructions</h2>
       <p data-testid="instructions">{instructions}</p>
-      <button data-testid="finish-recipe-btn" type="button" disabled={disabled}>Finalizar Receita</button>
+      <button
+        data-testid="finish-recipe-btn"
+        type="button"
+        disabled={disabled}
+      >
+          Finalizar Receita
+      </button>
     </div>
   );
 };

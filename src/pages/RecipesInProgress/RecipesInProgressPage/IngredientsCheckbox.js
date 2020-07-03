@@ -5,9 +5,8 @@ import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 const IngredientsCheckbox = (props) => {
   // const { recipeData } = useContext(RecipeInProgressContext);
   const [textDecorationState, setTextDecorationState] = useState('');
-  const { ingredient, index, quantity, type, id } = props;
+  const { ingredient, index, quantity, type, id, finishButton } = props;
 
-  console.log(type);
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
       return setTextDecorationState('');
@@ -25,7 +24,7 @@ const IngredientsCheckbox = (props) => {
           [id]: [...inProgress.meals[id], index],
         },
       };
-      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     }
     const inProgressRecipes = {
       ...inProgress,
@@ -34,7 +33,7 @@ const IngredientsCheckbox = (props) => {
         [id]: [...inProgress.cocktails[id], index],
       },
     };
-    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes))
+    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
 
   return (
@@ -43,7 +42,7 @@ const IngredientsCheckbox = (props) => {
         <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             data-testid={`${index}-ingredient-step`}
-            onClick={() => {riskIngredient(); localStorageProgress()}}
+            onClick={() => {riskIngredient(); localStorageProgress(); finishButton()}}
             type="checkbox"
             id={ingredient}
           />

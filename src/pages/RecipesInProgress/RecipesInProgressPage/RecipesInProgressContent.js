@@ -12,17 +12,15 @@ const createLocalStorage = (id, type) => {
     const inProgressRecipes = { cocktails: {}, meals: {} };
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   }
-  if (JSON.parse(localStorage.getItem('inProgressRecipes'))) {
-    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    const inProgressRecipes = {
-      ...inProgress,
-      [type]: {
-        ...inProgress[type],
-        [id]: [],
-      },
-    };
-    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const inProgressRecipes = {
+    ...inProgress,
+    [type]: {
+      ...inProgress[type],
+      [id]: [],
+    },
   }
+  return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
 
