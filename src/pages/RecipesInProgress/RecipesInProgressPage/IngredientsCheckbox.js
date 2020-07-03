@@ -3,21 +3,18 @@ import PropTypes from 'prop-types';
 // import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
 const IngredientsCheckbox = (props) => {
-  // const { recipeData } = useContext(RecipeInProgressContext);
   const [textDecorationState, setTextDecorationState] = useState('');
-  const { ingredient, index, quantity, type, id, finishButton, englishType } = props;
-
+  const { ingredient, index, quantity, id, finishButton, englishType } = props;
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
       return setTextDecorationState('');
     }
     return setTextDecorationState('line-through');
   };
-
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id].some((e) => e === index)) {
-      const newArr = [...inProgress[englishType][id]]
+      const newArr = [...inProgress[englishType][id]];
       const elementIndex = newArr.indexOf(index);
       newArr.splice(elementIndex, 1);
       const inProgressRecipes = {
@@ -28,16 +25,15 @@ const IngredientsCheckbox = (props) => {
         },
       };
       return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-    } else {
-      const inProgressRecipes = {
-        ...inProgress,
-        [englishType]: {
-          ...inProgress[englishType],
-          [id]: [...inProgress[englishType][id], index],
-        },
-      };
-      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     }
+    const inProgressRecipes = {
+      ...inProgress,
+      [englishType]: {
+        ...inProgress[englishType],
+        [id]: [...inProgress[englishType][id], index],
+      },
+    };
+    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
   return (
     <div>
@@ -65,4 +61,5 @@ IngredientsCheckbox.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   finishButton: PropTypes.func.isRequired,
+  englishType: PropTypes.string.isRequired,
 };
