@@ -8,9 +8,10 @@ import { fetchDrinkById } from '../../../services/theCockTailAPI';
 import RecipesInProgressPage from './RecipesInProgressPage';
 
 const createLocalStorage = (id, type) => {
-  if (JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id]
-    || JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id]
-  ) return null;
+  if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+    const inProgressRecipes = { cocktails: {}, meals: {} };
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+  }
   if (JSON.parse(localStorage.getItem('inProgressRecipes'))) {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const inProgressRecipes = {
@@ -22,8 +23,6 @@ const createLocalStorage = (id, type) => {
     };
     return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   }
-  const inProgressRecipes = { cocktails: {}, meals: {} };
-  return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
 

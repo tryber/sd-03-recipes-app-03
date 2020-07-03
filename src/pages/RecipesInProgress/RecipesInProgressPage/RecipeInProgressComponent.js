@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import ShareButton from '../../../components/Share/ShareButton';
@@ -6,6 +6,7 @@ import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 import IngredientsCheckbox from './IngredientsCheckbox';
 
 const RecipeInProgressComponent = () => {
+  const [disabled, setDisabled] = useState(true);
   const { recipeData } = useContext(RecipeInProgressContext);
 
   const { name, category, alcoholic = '', img,
@@ -35,7 +36,7 @@ const RecipeInProgressComponent = () => {
       )}
       <h2>Instructions</h2>
       <p data-testid="instructions">{instructions}</p>
-      <button data-testid="finish-recipe-btn" type="button">Finalizar Receita</button>
+      <button data-testid="finish-recipe-btn" type="button" disabled={disabled}>Finalizar Receita</button>
     </div>
   );
 };
