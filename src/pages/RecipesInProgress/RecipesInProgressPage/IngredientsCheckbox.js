@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
+const riskIngredient = (textDecoration, setTextDecoration) => {
+  if (textDecoration === 'line-through') {
+    return setTextDecoration('');
+  }
+  return setTextDecoration('line-through');
+};
+
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
-  const riskIngredient = () => {
-    if (textDecorationState === 'line-through') {
-      return setTextDecorationState('');
-    }
-    return setTextDecorationState('line-through');
-  };
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id].some((e) => e === index)) {
@@ -41,7 +42,11 @@ const IngredientsCheckbox = (props) => {
         <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             data-testid={`${index}-ingredient-step`}
-            onClick={() => { riskIngredient(); localStorageProgress(); finishButton(); }}
+            onClick={() => {
+              riskIngredient(textDecorationState, setTextDecorationState);
+              localStorageProgress();
+              finishButton();
+            }}
             type="checkbox"
             id={ingredient}
           />
@@ -58,7 +63,6 @@ IngredientsCheckbox.propTypes = {
   ingredient: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   quantity: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   finishButton: PropTypes.func.isRequired,
   englishType: PropTypes.string.isRequired,
