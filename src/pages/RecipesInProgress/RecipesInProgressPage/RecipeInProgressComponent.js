@@ -10,20 +10,16 @@ const RecipeInProgressComponent = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
 
   const { name, category, alcoholic = '', img,
-    instructions, ingredients = [], type, id,
+    instructions, ingredients = [], type, id, englishType,
   } = recipeData;
 
   const { pathname } = useLocation();
 
   const finishButton = () => {
-    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    console.log(inProgress.cocktails[id].length)
-    if (type === 'comidas') {
-      if (inProgress.meals[id].length === ingredients.length) return setDisabled(false);
-    }
-    else if (inProgress.cocktails[id].length === ingredients.length) return setDisabled(false);
-    // return null
-  }
+    const inProgressType = JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType];
+    if (inProgressType[id].length === ingredients.length) return setDisabled(false);
+    return null
+  };
 
 
   // console.log(recipeData)
