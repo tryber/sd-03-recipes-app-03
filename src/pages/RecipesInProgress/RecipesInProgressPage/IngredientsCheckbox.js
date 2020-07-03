@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const IngredientsCheckbox = (props) => {
   // const { recipeData } = useContext(RecipeInProgressContext);
   const [textDecorationState, setTextDecorationState] = useState('');
-  const { ingredient, index, quantity, type, id, finishButton } = props;
+  const { ingredient, index, quantity, type, id, finishButton, englishType } = props;
 
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
@@ -16,26 +16,29 @@ const IngredientsCheckbox = (props) => {
 
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (type === 'comidas') {
+    if (inProgress[englishType][id].some((e) => e === index)) {
+      const newArr = [...inProgress[englishType][id]]
+      const elementIndex = newArr.indexOf(index);
+      newArr.splice(elementIndex, 1);
       const inProgressRecipes = {
         ...inProgress,
-        meals: {
-          ...inProgress.meals,
-          [id]: [...inProgress.meals[id], index],
+        [englishType]: {
+          ...inProgress[englishType],
+          [id]: newArr,
+        },
+      };
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    } else {
+      const inProgressRecipes = {
+        ...inProgress,
+        [englishType]: {
+          ...inProgress[englishType],
+          [id]: [...inProgress[englishType][id], index],
         },
       };
       return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     }
-    const inProgressRecipes = {
-      ...inProgress,
-      cocktails: {
-        ...inProgress.cocktails,
-        [id]: [...inProgress.cocktails[id], index],
-      },
-    };
-    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
-
   return (
     <div>
       <div key={ingredient + quantity}>

@@ -18,7 +18,7 @@ const RecipeInProgressComponent = () => {
   const finishButton = () => {
     const inProgressType = JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType];
     if (inProgressType[id].length === ingredients.length) return setDisabled(false);
-    return null;
+    return setDisabled(true);
   };
 
 
@@ -37,6 +37,7 @@ const RecipeInProgressComponent = () => {
           ingredient={ingredient}
           quantity={quantity}
           type={type}
+          englishType={englishType}
           index={index}
           id={id}
           finishButton={finishButton}
