@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { RecipeInProgressContext } from '../RecipeInProgressProvider';
+// import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
 const IngredientsCheckbox = (props) => {
   // const { recipeData } = useContext(RecipeInProgressContext);
@@ -61,4 +61,5 @@ IngredientsCheckbox.propTypes = {
   quantity: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  finishButton: PropTypes.func.isRequired,
 };

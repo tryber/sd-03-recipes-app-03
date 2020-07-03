@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import ShareButton from '../../../components/Share/ShareButton';
@@ -18,7 +18,7 @@ const RecipeInProgressComponent = () => {
   const finishButton = () => {
     const inProgressType = JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType];
     if (inProgressType[id].length === ingredients.length) return setDisabled(false);
-    return null
+    return null;
   };
 
 

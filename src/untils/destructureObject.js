@@ -13,7 +13,7 @@ const destructureAPI = (data) => {
     mid = 29;
     end = 49;
     type = 'comidas';
-    let englishType = 'meals'
+    englishType = 'meals';
   }
 
   const ingredientsValues = Object.values(data).slice(init, mid);
