@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
-const riskIngredient = (textDecoration, setTextDecoration) => {
-  if (textDecoration === 'line-through') {
-    return setTextDecoration('');
-  }
-  return setTextDecoration('line-through');
-};
 
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
+
+  const riskIngredient = () => {
+    if (textDecorationState === 'line-through') {
+      return setTextDecorationState('');
+    }
+    return setTextDecorationState('line-through');
+  };
+
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id].some((e) => e === index)) {
@@ -20,19 +22,13 @@ const IngredientsCheckbox = (props) => {
       newArr.splice(elementIndex, 1);
       const inProgressRecipes = {
         ...inProgress,
-        [englishType]: {
-          ...inProgress[englishType],
-          [id]: newArr,
-        },
+        [englishType]: { ...inProgress[englishType], [id]: newArr },
       };
       return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     }
     const inProgressRecipes = {
       ...inProgress,
-      [englishType]: {
-        ...inProgress[englishType],
-        [id]: [...inProgress[englishType][id], index],
-      },
+      [englishType]: { ...inProgress[englishType], [id]: [...inProgress[englishType][id], index] },
     };
     return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
@@ -43,7 +39,7 @@ const IngredientsCheckbox = (props) => {
           <input
             data-testid={`${index}-ingredient-step`}
             onClick={() => {
-              riskIngredient(textDecorationState, setTextDecorationState);
+              riskIngredient();
               localStorageProgress();
               finishButton();
             }}
