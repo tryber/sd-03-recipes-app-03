@@ -42,7 +42,7 @@ const IngredientsCheckbox = (props) => {
         <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             data-testid={`${index}-ingredient-step`}
-            onClick={() => {riskIngredient(); localStorageProgress(); finishButton()}}
+            onClick={() => { riskIngredient(); localStorageProgress(); finishButton(); }}
             type="checkbox"
             id={ingredient}
           />

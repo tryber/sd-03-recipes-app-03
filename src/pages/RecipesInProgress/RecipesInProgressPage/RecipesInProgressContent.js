@@ -19,7 +19,7 @@ const createLocalStorage = (id, type) => {
       ...inProgress[type],
       [id]: [],
     },
-  }
+  };
   return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
