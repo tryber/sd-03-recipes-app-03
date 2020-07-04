@@ -43,7 +43,7 @@ const IngredientsCheckbox = (props) => {
   };
   return (
     <div data-testid={`${index}-ingredient-step`}>
-      <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
+      <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient} />
         <input
           type="checkbox"
           defaultChecked={checkState}
@@ -55,7 +55,6 @@ const IngredientsCheckbox = (props) => {
           id={ingredient}
         />
         {ingredient} - {quantity}
-      </label>
     </div>
   );
 };
