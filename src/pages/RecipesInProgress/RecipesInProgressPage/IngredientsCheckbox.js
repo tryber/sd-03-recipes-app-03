@@ -7,26 +7,22 @@ const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const [checkState, setCheckState] = useState(false);
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
-
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
-      setCheckState(false)
+      setCheckState(false);
       return setTextDecorationState('');
     }
-    setCheckState(true)
+    setCheckState(true);
     return setTextDecorationState('line-through');
   };
-
   useEffect(() => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    console.log(inProgress)
     if (inProgress[englishType][id] && inProgress[englishType][id].some((e) => e === index)) {
       setCheckState(true);
       finishButton();
-      return setTextDecorationState('line-through');
+      setTextDecorationState('line-through');
     }
-  }, [])
-
+  }, []);
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id].some((e) => e === index)) {
@@ -45,7 +41,6 @@ const IngredientsCheckbox = (props) => {
     };
     return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
-  console.log(checkState)
   return (
     <div data-testid={`${index}-ingredient-step`}>
       <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
