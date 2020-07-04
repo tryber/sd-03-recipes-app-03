@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
 
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
+  const [checkState, setCheckState] = useState(false);
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
 
   const riskIngredient = () => {
     if (textDecorationState === 'line-through') {
+      setCheckState(false)
       return setTextDecorationState('');
     }
+    setCheckState(true)
     return setTextDecorationState('line-through');
   };
+
+  useEffect(() => {
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    console.log(inProgress)
+    if (inProgress[englishType][id] && inProgress[englishType][id].some((e) => e === index)) {
+      setCheckState(true);
+      finishButton();
+      return setTextDecorationState('line-through');
+    }
+  }, [])
 
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -32,23 +45,18 @@ const IngredientsCheckbox = (props) => {
     };
     return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
+  console.log(checkState)
   return (
-    <div>
-      <div key={ingredient + quantity}>
-        <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
-          <input
-            data-testid={`${index}-ingredient-step`}
-            onClick={() => {
-              riskIngredient();
-              localStorageProgress();
-              finishButton();
-            }}
-            type="checkbox"
-            id={ingredient}
-          />
-          {ingredient} - {quantity}
-        </label>
-      </div>
+    <div data-testid={`${index}-ingredient-step`}>
+      <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
+        <input
+          type="checkbox"
+          defaultChecked={checkState}
+          onChange={() => { riskIngredient(); localStorageProgress(); finishButton(); }}
+          id={ingredient}
+        />
+        {ingredient} - {quantity}
+      </label>
     </div>
   );
 };

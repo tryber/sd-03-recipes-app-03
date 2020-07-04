@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import FavoriteButton from '../../../components/Favorite/FavoriteButton';
 import ShareButton from '../../../components/Share/ShareButton';
 import { RecipeInProgressContext } from '../RecipeInProgressProvider';
@@ -45,13 +45,15 @@ const RecipeInProgressComponent = () => {
       )}
       <h2>Instructions</h2>
       <p data-testid="instructions">{instructions}</p>
-      <button
-        data-testid="finish-recipe-btn"
-        type="button"
-        disabled={disabled}
-      >
-          Finalizar Receita
-      </button>
+      <Link to="/receitas-feitas">
+        <button
+          data-testid="finish-recipe-btn"
+          type="button"
+          disabled={disabled}
+        >
+            Finalizar Receita
+        </button>
+      </Link>
     </div>
   );
 };
