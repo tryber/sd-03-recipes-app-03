@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 
+const riskIngredient = (textDecorationState, setCheckState, setTextDecorationState) => {
+  if (textDecorationState === 'line-through') {
+    setCheckState(false);
+    return setTextDecorationState('');
+  }
+  setCheckState(true);
+  return setTextDecorationState('line-through');
+};
 
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
   const [checkState, setCheckState] = useState(false);
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
-  const riskIngredient = () => {
-    if (textDecorationState === 'line-through') {
-      setCheckState(false);
-      return setTextDecorationState('');
-    }
-    setCheckState(true);
-    return setTextDecorationState('line-through');
-  };
   useEffect(() => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id] && inProgress[englishType][id].some((e) => e === index)) {
@@ -47,7 +47,11 @@ const IngredientsCheckbox = (props) => {
         <input
           type="checkbox"
           defaultChecked={checkState}
-          onChange={() => { riskIngredient(); localStorageProgress(); finishButton(); }}
+          onChange={() => {
+            riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
+            localStorageProgress();
+            finishButton();
+          }}
           id={ingredient}
         />
         {ingredient} - {quantity}
