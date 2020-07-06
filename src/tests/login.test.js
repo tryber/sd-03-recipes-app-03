@@ -1,13 +1,12 @@
 import React from 'react';
-import { cleanup, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Login page tests', () => {
-  afterEach(cleanup);
 
-  test('Verifi if the login page has a Login text in it', () => {
+  test('Verify if the login page has a Login text in it', () => {
     const { getByText } = renderWithRouter(<App />);
     
     const login = getByText(/Welcome/i);
