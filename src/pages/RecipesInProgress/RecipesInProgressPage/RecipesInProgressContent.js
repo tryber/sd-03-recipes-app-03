@@ -23,7 +23,6 @@ const createLocalStorage = (id, type) => {
   return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
-
 const RecipesInProgressContent = () => {
   const { setRecipeDataFunc } = useContext(RecipeInProgressContext);
   const [errorMessage, setErrorMessage] = useState('');

@@ -8,21 +8,15 @@ import IngredientsCheckbox from './IngredientsCheckbox';
 const RecipeInProgressComponent = () => {
   const [disabled, setDisabled] = useState(true);
   const { recipeData } = useContext(RecipeInProgressContext);
-
   const { name, category, alcoholic = '', img,
     instructions, ingredients = [], type, id, englishType,
   } = recipeData;
-
   const { pathname } = useLocation();
-
   const finishButton = () => {
     const inProgressType = JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType];
     if (inProgressType[id].length === ingredients.length) return setDisabled(false);
     return setDisabled(true);
   };
-
-
-  // console.log(recipeData)
   return (
     <div>
       <img data-testid="recipe-photo" src={img} alt={name} width="15%" />

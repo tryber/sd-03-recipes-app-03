@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { DetailsPageContext } from '../DetailsPageProvider';
+import { Link, useLocation } from 'react-router-dom';
 import './RecommendedCard.css';
 
 const RecommendedCard = (props) => {
   const { name, category, img, id, alcoholic } = props.recommended;
   const { index } = props;
-  const { pathName } = useContext(DetailsPageContext);
+  const { pathname } = useLocation();
+
   const changePageURL = () => {
-    if (pathName.includes('/bebidas')) return 'comidas';
+    if (pathname.includes('/bebidas')) return 'comidas';
     return 'bebidas';
   };
 

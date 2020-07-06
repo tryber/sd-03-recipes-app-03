@@ -1,45 +1,20 @@
 import React, { useContext } from 'react';
-import { DetailsPageContext } from '../DetailsPageProvider';
+import { RecipeInProgressContext } from '../../RecipesInProgress/RecipeInProgressProvider';
 import RecommendedCard from './RecommendedCard';
 import './RecommendedContainerComponent.css';
 
-const destructureMeal = (data) => {
-  const { strMeal: name, strCategory: category, strMealThumb: img, idMeal: id } = data;
-  const dataObj = { name, category, img, id };
-  return dataObj;
-};
-
-const destructureDrinks = (data) => {
-  const { strDrink: name, strAlcoholic: alcoholic, strDrinkThumb: img, idDrink: id } = data;
-  const dataObj = { name, alcoholic, img, id };
-  return dataObj;
-};
-
 const RecommendedContainerComponent = () => {
-  // const [index, setIndex] = useState(2);
-
-  const { providerRecommended } = useContext(DetailsPageContext);
-
-  // const setIndexFunction = () => {
-  //   if (index === 6) return setIndex(2)
-  //   setIndex((current) => current + 2)
-  // }
-
-  // const sixRecommended = providerRecommended.slice((index - 2), index);
-  const sixRecommended = providerRecommended.slice(0, 6);
-
-  const dataRecommendedDestructure = (data) => (
-    data.idMeal ? destructureMeal(data) : destructureDrinks(data)
-  );
+  const { providerRecommended } = useContext(RecipeInProgressContext);
+  console.log(providerRecommended)
 
   return (
     <div>
       <h2>Recomendadas</h2>
       <div className="recommended-container">
-        {sixRecommended.map((recommended, index) =>
+        {providerRecommended.map((recommended, index) =>
           <RecommendedCard
-            key={dataRecommendedDestructure(recommended).id}
-            recommended={dataRecommendedDestructure(recommended)}
+            key={recommended.id}
+            recommended={recommended}
             index={index}
           />,
         )}
