@@ -1,0 +1,18 @@
+.food-img {
+  height: 200px;
+  width: 360px;
+}
+
+.details-meals-header {
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+}
+
+.fav-share-button {
+  display: flex;
+}
+
+.details-meals-titles {
+  line-height: 2px;
+}

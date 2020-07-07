@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-// import { DetailsPageContext } from './DetailsPageProvider';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { RecipeInProgressContext } from '../RecipesInProgress/RecipeInProgressProvider';
 import './RecipeButtonControl.css';
 
 let today = new Date();
@@ -24,8 +24,8 @@ const startingRecipe = (recipeObj) => {
   return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
 };
 
-const RecipeButtonControl = (props) => {
-  const { recipeData } = props;
+const RecipeButtonControl = () => {
+  const { recipeData } = useContext(RecipeInProgressContext);
   const { id, type } = recipeData;
 
   if (
@@ -55,9 +55,9 @@ const RecipeButtonControl = (props) => {
 
 export default RecipeButtonControl;
 
-RecipeButtonControl.propTypes = {
-  recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// RecipeButtonControl.propTypes = {
+//   recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
+// };
 
 // RecipeButtonControl.defaultProps = {
 

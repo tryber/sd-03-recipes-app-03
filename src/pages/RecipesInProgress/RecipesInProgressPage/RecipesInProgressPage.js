@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RecipeComponent from './RecipeComponent';
 import Loading from '../../../components/Loading/Loading';
+import RecipeInProgressComponent from './RecipeInProgressComponent';
 
-const DetailsRecipesPage = (props) => {
+const RecipesInProgressPage = (props) => {
   const { isLoading, errorMessage } = props.renderControl;
 
   if (isLoading) return <Loading />;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
-  return <div><RecipeComponent /></div>;
+  return <div><RecipeInProgressComponent /></div>;
 };
 
-export default DetailsRecipesPage;
+export default RecipesInProgressPage;
 
-DetailsRecipesPage.propTypes = {
+RecipesInProgressPage.propTypes = {
   renderControl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
