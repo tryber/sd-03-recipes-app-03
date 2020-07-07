@@ -24,7 +24,6 @@ const performSearch = async (
   searchName,
 ) => {
   const data = await search[searchParam](searchName, type);
-  console.log(data)
   setData(data.meals || data.drinks);
   setIsFetching(false);
   if (data.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');

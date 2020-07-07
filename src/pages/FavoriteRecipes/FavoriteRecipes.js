@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Header from '../../components/Header/index';
 import RecipeList from '../../components/Recipes/RecipeList/RecipeList';
 import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
+
 const FavoriteRecipe = () => {
   const [recipes, setRecipes] = useState([]);
   const { storage } = useContext(FoodContext);

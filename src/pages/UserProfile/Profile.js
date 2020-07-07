@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../../components/Header/index';
-import foodContext from '../FoodMainPage/Context/FoodContext';
 import './Profile.css';
 import '../../App.css';
 
 const Profile = () => {
   const [email, setEmail] = useState('');
   const [rote, setRote] = useState('');
-  const { storage } = useContext(foodContext);
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('user'))) {
       setEmail(JSON.parse(localStorage.getItem('user')).email);
