@@ -13,7 +13,7 @@ import ExplorerByIngredients from '../pages/ExplorerPages/ExplorerByIngredients'
 import ExplorerByArea from '../pages/ExplorerPages/ExplorerByOrigem';
 import NotFound from '../pages/ExplorerPages/NotFound';
 
-const Routes = () => ( 
+const Routes = () => (
   <BrowserRouter basename="/">
     <Switch>
       <Route path="/explorar/bebidas/area" component={NotFound} />
