@@ -23,7 +23,6 @@ const performSearch = async (
   searchParam,
   searchName,
 ) => {
-  console.log(searchParam)
   const data = await search[searchParam](searchName, type);
   if (data.meals || data.drinks) {
     setData(data.meals || data.drinks);
@@ -32,6 +31,7 @@ const performSearch = async (
     return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
   pushRoute(history, type, data);
+  return false;
 };
 
 const searchButton = async (
