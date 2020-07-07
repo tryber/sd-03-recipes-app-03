@@ -12,7 +12,7 @@ const Ingredients = () => {
         {ingredients.map(([ingredient, quantity], index) =>
           (<li
             data-testid={`${index}-ingredient-name-and-measure`}
-            key={ingredient}
+            key={ingredient + quantity}
           >
             {ingredient} - {quantity}
           </li>))}

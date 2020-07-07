@@ -5,7 +5,6 @@ import './RecommendedContainerComponent.css';
 
 const RecommendedContainerComponent = () => {
   const { providerRecommended } = useContext(RecipeInProgressContext);
-  console.log(providerRecommended)
 
   return (
     <div>
@@ -19,13 +18,6 @@ const RecommendedContainerComponent = () => {
           />,
         )}
       </div>
-      {/* <a className="prev" onClick={setIndexFunction}>&#10094;</a>
-      <a className="next" onClick={setIndexFunction}>&#10095;</a> */}
-      {/* <div>
-        <span className="dot" onClick="currentSlide(1)"></span>
-        <span className="dot" onClick="currentSlide(2)"></span>
-        <span className="dot" onClick="currentSlide(3)"></span>
-      </div> */}
     </div>
   );
 };

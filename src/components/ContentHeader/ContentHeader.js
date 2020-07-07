@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ShareButton from '../Share/ShareButton';
-import FavoriteButton from '../Favorite/FavoriteButton'
-import { RecipeInProgressContext } from '../../pages/';
+import FavoriteButton from '../Favorite/FavoriteButton';
+import { RecipeInProgressContext } from '../../pages/RecipesInProgress/RecipeInProgressProvider';
+import './ContentHeader.css';
 
 const ContentHeader = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
-  const { name, category, alcoholic = '', img,
-    instructions, ingredients = [], type, id, englishType,
-  } = recipeData;
+  const { name, category, alcoholic = '', img, type, id } = recipeData;
   return (
     <div>
-      <img data-testid="recipe-photo" src={img} alt={name} width="15%" />
-      <h1 data-testid="recipe-title">{name}</h1>
-      <FavoriteButton recipe={recipeData} />
-      <ShareButton path={pathname} />
-      <h3 data-testid="recipe-category">{alcoholic || category}</h3>
+      <img className="food-img" data-testid="recipe-photo" src={img} alt={name} width="20%" />
+      <div className="details-meals-header">
+        <div className="details-meals-titles">
+          <h1 data-testid="recipe-title">{name}</h1>
+          <p data-testid="recipe-category">{alcoholic || category}</p>
+        </div>
+        <div className="fav-share-button">
+          <ShareButton path={`/${type}/${id}`} />
+          <FavoriteButton recipe={recipeData} />
+        </div>
+      </div>
     </div>
   );
 };
