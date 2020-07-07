@@ -11,9 +11,9 @@ export const RecipeInProgressProvider = ({ children }) => {
   const setRecipeDataFunc = (data) => setRecipeData(destructureAPI(data));
   const setProviderRecommendedFunc = (recommendedData) => {
     const sixRecommended = recommendedData
-      .map((recommended) => destructureAPI(recommended)).slice(0, 6)
+      .map((recommended) => destructureAPI(recommended)).slice(0, 6);
     setProviderRecommended(sixRecommended);
-  }
+  };
 
   const recipesInProgressObj = {
     recipeData,

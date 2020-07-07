@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipeInProgressContext } from '../RecipesInProgress/RecipeInProgressProvider';
-import { Link } from 'react-router-dom';
 import './RecipeButtonControl.css';
 
 let today = new Date();
@@ -55,9 +55,9 @@ const RecipeButtonControl = () => {
 
 export default RecipeButtonControl;
 
-RecipeButtonControl.propTypes = {
-  recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// RecipeButtonControl.propTypes = {
+//   recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
+// };
 
 // RecipeButtonControl.defaultProps = {
 
