@@ -4,11 +4,11 @@ import DoneRecipesList from './DoneRecipesList';
 
 const DoneRecipes = () => {
   const [recipes, setRecipes] = useState([]);
-  console.log(recipes);
   
   useEffect(() => {
     setRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
   }, []);
+
   return (
     <div>
       <Header title="Receitas Feitas" searchIcon={false} />

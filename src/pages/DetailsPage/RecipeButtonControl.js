@@ -55,10 +55,10 @@ const RecipeButtonControl = () => {
 
 export default RecipeButtonControl;
 
-// RecipeButtonControl.propTypes = {
-//   recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
-// };
+RecipeButtonControl.propTypes = {
+  recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
-// RecipeButtonControl.defaultProps = {
+RecipeButtonControl.defaultProps = {
 
-// };
+};
