@@ -14,7 +14,7 @@ import ExplorerByArea from '../pages/ExplorerPages/ExplorerByOrigem';
 import NotFound from '../pages/ExplorerPages/NotFound';
 
 const Routes = () => (
-  <BrowserRouter basename="/">
+  <BrowserRouter>
     <Switch>
       <Route path="/explorar/bebidas/area" component={NotFound} />
       <Route path="/explorar/comidas/area" component={ExplorerByArea} />
