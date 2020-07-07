@@ -23,10 +23,14 @@ const performSearch = async (
   searchParam,
   searchName,
 ) => {
+  console.log(searchParam)
   const data = await search[searchParam](searchName, type);
-  setData(data.meals || data.drinks);
-  setIsFetching(false);
-  if (data.length === 0) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  if (data.meals || data.drinks) {
+    setData(data.meals || data.drinks);
+    setIsFetching(false);
+  } else {
+    return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  }
   pushRoute(history, type, data);
 };
 
