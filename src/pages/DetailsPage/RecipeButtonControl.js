@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { RecipeInProgressContext } from '../RecipesInProgress/RecipeInProgressProvider';
 import './RecipeButtonControl.css';
 
@@ -55,10 +55,10 @@ const RecipeButtonControl = () => {
 
 export default RecipeButtonControl;
 
-RecipeButtonControl.propTypes = {
-  recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// RecipeButtonControl.propTypes = {
+//   recipeData: PropTypes.objectOf(PropTypes.any).isRequired,
+// };
 
-RecipeButtonControl.defaultProps = {
+// RecipeButtonControl.defaultProps = {
 
-};
+// };

@@ -4,7 +4,7 @@ import DoneRecipesList from './DoneRecipesList';
 
 const DoneRecipes = () => {
   const [recipes, setRecipes] = useState([]);
-  
+
   useEffect(() => {
     setRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
   }, []);
