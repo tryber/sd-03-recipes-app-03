@@ -1,34 +1,27 @@
 import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { DetailsPageContext } from '../DetailsPageProvider';
+import { RecipeInProgressContext } from '../../RecipesInProgress/RecipeInProgressProvider';
 import DetailsRecipesPage from './DetailsRecipesPage';
 import { fetchMealById, fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
 
 const DetailsRecipeContent = (props) => {
-  const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const {
-    setProviderDataFunc, setPathNameFunc, setProviderRecommendedFunc,
-  } = useContext(DetailsPageContext);
+  const { setRecipeDataFunc, setProviderRecommendedFunc } = useContext(RecipeInProgressContext);
 
   const { match: { params: { id } }, location: { pathname } } = props;
 
   const apiRequestSucceedMeal = ({ meals }) => {
     if (!pathname.includes('/comidas')) return setProviderRecommendedFunc(meals);
-    setData(meals[0]);
-    setProviderDataFunc(meals[0]);
-    setPathNameFunc(pathname);
+    setRecipeDataFunc(meals[0]);
     return setIsLoading(false);
   };
 
   const apiRequestSucceedDrink = ({ drinks }) => {
     if (!pathname.includes('/bebidas')) return setProviderRecommendedFunc(drinks);
-    setData(drinks[0]);
-    setProviderDataFunc(drinks[0]);
-    setPathNameFunc(pathname);
+    setRecipeDataFunc(drinks[0]);
     return setIsLoading(false);
   };
 
@@ -55,7 +48,7 @@ const DetailsRecipeContent = (props) => {
     }
   }, [pathname]);
 
-  return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage, data }} /></div>;
+  return <div><DetailsRecipesPage renderControl={{ isLoading, errorMessage }} /></div>;
 };
 
 export default DetailsRecipeContent;

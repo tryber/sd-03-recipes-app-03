@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import Header from '../../components/Header';
+import Header from '../../components/Header/index';
 import './Profile.css';
 import '../../App.css';
 
@@ -8,8 +8,10 @@ const Profile = () => {
   const [email, setEmail] = useState('');
   const [rote, setRote] = useState('');
   useEffect(() => {
-    setEmail(JSON.parse(localStorage.getItem('user')).email);
-  }, []);
+    if (JSON.parse(localStorage.getItem('user'))) {
+      setEmail(JSON.parse(localStorage.getItem('user')).email);
+    }
+  }, [JSON.parse(localStorage.getItem('user'))]);
 
   const handleExit = () => {
     localStorage.clear();
@@ -19,7 +21,7 @@ const Profile = () => {
   if (rote !== '') return <Redirect to={`${rote}`} />;
   return (
     <div className="profile b-shadow">
-      <Header title="Comidas" />
+      <Header title="Perfil" searchIcon={false} />
       <label htmlFor="email">E-mail</label>
       <span data-testid="profile-email">{email}</span>
       <button

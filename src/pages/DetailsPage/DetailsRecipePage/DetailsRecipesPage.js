@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeComponent from './RecipeComponent';
-import { destructureMeal, destructureDrinks } from '../../../untils/destructureObject';
+import Loading from '../../../components/Loading/Loading';
 
 const DetailsRecipesPage = (props) => {
-  const { isLoading, errorMessage, data } = props.renderControl;
-  const dataDestructure = (dataType) => (
-    dataType.idMeal ? destructureMeal(data) : destructureDrinks(data)
-  );
+  const { isLoading, errorMessage } = props.renderControl;
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
-  return <div><RecipeComponent data={dataDestructure(data)} /></div>;
+  return <div><RecipeComponent /></div>;
 };
 
 export default DetailsRecipesPage;

@@ -19,7 +19,7 @@ const Header = ({ title, searchIcon }) => {
           <img
             data-testid="profile-top-btn"
             src={profileIcon}
-            alt="icone de  perfil"
+            alt="icone de perfil"
             className="header-icon"
           />
         </Link>
@@ -34,6 +34,7 @@ const Header = ({ title, searchIcon }) => {
             className="header-icon"
           />
         )}
+        {!searchIcon && (<p />)}
       </header>
       {viewSearch && <HeaderSearchBar />}
     </div>
