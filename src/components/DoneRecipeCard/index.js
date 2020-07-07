@@ -71,7 +71,7 @@ const renderDate = (recipe, index, doneRecipes) => {
       {doneRecipes &&
         <span
           className="subtitle-card"
-          data-testid={`${index}-horizontal-top-text`}
+          data-testid={`${index}-horizontal-done-date`}
         >
           Feita em: {doneData}
         </span>
@@ -84,13 +84,13 @@ const renderTagName = (recipe, index) => {
   const { tags } = recipe;
   return (
     <React.Fragment>
-      {[tags].map((tag) => (
+      {[tags].map((tagName) => (
         <span
           key={index}
           className="subtitle-card"
-          data-testid={`${index}-horizontal-top-text`}
+          data-testid={`${index}-${tagName}-horizontal-tag`}
         >
-          {`${tag}`}
+          {`${tagName}`}
         </span>
       ))}
     </React.Fragment>
@@ -128,6 +128,5 @@ DoneRecipeCard.propTypes = {
   index: PropTypes.number.isRequired,
   doneRecipes: PropTypes.string,
 };
-
 
 export default DoneRecipeCard;
