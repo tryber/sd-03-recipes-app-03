@@ -69,7 +69,7 @@ function ExplorerByArea() {
           key="area"
           onChange={(e) => setOption(e.target.value)}
           data-testid="explore-by-area-dropdown"
-        > 
+        >
           <option value="All" data-testid="All-option">All</option>
           {countryList.map((country) => (
             <option key={country} value={country} data-testid={`${country}-option`}>{country}</option>
