@@ -1,0 +1,55 @@
+.card {
+  border-radius: 10px;
+  display: flex;
+  height: 150px;
+  margin: 15px auto;
+  overflow: hidden;
+  text-decoration: none;
+  width: 350px;
+}
+
+.card-title {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.thumbnail {
+  border-radius: 10px;
+  max-width: 150px;
+}
+
+.recipe-icon {
+  background-color: #fdb155;
+  border-radius: 50%;
+  bottom: 2px;
+  padding: 2px;
+  position: relative;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.subtitle-card {
+  color: lightgray;
+  font-style: italic;
+  margin: 0 auto;
+}
+
+.buttonCard {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 0;
+}

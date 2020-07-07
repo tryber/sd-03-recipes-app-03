@@ -7,11 +7,15 @@ import RecipesInProgressContent from '../pages/RecipesInProgress/RecipesInProgre
 import Foods from '../pages/FoodMainPage/Foods';
 import Drinks from '../pages/DrinkMainPage/Drinks';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
+<<<<<<< HEAD
 import Explorer from '../pages/ExplorerPages/Explorer';
 import DrinkOrFoods from '../pages/ExplorerPages/ExplorerDrinkOrFood';
 import ExplorerByIngredients from '../pages/ExplorerPages/ExplorerByIngredients';
 import ExplorerByArea from '../pages/ExplorerPages/ExplorerByOrigem';
 import NotFound from '../pages/ExplorerPages/NotFound';
+=======
+import DoneRecipes from '../pages/DoneRecipes';
+>>>>>>> origin/tela-receitas-feitas
 
 const Routes = () => (
   <BrowserRouter>
@@ -30,6 +34,7 @@ const Routes = () => (
       <Route exact path="/comidas" component={Foods} />
       <Route exact path="/bebidas" component={Drinks} />
       <Route exact path="/receitas-favoritas" component={FavoriteRecipes} />
+      <Route exact path="/receitas-feitas" component={DoneRecipes} />
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/" component={Login} />
     </Switch>

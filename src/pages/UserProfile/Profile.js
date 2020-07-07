@@ -21,7 +21,11 @@ const Profile = () => {
   if (rote !== '') return <Redirect to={`${rote}`} />;
   return (
     <div className="profile b-shadow">
+<<<<<<< HEAD
       <Header title="Perfil" />
+=======
+      <Header title="Perfil" searchIcon={false} />
+>>>>>>> origin/tela-receitas-feitas
       <label htmlFor="email">E-mail</label>
       <span data-testid="profile-email">{email}</span>
       <button
