@@ -1,9 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
-// import PropTypes from 'prop-types';
->>>>>>> origin/tela-receitas-feitas
 import { RecipeInProgressContext } from '../RecipesInProgress/RecipeInProgressProvider';
 import './RecipeButtonControl.css';
 
