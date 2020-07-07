@@ -40,7 +40,7 @@ export const fetchAllMeals = async () => {
 
 const urlRandomMeal = 'https://www.themealdb.com/api/json/v1/1/random.php';
 export const fetchRandomMeal = async () => {
-  const response = await fetch(`${urlRandomMeal}`)
+  const response = await fetch(`${urlRandomMeal}`);
   return response.json();
 };
 
