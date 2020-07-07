@@ -19,7 +19,7 @@ const Header = ({ title, searchIcon }) => {
           <img
             data-testid="profile-top-btn"
             src={profileIcon}
-            alt="icone de  perfil"
+            alt="icone de perfil"
             className="header-icon"
           />
         </Link>
