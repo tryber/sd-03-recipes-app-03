@@ -24,20 +24,19 @@ const HeaderSearchBar = ({ history, location }) => {
     });
   };
 
-  const radioInput = (htmlFor, value, dataTestId, label) => {
-    return (
-      <label htmlFor={htmlFor} className="search-label">
-        <input
-          type="radio"
-          name="searchParam"
-          value={value}
-          data-testid={dataTestId}
-          onClick={(e) => handleChange(e)}
-        />
-        {label}
-      </label>
-    );
-  };
+  const radioInput = (htmlFor, value, dataTestId, label) => (
+    <label htmlFor={htmlFor} className="search-label">
+      <input
+        type="radio"
+        name="searchParam"
+        value={value}
+        data-testid={dataTestId}
+        onClick={(e) => handleChange(e)}
+      />
+      {label}
+    </label>
+  );
+
 
   return (
     <div className="search-container">
@@ -50,9 +49,9 @@ const HeaderSearchBar = ({ history, location }) => {
         onChange={(e) => handleChange(e)}
       />
       <div className="radio-container">
-        {radioInput("ingredient", "ingredients", "ingredient-search-radio", "Ingredientes")}
-        {radioInput("name", "name", "name-search-radio", "Nome")}
-        {radioInput("first-letter", "first-letter", "first-letter-search-radio", "Primeira letra")}
+        {radioInput('ingredient', 'ingredients', 'ingredient-search-radio', 'Ingredientes')}
+        {radioInput('name', 'name', 'name-search-radio', 'Nome')}
+        {radioInput('first-letter', 'first-letter', 'first-letter-search-radio', 'Primeira letra')}
       </div>
       <button
         type="button"
