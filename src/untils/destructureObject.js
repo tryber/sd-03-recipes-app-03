@@ -1,43 +1,48 @@
-export const destructureMeal = (data) => {
-  const {
-    strMeal: name, strCategory: category, strMealThumb: img, strYoutube: video,
-    strInstructions: instructions, idMeal: id, strArea: area, strTags: tags,
-  } = data;
-  const dataObj = {
-    name,
-    category,
-    img,
-    video,
-    instructions,
-    id,
-    area,
-    init: 9,
-    mid: 29,
-    end: 49,
-    type: 'comidas',
-    tags,
-  };
-  return dataObj;
-};
+import ingredientsWithQuantity from '../untils/ingredientsWithQuantity';
 
-export const destructureDrinks = (data) => {
+const destructureAPI = (data) => {
+  let apiType = 'Drink';
+  let init = 21;
+  let mid = 36;
+  let end = 51;
+  let type = 'bebidas';
+  let englishType = 'cocktails';
+  if (data.idMeal) {
+    apiType = 'Meal';
+    init = 9;
+    mid = 29;
+    end = 49;
+    type = 'comidas';
+    englishType = 'meals';
+  }
+
+  const ingredientsValues = Object.values(data).slice(init, mid);
+  const ingredientsQuantity = Object.values(data).slice(mid, end);
+
   const {
-    strDrink: name, strAlcoholic: alcoholic, strDrinkThumb: img, strCategory: category,
-    strInstructions: instructions, idDrink: id, strArea: area,
+    [`str${apiType}`]: name, strCategory: category, [`str${apiType}Thumb`]: img, strYoutube: video,
+    strInstructions: instructions, [`id${apiType}`]: id, strArea: area, strTags: tags, strAlcoholic: alcoholic,
   } = data;
+
   const dataObj = {
     name,
     category,
     alcoholic,
     img,
+    video,
     instructions,
     id,
+    ingredients: ingredientsWithQuantity(ingredientsValues, ingredientsQuantity),
     area,
-    init: 21,
-    mid: 36,
-    end: 51,
-    type:
-    'bebidas',
+    init,
+    mid,
+    end,
+    type,
+    englishType,
+    tags,
   };
+
   return dataObj;
 };
+
+export default destructureAPI;

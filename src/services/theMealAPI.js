@@ -32,33 +32,35 @@ export const fetchMealById = (id) => {
   ));
 };
 
+const urlAllMeal = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+export const fetchAllMeals = async () => {
+  const response = await fetch(`${urlAllMeal}`);
+  return response.json();
+};
+
 const urlRandomMeal = 'https://www.themealdb.com/api/json/v1/1/random.php';
-export const fetchRandomMeal = () => (
-  fetch(urlRandomMeal)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchRandomMeal = async () => {
+  const response = await fetch(`${urlRandomMeal}`)
+  return response.json();
+};
 
 const urlAreasList = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
-export const fetchAreasList = () => (
-  fetch(urlAreasList)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchAreasList = async () => {
+  const response = await fetch(`${urlAreasList}`);
+  return response.json();
+};
 
 const urlFilterByArea = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=';
-export const fetchMealsByCountry = (country) => (
-  fetch(`${urlFilterByArea}${country}`)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchMealsByCountry = async (country) => {
+  const response = await fetch(`${urlFilterByArea}${country}`);
+  return response.json();
+};
 
 const urlListMealsIngredients = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
-export const fetchIngredientsList = () => (
-  fetch(urlListMealsIngredients)
-    .then((response) => response.json())
-    .then((json) => (Promise.ok ? Promise.resolve(json) : Promise.reject(json)))
-);
+export const fetchIngredientsList = async () => {
+  const response = await fetch(urlListMealsIngredients);
+  return response.json();
+};
 
 export const fetchMealsByIngredients = (ingredient) => {
   const urlFindMealsByIngredients = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
