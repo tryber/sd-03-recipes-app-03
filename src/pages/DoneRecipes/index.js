@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Header from '../../components/Header';
 import DoneRecipesList from './DoneRecipesList';
+import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 
 const DoneRecipes = () => {
   const [recipes, setRecipes] = useState([]);
-
+  const { storage } = useContext(FoodContext);
   useEffect(() => {
-    setRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
+    if (JSON.parse(localStorage.getItem('favoriteRecipes')) !== null) {
+      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')));
+    }
+  }, [storage]);
+  useEffect(() => {
+    if (!JSON.parse(localStorage.getItem('favoriteRecipes'))) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify(recipes));
+    }
   }, []);
 
   return (
