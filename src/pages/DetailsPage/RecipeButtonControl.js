@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 // import PropTypes from 'prop-types';
+=======
+import PropTypes from 'prop-types';
+>>>>>>> feature/recipes-in-progress
 import { RecipeInProgressContext } from '../RecipesInProgress/RecipeInProgressProvider';
 import './RecipeButtonControl.css';
 
