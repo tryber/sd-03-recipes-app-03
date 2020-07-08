@@ -65,7 +65,7 @@ const renderTopInformantion = (recipe, index) => {
 
 const renderDate = (recipe, index) => {
   const { doneDate } = recipe;
-  console.log(recipe)
+  console.log(recipe);
   return (
     <React.Fragment>
       <span
