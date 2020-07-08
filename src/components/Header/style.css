@@ -2,6 +2,11 @@
   width: 50px;
 }
 
+.header-icon-search {
+  width: 40px;
+  margin: 0;
+}
+
 .header-container {
   align-items: center;
   background-color: #fdb155;

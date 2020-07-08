@@ -31,7 +31,7 @@ const Header = ({ title, searchIcon }) => {
             data-testid="search-top-btn"
             alt="icone de  busca"
             onClick={() => setViewSearch(!viewSearch)}
-            className="header-icon"
+            className="header-icon-search"
           />
         )}
         {!searchIcon && (<p />)}
