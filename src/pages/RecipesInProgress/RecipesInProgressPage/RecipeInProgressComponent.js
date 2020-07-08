@@ -12,9 +12,9 @@ const yyyy = today.getFullYear();
 today = `${dd} / ${mm} / ${yyyy}`;
 
 const finishingRecipe = (recipeObj) => {
-  const { id, type, name, area, category, alcoholic = '', img } = recipeObj;
-  let { tags = '' } = recipeObj;
-
+  const { id, name, area, category, alcoholic = '', img } = recipeObj;
+  let { tags = '', type } = recipeObj;
+  type = 'comida';
   if (tags !== null && tags.includes(',')) tags = tags.split(',');
 
   const doneRecipes = {
