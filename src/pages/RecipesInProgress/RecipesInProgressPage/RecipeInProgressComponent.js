@@ -12,13 +12,17 @@ const yyyy = today.getFullYear();
 today = `${dd} / ${mm} / ${yyyy}`;
 
 const finishingRecipe = (recipeObj) => {
-  const { id, name, area, category, alcoholic = '', img } = recipeObj;
-  let { tags = '', type } = recipeObj;
-  type = 'comida';
-  if (tags !== null && tags.includes(',')) tags = tags.split(',');
+  const { id, name, area, category, alcoholic = '', img, type } = recipeObj;
+  let { tags = '' } = recipeObj;
+
+  if (tags !== null && tags.includes(',')) {
+    tags = tags.split(',');
+  } else {
+    tags = [tags];
+  }
 
   const doneRecipes = {
-    id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneData: today, tags,
+    id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneDate: today, tags,
   };
   const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
   if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));

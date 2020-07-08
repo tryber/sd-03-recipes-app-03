@@ -37,9 +37,9 @@ const IngredientsCheckbox = (props) => {
         && JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id]
           .some((e) => e === index)
     ) {
-        setCheckState(true);
-        finishButton(englishType, id, index);
-        setTextDecorationState('line-through');
+      setCheckState(true);
+      finishButton(englishType, id, index);
+      setTextDecorationState('line-through');
     }
   }, []);
 
