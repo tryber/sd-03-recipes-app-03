@@ -43,7 +43,7 @@ const renderCardInfo = (recipe, index, setRedirect) => {
         />
       </div>
       <div>
-        <ShareButton index={index} path={`/${type}/${id}`} />
+        <ShareButton index={index} path={`/${type}s/${id}`} />
       </div>
     </React.Fragment>
   );
@@ -64,14 +64,15 @@ const renderTopInformantion = (recipe, index) => {
 };
 
 const renderDate = (recipe, index) => {
-  const { doneData } = recipe;
+  const { doneDate } = recipe;
+  console.log(recipe)
   return (
     <React.Fragment>
       <span
         data-testid={`${index}-horizontal-done-date`}
         className="subtitle-card"
       >
-        {doneData}
+        Feita em: {doneDate}
       </span>
     </React.Fragment>
   );
@@ -98,9 +99,9 @@ const DoneRecipeCard = ({ recipe, index, doneRecipes }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;
   // const rightType = type.slice(0, -1);
-  if (redirect) return <Redirect to={!doneRecipes ? '#' : `/${type}/${id}`} />;
+  if (redirect) return <Redirect to={!doneRecipes ? '#' : `/${type}s/${id}`} />;
   return (
-    <Link className="card b-shadow" to={doneRecipes ? '#' : `/${type}/${id}`}>
+    <Link className="card b-shadow" to={doneRecipes ? '#' : `/${type}s/${id}`}>
       {renderThumb(recipe, index, setRedirect)}
       <div className="infoCard">
         {renderTopInformantion(recipe, index)}
