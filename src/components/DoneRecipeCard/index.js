@@ -79,12 +79,13 @@ const renderDate = (recipe, index) => {
 
 const renderTagName = (recipe, index) => {
   const { tags } = recipe;
+  if (tags === null) return <span>Sem Tags</span>
   return (
     <React.Fragment>
       {[tags].map((tagName) => (
         <span
           key={index}
-          data-testid={`${index}-${tagName}-horizontal-tag`}
+          data-testid={`${index}-${[...tagName][0]}-horizontal-tag`}
           className="subtitle-card"
         >
           {`${tagName}`}
