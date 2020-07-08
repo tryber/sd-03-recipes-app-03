@@ -1,6 +1,6 @@
 .personal-icon {
-  width: 100px;
   margin: 0;
+  width: 100px;
 }
 
 .heading-container {
@@ -12,11 +12,11 @@
   font-size: 40px;
   justify-content: center;
   margin: -69px auto 0 auto;
-  text-shadow:
-     -3px -3px 0 white,  
-      3px -3px 0 white,
-      -3px 3px 0 white,
-       3px 3px 0 white;
+  text-shadow: 
+    -3px -3px 0 white,  
+    3px -3px 0 white,
+    -3px 3px 0 white,
+    3px 3px 0 white;
   z-index: 2;
 }
 
