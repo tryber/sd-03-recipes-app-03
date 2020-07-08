@@ -9,8 +9,8 @@ import ContentHeader from '../../../components/ContentHeader/ContentHeader';
 
 const RecipeComponent = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
-  const { instructions, id, type } = recipeData;
-  console.log(recipeData)
+  const { instructions } = recipeData;
+
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
