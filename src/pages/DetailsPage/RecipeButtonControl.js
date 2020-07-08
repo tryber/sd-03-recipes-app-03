@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { RecipeInProgressContext } from '../RecipesInProgress/RecipeInProgressProvider';
 import './RecipeButtonControl.css';
 
-let today = new Date();
-const dd = String(today.getDate()).padStart(2, '0');
-const mm = String(today.getMonth() + 1).padStart(2, '0');
-const yyyy = today.getFullYear();
-today = `${dd} / ${mm} / ${yyyy}`;
+// let today = new Date();
+// const dd = String(today.getDate()).padStart(2, '0');
+// const mm = String(today.getMonth() + 1).padStart(2, '0');
+// const yyyy = today.getFullYear();
+// today = `${dd} / ${mm} / ${yyyy}`;
 
 // const startingRecipe = (recipeObj) => {
 //   const { id, type, name, area, category, alcoholic = '', img } = recipeObj;
@@ -25,15 +25,21 @@ today = `${dd} / ${mm} / ${yyyy}`;
 
 const RecipeButtonControl = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
-  const { id, type } = recipeData;
+  const { id, type, englishType } = recipeData;
 
+  console.log(recipeData)
   if (
     JSON.parse(localStorage.getItem('doneRecipes')) &&
     JSON.parse(localStorage.getItem('doneRecipes')).some((recipe) => recipe.id === id)
-  ) {
+  ) return <div>Receita Feita!</div>
+  if (
+    englishType &&
+    JSON.parse(localStorage.getItem('inProgressRecipes')) &&
+    JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id]
+    ) {
     return (
       <div>
-        <Link to={`/${type}/${id}/in-progress`}>
+        <Link data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
           <button type="button">
             Continuar Receita
           </button>

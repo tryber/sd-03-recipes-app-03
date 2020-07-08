@@ -10,6 +10,7 @@ import ContentHeader from '../../../components/ContentHeader/ContentHeader';
 const RecipeComponent = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
   const { instructions, id, type } = recipeData;
+  console.log(recipeData)
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
@@ -30,7 +31,7 @@ const RecipeComponent = () => {
           null
         }
         <RecommendedContainerComponent />
-        <RecipeButtonControl type={type} id={id} recipeData={recipeData} />
+        <RecipeButtonControl />
       </div>
     </div>
   );
