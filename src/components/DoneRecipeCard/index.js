@@ -79,7 +79,6 @@ const renderDate = (recipe, index) => {
 
 const renderTagName = (recipe, index) => {
   const { tags = [] } = recipe;
-  console.log(recipe.tags)
   return (
     <React.Fragment>
       {tags.map((tagName) => (
