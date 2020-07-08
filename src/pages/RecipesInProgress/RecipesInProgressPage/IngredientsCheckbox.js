@@ -26,7 +26,7 @@ const IngredientsCheckbox = (props) => {
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id].some((e) => e === index)) {
-      const newArr = [...inProgress[englishType][id]].filter((e) => e !== index)
+      const newArr = [...inProgress[englishType][id]].filter((e) => e !== index);
       const inProgressRecipes = {
         ...inProgress,
         [englishType]: { ...inProgress[englishType], [id]: newArr },
