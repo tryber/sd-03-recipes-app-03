@@ -30,14 +30,14 @@ const renderCardInfo = (recipe, index, setRedirect) => {
   console.log(index);
   return (
     <React.Fragment>
-      <div data-testid={`${index}-horizontal-name`} className="card-title">
+      <div className="card-title">
         <div>
           <button onClick={() => setRedirect(true)} className="buttonCard">
-            <span>{name}</span>
+            <span data-testid={`${index}-horizontal-name`}>{name}</span>
           </button>
         </div>
         <img
-          className="recipe-icon"src={type[0] === 'c' ? garfo : beber}
+          className="recipe-icon" src={type[0] === 'c' ? garfo : beber}
           width="20px" alt="icone de talheres"
         />
       </div>
