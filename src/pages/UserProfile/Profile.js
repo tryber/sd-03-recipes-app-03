@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/index';
 import './Profile.css';
 import '../../App.css';
@@ -43,6 +44,7 @@ const Profile = () => {
       >
         Sair
       </button>
+      <Footer />
     </div>
   );
 };
