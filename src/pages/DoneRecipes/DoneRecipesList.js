@@ -15,10 +15,10 @@ const recipeModal = (recipe) => ({
 });
 
 const renderCategories = (setFilteredRecipes, recipes) => {
-  const categories = [{ all: 'todos' }, { food: 'comidas' }, { drink: 'bebidas' }];
+  const categories = [{ all: 'todos' }, { food: 'comida' }, { drink: 'bebida' }];
   const filterRecipes = (value) => {
     if (value === 'todos') return recipes;
-    return recipes.filter((recipe) => recipe.type === value);
+    return recipes.filter((recipe) => recipe.type.includes(value));
   };
   return (
     <div className="categories">

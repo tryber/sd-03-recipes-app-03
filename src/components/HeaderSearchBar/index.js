@@ -51,7 +51,7 @@ const HeaderSearchBar = ({ history, location }) => {
       <div className="radio-container">
         {radioInput('ingredient', 'ingredients', 'ingredient-search-radio', 'Ingredientes')}
         {radioInput('name', 'name', 'name-search-radio', 'Nome')}
-        {radioInput('first-letter', 'first-letter', 'first-letter-search-radio', 'Primeira letra')}
+        {radioInput('firstLetter', 'firstLetter', 'first-letter-search-radio', 'Primeira letra')}
       </div>
       <button
         type="button"

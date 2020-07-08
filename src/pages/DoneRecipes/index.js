@@ -7,15 +7,18 @@ const DoneRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const { storage } = useContext(FoodContext);
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('favoriteRecipes')) !== null) {
-      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')));
+    if (JSON.parse(localStorage.getItem('doneRecipes')) !== null) {
+      setRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
     }
   }, [storage]);
   useEffect(() => {
-    if (!JSON.parse(localStorage.getItem('favoriteRecipes'))) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify(recipes));
+    if (!JSON.parse(localStorage.getItem('doneRecipes'))) {
+      localStorage.setItem('doneRecipes', JSON.stringify(recipes));
     }
   }, []);
+  // useEffect(() => {
+  //   setRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
+  // }, []);
 
   return (
     <div>
