@@ -64,3 +64,8 @@
 .b-shadow {
   box-shadow: 0 2px 1px #d2d2d2 , 0 -4px 10px 0 #d2d2d2;
 }
+
+body {
+  background-image: url('./icones.png');
+  background-size: 100px;
+}
