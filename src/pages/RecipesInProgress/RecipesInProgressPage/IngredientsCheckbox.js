@@ -43,18 +43,19 @@ const IngredientsCheckbox = (props) => {
   };
   return (
     <div data-testid={`${index}-ingredient-step`}>
-      <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient} />
-      <input
-        type="checkbox"
-        defaultChecked={checkState}
-        onChange={() => {
-          riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
-          localStorageProgress();
-          finishButton();
-        }}
-        id={ingredient}
-      />
-      {ingredient} - {quantity}
+      <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
+        <input
+          type="checkbox"
+          defaultChecked={checkState}
+          onChange={() => {
+            riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
+            localStorageProgress();
+            finishButton();
+          }}
+          id={ingredient}
+        />
+        {ingredient} - {quantity}
+      </label>
     </div>
   );
 };
