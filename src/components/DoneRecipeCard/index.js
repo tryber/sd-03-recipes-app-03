@@ -27,7 +27,7 @@ const renderThumb = (recipe, index, setRedirect) => {
 
 const renderCardInfo = (recipe, index, setRedirect) => {
   const { name, type, id } = recipe;
-  const rightType = type.slice(0, -1);
+  // const rightType = type.slice(0, -1);
   return (
     <React.Fragment>
       <div className="card-title">
@@ -43,7 +43,7 @@ const renderCardInfo = (recipe, index, setRedirect) => {
         />
       </div>
       <div>
-        <ShareButton index={index} path={`/${rightType}/${id}`} />
+        <ShareButton index={index} path={`/${type}/${id}`} />
       </div>
     </React.Fragment>
   );
@@ -97,10 +97,10 @@ const renderTagName = (recipe, index) => {
 const DoneRecipeCard = ({ recipe, index, doneRecipes }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;
-  const rightType = type.slice(0, -1);
-  if (redirect) return <Redirect to={!doneRecipes ? '#' : `/${rightType}/${id}`} />;
+  // const rightType = type.slice(0, -1);
+  if (redirect) return <Redirect to={!doneRecipes ? '#' : `/${type}/${id}`} />;
   return (
-    <Link className="card b-shadow" to={doneRecipes ? '#' : `/${rightType}/${id}`}>
+    <Link className="card b-shadow" to={doneRecipes ? '#' : `/${type}/${id}`}>
       {renderThumb(recipe, index, setRedirect)}
       <div className="infoCard">
         {renderTopInformantion(recipe, index)}
