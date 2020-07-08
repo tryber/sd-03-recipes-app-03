@@ -16,13 +16,13 @@ const IngredientsCheckbox = (props) => {
   const [checkState, setCheckState] = useState(false);
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
   useEffect(() => {
-    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes')).meals;
-    if (inProgress[englishType][id] && inProgress[englishType][id].some((e) => e === index)) {
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (inProgress && inProgress[englishType][id].some((e) => e === index)) {
       setCheckState(true);
       finishButton();
       setTextDecorationState('line-through');
     }
-  }, []);
+    }, []);
   const localStorageProgress = () => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (inProgress[englishType][id].some((e) => e === index)) {
