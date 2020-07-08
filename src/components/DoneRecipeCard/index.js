@@ -27,16 +27,15 @@ const renderThumb = (recipe, index, setRedirect) => {
 
 const renderCardInfo = (recipe, index, setRedirect) => {
   const { name, type, id } = recipe;
-  // const rightType = type.slice(0, -1);
+  console.log(index)
   return (
     <React.Fragment>
-      <div className="card-title">
-        <button onClick={() => setRedirect(true)} className="buttonCard">
-          <span
-            data-testid={`${index}-horizontal-name`}
-          >{name}
-          </span>
-        </button>
+      <div data-testid={`${index}-horizontal-name`} className="card-title">
+        <div>
+          <button onClick={() => setRedirect(true)} className="buttonCard">
+            <span>{name}</span>
+          </button>
+        </div>
         <img
           className="recipe-icon"src={type[0] === 'c' ? garfo : beber}
           width="20px" alt="icone de talheres"
@@ -65,7 +64,6 @@ const renderTopInformantion = (recipe, index) => {
 
 const renderDate = (recipe, index) => {
   const { doneDate } = recipe;
-  console.log(recipe);
   return (
     <React.Fragment>
       <span
@@ -98,10 +96,11 @@ const renderTagName = (recipe, index) => {
 const DoneRecipeCard = ({ recipe, index, doneRecipes }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;
-  // const rightType = type.slice(0, -1);
-  if (redirect) return <Redirect to={!doneRecipes ? '#' : `/${type}s/${id}`} />;
+  const rightType = type.slice(0, -1);
+
+  if (redirect) return <Redirect to={!doneRecipes ? '#' : `/${rightType}s/${id}`} />;
   return (
-    <Link className="card b-shadow" to={doneRecipes ? '#' : `/${type}s/${id}`}>
+    <Link className="card b-shadow" to={doneRecipes ? '#' : `/${rightType}s/${id}`}>
       {renderThumb(recipe, index, setRedirect)}
       <div className="infoCard">
         {renderTopInformantion(recipe, index)}

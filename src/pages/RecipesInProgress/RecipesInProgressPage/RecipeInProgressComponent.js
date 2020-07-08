@@ -15,8 +15,6 @@ const finishingRecipe = (recipeObj) => {
   const { id, name, area, category, alcoholic = '', img } = recipeObj;
   let { tags = '', type } = recipeObj;
 
-  type = 'comida';
-
   if (tags !== null && tags.includes(',')) {
     tags = tags.split(',');
   } else {
