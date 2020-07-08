@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
-// import { DetailsPageContext } from '../DetailsPage/DetailsPageProvider';
 import { useLocation, useParams } from 'react-router-dom';
 import { RecipeInProgressContext } from '../RecipeInProgressProvider';
 import { fetchMealById } from '../../../services/theMealAPI';
@@ -54,11 +52,11 @@ const RecipesInProgressContent = () => {
       return callback(recipeId).then(apiRequestSucceedDrink, apiRequestFailure);
     };
     if (pathname.includes('/comidas')) {
-      apiRequestFunction(fetchMealById, id);
       createLocalStorage(id, 'meals');
+      apiRequestFunction(fetchMealById, id);
     } else {
-      apiRequestFunction(fetchDrinkById, id);
       createLocalStorage(id, 'cocktails');
+      apiRequestFunction(fetchDrinkById, id);
     }
   }, [pathname]);
 

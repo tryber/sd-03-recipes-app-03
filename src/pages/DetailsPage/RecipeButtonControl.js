@@ -9,19 +9,19 @@ const mm = String(today.getMonth() + 1).padStart(2, '0');
 const yyyy = today.getFullYear();
 today = `${dd} / ${mm} / ${yyyy}`;
 
-const startingRecipe = (recipeObj) => {
-  const { id, type, name, area, category, alcoholic = '', img } = recipeObj;
-  let { tags = '' } = recipeObj;
+// const startingRecipe = (recipeObj) => {
+//   const { id, type, name, area, category, alcoholic = '', img } = recipeObj;
+//   let { tags = '' } = recipeObj;
 
-  if (tags !== null && tags.includes(',')) tags = tags.split(',');
+//   if (tags !== null && tags.includes(',')) tags = tags.split(',');
 
-  const doneRecipes = {
-    id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneData: today, tags,
-  };
-  const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
-  if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));
-  return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
-};
+//   const doneRecipes = {
+//     id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneData: today, tags,
+//   };
+//   const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
+//   if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));
+//   return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
+// };
 
 const RecipeButtonControl = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
@@ -44,7 +44,7 @@ const RecipeButtonControl = () => {
   return (
     <div>
       <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
-        <button type="button" onClick={() => startingRecipe(recipeData)}>
+        <button type="button">
           Iniciar Receita
         </button>
       </Link>

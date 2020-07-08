@@ -16,7 +16,7 @@ const IngredientsCheckbox = (props) => {
   const [checkState, setCheckState] = useState(false);
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
   useEffect(() => {
-    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes')).meals;
     if (inProgress[englishType][id] && inProgress[englishType][id].some((e) => e === index)) {
       setCheckState(true);
       finishButton();
