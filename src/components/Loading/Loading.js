@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Loading.css';
 
-class Loading extends React.Component {
-  render() {
-    return (
-      <div className="spinner">
-        <div className="double-bounce1" />
-        <div className="double-bounce2" />
-      </div>
-    );
-  }
-}
+const Loading = () => {
+  const [icon, setIcon] = useState('brigadeiro');
+
+  useEffect(() => {
+    const icons = ['brigadeiro', 'lasanha', 'cereja', 'sushi', 'vinho'];
+    const interval = setInterval(() => {
+      setIcon(icons[parseInt(Math.random() * (5))]);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+  return (
+    <div className="spinner">
+      <img className="loading" src={require(`./icons/${icon}.png`)} alt="icone de uma comida" />
+    </div>
+  );
+};
 
 export default Loading;
