@@ -5,6 +5,26 @@ import IngredientsCheckbox from './IngredientsCheckbox';
 import ContentHeader from '../../../components/ContentHeader/ContentHeader';
 import './RecipeInProgressComponent.css';
 
+let today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const yyyy = today.getFullYear();
+today = `${dd} / ${mm} / ${yyyy}`;
+
+const finishingRecipe = (recipeObj) => {
+  const { id, name, area, category, alcoholic = '', img } = recipeObj;
+  let { tags = '', type } = recipeObj;
+  type = 'comida';
+  if (tags !== null && tags.includes(',')) tags = tags.split(',');
+
+  const doneRecipes = {
+    id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneData: today, tags,
+  };
+  const startedRecipe = JSON.parse(localStorage.getItem('doneRecipes'));
+  if (!startedRecipe) return localStorage.setItem('doneRecipes', JSON.stringify([doneRecipes]));
+  return localStorage.setItem('doneRecipes', JSON.stringify([...startedRecipe, doneRecipes]));
+};
+
 const RecipeInProgressComponent = () => {
   const [disabled, setDisabled] = useState(true);
   const { recipeData } = useContext(RecipeInProgressContext);
@@ -38,6 +58,7 @@ const RecipeInProgressComponent = () => {
             data-testid="finish-recipe-btn"
             type="button"
             disabled={disabled}
+            onClick={() => finishingRecipe(recipeData)}
           >
               Finalizar Receita
           </button>
