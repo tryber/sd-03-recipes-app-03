@@ -27,7 +27,7 @@ const renderThumb = (recipe, index, setRedirect) => {
 
 const renderCardInfo = (recipe, index, setRedirect) => {
   const { name, type, id } = recipe;
-  console.log(index)
+  console.log(index);
   return (
     <React.Fragment>
       <div data-testid={`${index}-horizontal-name`} className="card-title">
