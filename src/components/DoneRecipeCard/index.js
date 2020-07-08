@@ -78,11 +78,11 @@ const renderDate = (recipe, index) => {
 };
 
 const renderTagName = (recipe, index) => {
-  const { tags } = recipe;
-  console.log([tags], index)
+  const { tags = [] } = recipe;
+  console.log(recipe.tags)
   return (
     <React.Fragment>
-      {[tags].map((tagName) => (
+      {tags.map((tagName) => (
         <span
           key={index}
           data-testid={`${index}-${tagName}-horizontal-tag`}

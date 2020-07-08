@@ -14,9 +14,14 @@ today = `${dd} / ${mm} / ${yyyy}`;
 const finishingRecipe = (recipeObj) => {
   const { id, name, area, category, alcoholic = '', img } = recipeObj;
   let { tags = '', type } = recipeObj;
-  type = 'comida';
-  if (tags !== null && tags.includes(',')) tags = tags.split(',');
 
+  type = 'comida';
+  if (tags !== null && tags.includes(',')) {
+    tags = tags.split(',');
+  } else {
+    tags = [tags];
+  }
+  console.log(tags)
   const doneRecipes = {
     id, type, area, category, alcoholicOrNot: alcoholic, name, image: img, doneData: today, tags,
   };
