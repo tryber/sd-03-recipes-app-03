@@ -1,4 +1,40 @@
 .recipe-btn {
+  background-color: #0FA36B;
+  border-radius: 2px;
+  border: none;
   bottom: 0;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  height: 50px;
   position: fixed;
+  right: 0.0001px;
+  width: 100%;
+}
+
+.recipe-btn:hover {
+  background-color: green;
+}
+
+.cont-btn {
+  background-color: #0FA36B;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  height: 50px;
+  margin-top: 8px;
+  width: 99%;
+}
+
+.done-recipe {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.recipe-btn-container {
+  width: 100%;
 }

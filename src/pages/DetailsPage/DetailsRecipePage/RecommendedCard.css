@@ -1,6 +1,31 @@
 .recommended-card {
   border: 1px solid black;
+  display: inline-block;
   line-height: 1px;
-  width: 50%;
+  margin-right: 5px;
+  width: 48%;
 }
 
+.recommended-titles-container {
+  margin-left: 5px;
+}
+
+.rec-titles {
+  text-decoration: none;
+}
+
+.img-recommended {
+  background-color: #fdb155;
+  border-radius: 50%;
+  height: 50%;
+  margin-right: 3px;
+  margin-top: 10px;
+  padding: 2px;
+  width: 12%;
+}
+
+.recommended-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
