@@ -22,19 +22,20 @@ const createLocalStorage = (id, type) => {
 };
 
 const RecipesInProgressContent = () => {
-  const { setRecipeDataFunc } = useContext(RecipeInProgressContext);
+  const { setInProgressFunc } = useContext(RecipeInProgressContext);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { pathname } = useLocation();
   const { id } = useParams();
 
   const apiRequestSucceedMeal = ({ meals }) => {
-    setRecipeDataFunc(meals[0]);
+    // console.log(meals)
+    setInProgressFunc(meals[0]);
     return setIsLoading(false);
   };
 
   const apiRequestSucceedDrink = ({ drinks }) => {
-    setRecipeDataFunc(drinks[0]);
+    setInProgressFunc(drinks[0]);
     return setIsLoading(false);
   };
 

@@ -14,7 +14,7 @@ const RecipeComponent = () => {
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
-        <ContentHeader />
+        <ContentHeader data={recipeData} />
         <Ingredients />
         <h2>Instructions</h2>
         <div className="instructions-container">

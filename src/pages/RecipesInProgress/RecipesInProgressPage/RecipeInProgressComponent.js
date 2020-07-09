@@ -31,8 +31,8 @@ const finishingRecipe = (recipeObj) => {
 
 const RecipeInProgressComponent = () => {
   const [disabled, setDisabled] = useState(true);
-  const { recipeData } = useContext(RecipeInProgressContext);
-  const { instructions, ingredients = [], type, id, englishType } = recipeData;
+  const { recipeInProgress } = useContext(RecipeInProgressContext);
+  const { instructions, ingredients = [], type, id, englishType } = recipeInProgress;
   const finishButton = () => {
     const inProgressType = JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType];
     if (inProgressType[id].length === ingredients.length) return setDisabled(false);
@@ -41,7 +41,7 @@ const RecipeInProgressComponent = () => {
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
-        <ContentHeader />
+        <ContentHeader data={recipeInProgress} />
         <h2>Ingredients</h2>
         {ingredients.map(([ingredient, quantity], index) =>
           <IngredientsCheckbox
@@ -62,7 +62,7 @@ const RecipeInProgressComponent = () => {
             data-testid="finish-recipe-btn"
             type="button"
             disabled={disabled}
-            onClick={() => finishingRecipe(recipeData)}
+            onClick={() => finishingRecipe(recipeInProgress)}
           >
               Finalizar Receita
           </button>

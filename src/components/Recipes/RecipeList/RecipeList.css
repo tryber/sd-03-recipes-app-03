@@ -1,4 +1,16 @@
 .foodList {
+  animation: opacityAnimation 1s 1 forwards;
   display: flex;
   flex-wrap: wrap;
+}
+
+@keyframes opacityAnimation {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

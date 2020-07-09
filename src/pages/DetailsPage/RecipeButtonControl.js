@@ -18,7 +18,7 @@ const RecipeButtonControl = () => {
     ) {
     return (
       <div>
-        <Link data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
+        <Link data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
           <button type="button">
             Continuar Receita
           </button>
@@ -28,7 +28,7 @@ const RecipeButtonControl = () => {
   }
   return (
     <div>
-      <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
+      <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
         <button type="button">
           Iniciar Receita
         </button>

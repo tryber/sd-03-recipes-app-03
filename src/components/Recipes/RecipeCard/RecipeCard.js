@@ -70,7 +70,7 @@ const RecipeCard = ({ recipe, index, favoriteds }) => {
   const { id, type } = recipe;
   if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />;
   return (
-    <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}/${id}`}>
+    <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}s/${id}`}>
       {renderThumb(recipe, index, favoriteds, setRedirect)}
       <div className="infoCard">
         {renderCardInfo(recipe, index, favoriteds, setRedirect)}
