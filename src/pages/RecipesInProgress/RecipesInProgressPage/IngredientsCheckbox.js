@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './IngredientsCheckbox.css';
 
-const riskIngredient = (textDecorationState, setCheckState, setTextDecorationState) => {
+const riskIngredient = (textDecorationState, setTextDecorationState) => {
   if (textDecorationState === 'line-through') {
-    setCheckState(false);
     return setTextDecorationState('');
   }
-  setCheckState(true);
   return setTextDecorationState('line-through');
 };
 
@@ -30,13 +28,11 @@ const localStorageProgress = (englishType, id, index) => {
 
 const IngredientsCheckbox = (props) => {
   const [textDecorationState, setTextDecorationState] = useState('');
-  const [checkState, setCheckState] = useState(false);
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
   useEffect(() => {
     if (
       JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id].some((e) => e === index)
     ) {
-      setCheckState(true);
       finishButton(englishType, id, index);
       setTextDecorationState('line-through');
     }
@@ -46,10 +42,10 @@ const IngredientsCheckbox = (props) => {
     if (
       JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id].some((e) => e === index)
     ) {
-      return true
+      return true;
     }
-    return false
-  }
+    return false;
+  };
 
   return (
     <div className="checkbox-container" data-testid={`${index}-ingredient-step`}>
@@ -60,7 +56,7 @@ const IngredientsCheckbox = (props) => {
             checked={verifyCheck()}
             onChange={() => {
               localStorageProgress(englishType, id, index);
-              riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
+              riskIngredient(textDecorationState, setTextDecorationState);
               finishButton();
             }}
             id={ingredient}
