@@ -8,11 +8,11 @@ import Footer from '../../components/Footer/Footer';
 
 const Foods = () => {
   const { data } = useContext(SearchBarContext);
-  const { get12Meals, mealsData } = useContext(FoodContext);
+  const { get12Meals, mealsData = [] } = useContext(FoodContext);
   useEffect(() => {
     get12Meals();
   }, []);
-  if (mealsData.length === 0) return <Loading />;
+  if (mealsData === null || mealsData.length === 0) return <Loading />;
   return (
     <div className="recipes-container">
       <Header title="Comidas" searchIcon />

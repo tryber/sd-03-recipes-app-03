@@ -1,4 +1,5 @@
 .foodList {
+  animation: opacitySign 1s 1 forwards;
   display: flex;
   flex-wrap: wrap;
 }
