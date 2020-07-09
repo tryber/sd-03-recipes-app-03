@@ -49,7 +49,7 @@ const IngredientsCheckbox = (props) => {
         <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             type="checkbox"
-            defaultChecked={checkState}
+            checked={checkState}
             onChange={() => {
               riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
               localStorageProgress(englishType, id, index);
