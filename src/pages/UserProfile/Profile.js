@@ -45,6 +45,10 @@ const Profile = () => {
         >
           Sair
         </button>
+        <div className="developed">
+          <p>Desenvolvido por:</p>
+          <span>Luma, Roberto, Jafet, e Lucas</span>
+        </div>
       </div>
       <Footer />
     </div>

@@ -26,3 +26,10 @@
   padding: 2%;
   width: 100%;
 }
+
+.developed {
+  font-style: italic;
+  margin-top: auto;
+  text-align: center;
+  width: 300px;
+}

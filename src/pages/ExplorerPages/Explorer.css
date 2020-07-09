@@ -16,8 +16,18 @@
   width: 150px;
 }
 
-/*
-button {
-  margin: 50px;
-  width: 200px;
-} */
+.explore-btn {
+  background-image: url('../../images/exploreIcon.svg');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-color: #fdb155;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  margin: 10px;
+  padding: 6px;
+  text-align: end;
+  width: 102%;
+}
+

@@ -12,7 +12,7 @@ const Loading = () => {
   useEffect(() => {
     const icons = [brigadeiro, lasanha, cereja, sushi, vinho];
     const interval = setInterval(() => {
-      setIcon(icons[parseInt(Math.random() * (5), 10)]);
+      setIcon(icons[parseInt(Math.random() * (4), 10)]);
     }, 100);
     return () => clearInterval(interval);
   }, []);

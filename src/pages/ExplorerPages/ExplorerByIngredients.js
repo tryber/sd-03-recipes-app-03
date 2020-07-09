@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import { fetchIngredientsList } from '../../services/theMealAPI';
 import { fetchListDrinksIngredients } from '../../services/theCockTailAPI';
 import Header from '../../components/Header/index';
+import Loading from '../../components/Loading/Loading';
 
 const fetchIngredients = async (pathname, setIngredients, setImgUrl, setNewRoute) => {
   if (pathname === '/explorar/comidas/ingredientes') {
@@ -58,7 +59,7 @@ function ExplorerByIngredients({ location: { pathname } }) {
     fetchIngredients(pathname, setIngredients, setImgUrl, setNewRoute);
   }, []);
 
-  if (!ingredients) return <h1>Loading</h1>;
+  if (!ingredients) return <Loading />;
 
   return (
     <div>

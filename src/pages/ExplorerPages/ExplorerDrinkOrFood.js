@@ -25,6 +25,7 @@ function buttonFoodOrDrink(currentRoute, nextRoute, buttonTitle, testid) {
   return (
     <Link to={`/explorar/${currentRoute}/${nextRoute}`}>
       <button
+        className="explore-btn"
         data-testid={`explore-by-${testid}`}
       >
         {buttonTitle}
@@ -38,6 +39,7 @@ const buttonSuprise = (pathname, currentRoute, randomRecipe) => {
     return (
       <Link to={`/${currentRoute}/${randomRecipe}`}>
         <button
+          className="explore-btn"
           data-testid={'explore-surprise'}
         >
         Me Surpreenda!
@@ -49,6 +51,7 @@ const buttonSuprise = (pathname, currentRoute, randomRecipe) => {
   return (
     <Link to={`/${currentRoute}/${randomRecipe}`}>
       <button
+        className="explore-btn"
         data-testid={'explore-surprise'}
       >
       Me Surpreenda!
