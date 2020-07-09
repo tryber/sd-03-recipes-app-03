@@ -11,8 +11,8 @@ const RecommendedCard = (props) => {
   const { pathname } = useLocation();
 
   const changePageURL = () => {
-    if (pathname.includes("/bebidas")) return "comidas";
-    return "bebidas";
+    if (pathname.includes('/bebidas')) return 'comidas';
+    return 'bebidas';
   };
 
   return (
