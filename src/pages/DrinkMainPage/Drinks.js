@@ -12,7 +12,7 @@ const Drinks = () => {
   useEffect(() => {
     get12Drinks();
   }, []);
-  if (drinksData.length === 0) return <Loading />;
+  if (drinksData === null || drinksData.length === 0) return <Loading />;
   return (
     <div>
       <Header title="Bebidas" searchIcon />
