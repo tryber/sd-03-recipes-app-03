@@ -11,14 +11,20 @@ function Explorar() {
       <div className="explorer-container">
         <Link to="/explorar/comidas">
           <button
+            type="submit"
             data-testid="explore-food"
-          >Explorar Comidas
+            className="buttonExplorer"
+          >
+            Explorar Comidas
           </button>
         </Link>
         <Link to="/explorar/bebidas">
           <button
+            type="submit"
             data-testid="explore-drinks"
-          >Explorar Bebidas
+            className="buttonExplorer"
+          >
+            Explorar Bebidas
           </button>
         </Link>
       </div>
