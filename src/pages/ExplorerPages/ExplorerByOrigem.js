@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/index';
 import { fetchMealsByCountry, fetchAreasList, fetchAllMeals } from '../../services/theMealAPI';
 import garfo from '../../components/Recipes/RecipeCard/garfo.svg';
+import Loading from '../../components/Loading/Loading';
 
 const fetchCountryList = async (setCountryList) => {
   const countryList = await fetchAreasList();
@@ -69,7 +70,7 @@ function ExplorerByArea() {
     fetchMeals(setMeals, option);
   }, [option]);
 
-  if (!countryList) return <h1>Loading</h1>;
+  if (!countryList) return <Loading />;
   return (
     <div>
       <Header title="Explorar Origem" searchIcon />
