@@ -62,12 +62,10 @@ export const fetchIngredientsList = async () => {
   return response.json();
 };
 
-export const fetchMealsByIngredients = (ingredient) => {
-  const urlFindMealsByIngredients = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
-  return fetch(urlFindMealsByIngredients).then((response) => (
-    response.json()
-      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
-  ));
+export const fetchByIngredients = async (type, id) => {
+  const urlFindByIngredients = `https://www.${type}.com/api/json/v1/1/filter.php?i=${id}`;
+  const response = await fetch(urlFindByIngredients);
+  return response.json();
 };
 
 export const fetchMealsByName = (name) => {
