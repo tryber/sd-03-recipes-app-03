@@ -42,16 +42,25 @@ const IngredientsCheckbox = (props) => {
     }
   }, []);
 
+  const verifyCheck = () => {
+    if (
+      JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id].some((e) => e === index)
+    ) {
+      return true
+    }
+    return false
+  }
+
   return (
     <div className="checkbox-container" data-testid={`${index}-ingredient-step`}>
       <div className="checkbox-igredients">
         <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             type="checkbox"
-            checked={checkState}
+            checked={verifyCheck()}
             onChange={() => {
-              riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
               localStorageProgress(englishType, id, index);
+              riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
               finishButton();
             }}
             id={ingredient}
