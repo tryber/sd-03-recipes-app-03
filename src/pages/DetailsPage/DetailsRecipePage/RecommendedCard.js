@@ -25,7 +25,7 @@ const RecommendedCard = (props) => {
               <h5>{alcoholic || category}</h5>
               <h4 data-testid={`${index}-recomendation-title`}>{name}</h4>
             </div>
-            {pathname.includes("/bebidas") ? (
+            {pathname.includes('/bebidas') ? (
               <img src={garfo} alt="garfo" className="img-recommended" />
             ) : (
               <img src={beber} alt="garfo" className="img-recommended" />
