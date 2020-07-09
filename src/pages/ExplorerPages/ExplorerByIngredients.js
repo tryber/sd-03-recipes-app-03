@@ -26,19 +26,19 @@ const fetchIngredients = async (pathname, setIngredients, setImgUrl, setNewRoute
   }
 };
 
-const handle = async (ingredient, lastRoute, setDataByIngr) => {
+const handle = async (ingredient, lastRoute, setDataBy) => {
   if (lastRoute === '/comidas') {
     const type = 'themealdb';
     const dataIngredients = await fetchByIngredients(type, ingredient);
-    setDataByIngr(dataIngredients);
+    setDataBy(dataIngredients);
   } else {
     const type = 'thecocktaildb';
     const dataIngredients = await fetchByIngredients(type, ingredient);
-    setDataByIngr(dataIngredients);
+    setDataBy(dataIngredients);
   }
 };
 
-function renderCards(ingredients, imgUrl, newRoute, setDataByIngr) {
+function renderCards(ingredients, imgUrl, newRoute, setDataBy) {
   console.log('INGREDIENTS ', ingredients);
   return (
     <div className="explorer-container">
@@ -50,8 +50,10 @@ function renderCards(ingredients, imgUrl, newRoute, setDataByIngr) {
             data-testid={`${index}-ingredient-card`}
             className="card-container"
             onClick={() => handle(ele.strIngredient ||
-              ele.strIngredient1, newRoute, setDataByIngr)}
-          >
+              ele.strIngredient1, newRoute, setDataBy)}
+            onKeyDown={() => handle(ele.strIngredient ||
+              ele.strIngredient1, newRoute, setDataBy)}
+            >
             <img
               className="thumbnail"
               data-testid={`${index}-card-img`}
@@ -79,7 +81,7 @@ function ExplorerByIngredients({ location: { pathname } }) {
   const [ingredients, setIngredients] = useState('');
   const [newRoute, setNewRoute] = useState('');
   const [imgUrl, setImgUrl] = useState('');
-  const { dataByIngredients, setDataByIngr } = useContext(FoodContext);
+  const { dataByIngredients, setDataBy } = useContext(FoodContext);
 
   useEffect(() => {
     fetchIngredients(pathname, setIngredients, setImgUrl, setNewRoute);
@@ -91,7 +93,7 @@ function ExplorerByIngredients({ location: { pathname } }) {
   return (
     <div>
       <Header title="Explorar Ingredientes" searchIcon={false} />
-      {renderCards(ingredients, imgUrl, newRoute, setDataByIngr)}
+      {renderCards(ingredients, imgUrl, newRoute, setDataBy)}
       <Footer />
     </div>
   );
