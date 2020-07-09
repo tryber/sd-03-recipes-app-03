@@ -4,9 +4,12 @@
   flex-wrap: wrap;
   height: 90vh;
   justify-content: space-around;
+  border: none;
 }
 
-button, submit { border:none; } 
+button { 
+  border: none;
+}
 
 .card-container {
   background-color: white;
