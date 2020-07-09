@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShareButton from '../Share/ShareButton';
 import FavoriteButton from '../Favorite/FavoriteButton';
 import './ContentHeader.css';
@@ -24,3 +25,7 @@ const ContentHeader = ({ data }) => {
 };
 
 export default ContentHeader;
+
+ContentHeader.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+}
