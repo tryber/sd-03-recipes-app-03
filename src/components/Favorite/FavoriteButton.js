@@ -6,7 +6,7 @@ import FoodContext from '../../pages/FoodMainPage/Context/FoodContext';
 import './FavoriteButton.css';
 
 const recipeObject = (recipe, type) => {
-  if (type === 'comidas') {
+  if (type === 'comida') {
     return {
       id: recipe.id,
       type: 'comida',

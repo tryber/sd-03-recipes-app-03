@@ -6,7 +6,7 @@ export const RecipeInProgressContext = createContext();
 
 export const RecipeInProgressProvider = ({ children }) => {
   const [recipeData, setRecipeData] = useState({});
-  const [recipeInProgress, setRecipeInProgress] = useState({})
+  const [recipeInProgress, setRecipeInProgress] = useState({});
   const [providerRecommended, setProviderRecommended] = useState([]);
 
   const setInProgressFunc = (data) => setRecipeInProgress(destructureAPI(data));

@@ -41,7 +41,7 @@ const RecipeInProgressComponent = () => {
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
-        <ContentHeader />
+        <ContentHeader data={recipeInProgress} />
         <h2>Ingredients</h2>
         {ingredients.map(([ingredient, quantity], index) =>
           <IngredientsCheckbox
