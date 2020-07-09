@@ -17,8 +17,8 @@ const RecipeButtonControl = () => {
     JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id]
     ) {
     return (
-      <div className="recipe-btn-container">
-        <Link data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
+      <div>
+        <Link className="cont-btn" data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
           <button className="cont-btn" type="button">
             Continuar Receita
           </button>
@@ -27,8 +27,8 @@ const RecipeButtonControl = () => {
     );
   }
   return (
-    <div className="recipe-btn-container">
-      <Link data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
+    <div>
+      <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
         <button className="recipe-btn" type="button">
           Iniciar Receita
         </button>

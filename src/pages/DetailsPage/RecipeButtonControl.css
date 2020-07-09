@@ -7,8 +7,8 @@
   font-size: 1.4rem;
   font-weight: 700;
   height: 50px;
+  right: 0.000;
   position: fixed;
-  right: 0.0000px;
   width: 100%;
 }
 
@@ -33,8 +33,4 @@
   font-weight: 700;
   margin-top: 10px;
   text-align: center;
-}
-
-.recipe-btn-container {
-  width: 100%;
 }
