@@ -45,15 +45,14 @@ function renderCards(ingredients, imgUrl, newRoute, setDataByIngredients) {
       {ingredients.map((ele, index) => (
         index < 12 &&
         <Link to={`${newRoute}`}>
-          <div
+          <button
             key={`${ele}-k`}
+            type="submit"
             data-testid={`${index}-ingredient-card`}
             className="card-container"
             onClick={() => handlerFetchIngredients(ele.strIngredient ||
               ele.strIngredient1, newRoute, setDataByIngredients)}
-            onKeyDown={() => handlerFetchIngredients(ele.strIngredient ||
-              ele.strIngredient1, newRoute, setDataByIngredients)}
-            >
+          >
             <img
               className="thumbnail"
               data-testid={`${index}-card-img`}
@@ -70,7 +69,7 @@ function renderCards(ingredients, imgUrl, newRoute, setDataByIngredients) {
                 alt={'garfo'}
               />
             </div>
-          </div>
+          </button>
         </Link>
       ))}
     </div>
