@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import './IngredientsCheckbox.css';
 
 const riskIngredient = (textDecorationState, setCheckState, setTextDecorationState) => {
   if (textDecorationState === 'line-through') {
@@ -43,20 +44,22 @@ const IngredientsCheckbox = (props) => {
   }, []);
 
   return (
-    <div data-testid={`${index}-ingredient-step`}>
-      <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
-        <input
-          type="checkbox"
-          defaultChecked={checkState}
-          onChange={() => {
-            riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
-            localStorageProgress(englishType, id, index);
-            finishButton();
-          }}
-          id={ingredient}
-        />
-        {ingredient} - {quantity}
-      </label>
+    <div className="checkbox-container" data-testid={`${index}-ingredient-step`}>
+      <div className="checkbox-igredients">
+        <label style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
+          <input
+            type="checkbox"
+            defaultChecked={checkState}
+            onChange={() => {
+              riskIngredient(textDecorationState, setCheckState, setTextDecorationState);
+              localStorageProgress(englishType, id, index);
+              finishButton();
+            }}
+            id={ingredient}
+          />
+          {ingredient} - {quantity}
+        </label>
+      </div>
     </div>
   );
 };

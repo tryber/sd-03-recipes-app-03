@@ -39,8 +39,8 @@ const RecipeInProgressComponent = () => {
     return setDisabled(true);
   };
   return (
-    <div className="details-meals-container">
-      <div className="details-meals-content">
+    <div className="in-progress-container">
+      <div className="in-progress-content">
         <ContentHeader data={recipeInProgress} />
         <h2>Ingredients</h2>
         {ingredients.map(([ingredient, quantity], index) =>
@@ -59,6 +59,7 @@ const RecipeInProgressComponent = () => {
         <p className="instructions-container" data-testid="instructions">{instructions}</p>
         <Link to="/receitas-feitas">
           <button
+            className="end-recipe-btn"
             data-testid="finish-recipe-btn"
             type="button"
             disabled={disabled}

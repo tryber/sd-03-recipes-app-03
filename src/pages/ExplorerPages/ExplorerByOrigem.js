@@ -4,6 +4,10 @@ import './Explorer.css';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/index';
 import { fetchMealsByCountry, fetchAreasList, fetchAllMeals } from '../../services/theMealAPI';
+<<<<<<< HEAD
+=======
+import garfo from '../../components/Recipes/RecipeCard/garfo.svg';
+>>>>>>> 87cf3f710e10e1b2c85c72c3d5f4d77e48bfa6c7
 import Loading from '../../components/Loading/Loading';
 
 const fetchCountryList = async (setCountryList) => {
@@ -15,7 +19,6 @@ const fetchMeals = async (setMeals, option) => {
   if (option === 'All') {
     const meals = await fetchAllMeals();
     setMeals(meals.meals);
-    console.log('Meals = ', meals.meals);
   } else {
     const meals = await fetchMealsByCountry(`${option}`);
     setMeals(meals.meals);
@@ -26,24 +29,33 @@ function renderCards(meals) {
   return (
     meals && meals.map((e, index) => (
       index < 12 &&
-      <div
-        className="card-container"
-        data-testid={`${index}-recipe-card`}
-        key={`${e}`}
-      >
-        <Link to={`/comidas/${e.idMeal}`}>
+      <Link to={`/comidas/${e.idMeal}`}>
+        <div
+          className="card-container"
+          data-testid={`${index}-recipe-card`}
+          key={`${e}`}
+        >
           <img
+            className="thumbnail"
             src={`${e.strMealThumb}`}
             alt={`${e.strMeal}`}
             data-testid={`${index}-card-img`}
           />
-          <p
+          <span
+            className={'card-text'}
             data-testid={`${index}-card-name`}
           >
             {`${e.strMeal}`}
-          </p>
-        </Link>
-      </div>
+          </span>
+          <div>
+            <img
+              className="recipe-iconTwo"
+              src={garfo}
+              alt={'garfo'}
+            />
+          </div>
+        </div>
+      </Link>
      ))
   );
 }
@@ -65,8 +77,9 @@ function ExplorerByArea() {
   return (
     <div>
       <Header title="Explorar Origem" searchIcon />
-      <div className="explorer-container">
+      <div className="FlexCenter">
         <select
+          className="SelectOrigem"
           key="area"
           onChange={(e) => setOption(e.target.value)}
           data-testid="explore-by-area-dropdown"
@@ -76,6 +89,8 @@ function ExplorerByArea() {
             <option key={country} value={country} data-testid={`${country}-option`}>{country}</option>
           ))}
         </select>
+      </div>
+      <div className="explorer-container">
         {renderCards(meals)}
       </div>
       <Footer />

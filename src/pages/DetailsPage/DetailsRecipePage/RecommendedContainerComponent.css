@@ -1,8 +1,7 @@
 .recommended-container {
   overflow-x: scroll;
+  padding-bottom: 50px;
   white-space: nowrap;
+  width: 100%;
 }
 
-.recommended-card {
-  display: inline-block;
-}
