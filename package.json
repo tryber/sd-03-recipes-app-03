@@ -1,6 +1,6 @@
 {
   "name": "recipes-app-test",
-  "homepage": "http://cardosolucas1.github.io/sd-03-recipes-app-03",
+  "homepage": "https://cardosolucas1.github.io/sd-03-recipes-app-03",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
