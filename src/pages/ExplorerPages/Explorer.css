@@ -1,13 +1,13 @@
 .explorer-container {
   animation: opacityAnimationz 2s 1 forwards;
+  border: none;
   display: flex;
   flex-wrap: wrap;
   height: 90vh;
   justify-content: space-around;
-  border: none;
 }
 
-button { 
+button {
   border: none;
 }
 
