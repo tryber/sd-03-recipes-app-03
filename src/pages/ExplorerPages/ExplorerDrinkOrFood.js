@@ -24,8 +24,8 @@ function buttonFoodOrDrink(currentRoute, nextRoute, buttonTitle, testid) {
     <Link to={`/explorar/${currentRoute}/${nextRoute}`}>
       <button
         type="submit"
-        data-testid={`explore-by-${testid}`}
         className="buttonExplorer"
+        data-testid={`explore-by-${testid}`}
       >
         {buttonTitle}
       </button>
@@ -52,6 +52,7 @@ const buttonSuprise = (pathname, currentRoute, randomRecipe) => {
     <Link to={`/${currentRoute}/${randomRecipe}`}>
       <button
         type="submit"
+        className="buttonExplorer"
         data-testid={'explore-surprise'}
       >
         Me Surpreenda!
