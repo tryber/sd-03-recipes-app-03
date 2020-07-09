@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link, useLocation } from "react-router-dom";
-import "./RecommendedCard.css";
-import garfo from "../../../components/Recipes/RecipeCard/garfo.svg";
-import beber from "../../../components/Recipes/RecipeCard/beber.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import './RecommendedCard.css';
+import garfo from '../../../components/Recipes/RecipeCard/garfo.svg';
+import beber from '../../../components/Recipes/RecipeCard/beber.svg';
 
 const RecommendedCard = (props) => {
   const { name, category, img, id, alcoholic } = props.recommended;
