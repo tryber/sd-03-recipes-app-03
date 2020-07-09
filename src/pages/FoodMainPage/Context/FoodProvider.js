@@ -9,6 +9,8 @@ const FoodProvider = ({ children }) => {
   const [mealsData, setMealsData] = useState([]);
   const [drinksData, setDrinksData] = useState([]);
   const [storage, setStorage] = useState([]);
+  const [dataByIngredients, setDataByIngredients] = useState([]);
+
   const handleMealsSuccess = (response) => {
     const { meals } = response;
     setMealsData(meals);
@@ -32,8 +34,10 @@ const FoodProvider = ({ children }) => {
     get12Drinks: fetch12Drinks,
     mealsData,
     drinksData,
+    dataByIngredients,
     setMealsData,
     setDrinksData,
+    setDataByIngredients,
     storage,
     setStorage,
     dataBase,
