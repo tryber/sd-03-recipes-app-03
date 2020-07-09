@@ -6,6 +6,8 @@
   justify-content: space-around;
 }
 
+button, submit { border:none; } 
+
 .card-container {
   background-color: white;
   border-radius: 10px;
