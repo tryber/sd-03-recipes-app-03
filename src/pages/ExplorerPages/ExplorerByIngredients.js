@@ -26,19 +26,19 @@ const fetchIngredients = async (pathname, setIngredients, setImgUrl, setNewRoute
   }
 };
 
-const handle = async (ingredient, lastRoute, setDataBy) => {
+const handlerFetchIngredients = async (ingredient, lastRoute, setDataByIngredients) => {
   if (lastRoute === '/comidas') {
     const type = 'themealdb';
     const dataIngredients = await fetchByIngredients(type, ingredient);
-    setDataBy(dataIngredients);
+    setDataByIngredients(dataIngredients);
   } else {
     const type = 'thecocktaildb';
     const dataIngredients = await fetchByIngredients(type, ingredient);
-    setDataBy(dataIngredients);
+    setDataByIngredients(dataIngredients);
   }
 };
 
-function renderCards(ingredients, imgUrl, newRoute, setDataBy) {
+function renderCards(ingredients, imgUrl, newRoute, setDataByIngredients) {
   console.log('INGREDIENTS ', ingredients);
   return (
     <div className="explorer-container">
@@ -49,10 +49,10 @@ function renderCards(ingredients, imgUrl, newRoute, setDataBy) {
             key={`${ele}-k`}
             data-testid={`${index}-ingredient-card`}
             className="card-container"
-            onClick={() => handle(ele.strIngredient ||
-              ele.strIngredient1, newRoute, setDataBy)}
-            onKeyDown={() => handle(ele.strIngredient ||
-              ele.strIngredient1, newRoute, setDataBy)}
+            onClick={() => handlerFetchIngredients(ele.strIngredient ||
+              ele.strIngredient1, newRoute, setDataByIngredients)}
+            onKeyDown={() => handlerFetchIngredients(ele.strIngredient ||
+              ele.strIngredient1, newRoute, setDataByIngredients)}
             >
             <img
               className="thumbnail"
@@ -81,7 +81,7 @@ function ExplorerByIngredients({ location: { pathname } }) {
   const [ingredients, setIngredients] = useState('');
   const [newRoute, setNewRoute] = useState('');
   const [imgUrl, setImgUrl] = useState('');
-  const { dataByIngredients, setDataBy } = useContext(FoodContext);
+  const { dataByIngredients, setDataByIngredients } = useContext(FoodContext);
 
   useEffect(() => {
     fetchIngredients(pathname, setIngredients, setImgUrl, setNewRoute);
@@ -93,7 +93,7 @@ function ExplorerByIngredients({ location: { pathname } }) {
   return (
     <div>
       <Header title="Explorar Ingredientes" searchIcon={false} />
-      {renderCards(ingredients, imgUrl, newRoute, setDataBy)}
+      {renderCards(ingredients, imgUrl, newRoute, setDataByIngredients)}
       <Footer />
     </div>
   );
