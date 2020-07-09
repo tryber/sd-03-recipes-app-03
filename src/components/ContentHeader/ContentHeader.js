@@ -28,4 +28,4 @@ export default ContentHeader;
 
 ContentHeader.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
-}
+};
