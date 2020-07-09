@@ -12,12 +12,10 @@ const fetchRandomRecipes = async (pathname, setRandomRecipe) => {
     const randomRecipe = await fetchRandomMeal();
     const randomId = randomRecipe.meals[0].idMeal;
     setRandomRecipe(randomId);
-    console.log('OQE TEM AQUI : ', randomId);
   } else if (pathname === '/explorar/bebidas') {
     const randomRecipe = await fetchRandomDrink();
     const randomId = randomRecipe.drinks[0].idDrink;
     setRandomRecipe(randomId);
-    console.log('OQE TEM AQUI : ', randomId);
   }
 };
 
@@ -25,6 +23,8 @@ function buttonFoodOrDrink(currentRoute, nextRoute, buttonTitle, testid) {
   return (
     <Link to={`/explorar/${currentRoute}/${nextRoute}`}>
       <button
+        type="submit"
+        className="buttonExplorer"
         data-testid={`explore-by-${testid}`}
       >
         {buttonTitle}
@@ -38,9 +38,11 @@ const buttonSuprise = (pathname, currentRoute, randomRecipe) => {
     return (
       <Link to={`/${currentRoute}/${randomRecipe}`}>
         <button
+          type="submit"
+          className="buttonExplorer"
           data-testid={'explore-surprise'}
         >
-        Me Surpreenda!
+          Me Surpreenda!
         </button>
       </Link>
     );
@@ -49,9 +51,11 @@ const buttonSuprise = (pathname, currentRoute, randomRecipe) => {
   return (
     <Link to={`/${currentRoute}/${randomRecipe}`}>
       <button
+        type="submit"
+        className="buttonExplorer"
         data-testid={'explore-surprise'}
       >
-      Me Surpreenda!
+        Me Surpreenda!
       </button>
     </Link>
   );

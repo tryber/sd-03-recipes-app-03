@@ -1,23 +1,103 @@
 .explorer-container {
-  align-items: center;
+  animation: opacityAnimationz 2s 1 forwards;
+  border: none;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   height: 90vh;
-  padding-top: 50px;
+  justify-content: space-around;
+}
+
+button {
+  border: none;
 }
 
 .card-container {
-  border: 5px solid red;
-  margin: 15px;
-  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgb(105, 103, 103);
+  display: flex;
+  height: 150px;
+  justify-content: space-between;
+  margin: 15px auto;
+  overflow: hidden;
+  text-decoration: none;
+  width: 350px;
 }
 
-.explorer-container img {
+.card-container:hover {
+  box-shadow: 1px 1px 5px rgb(12, 12, 12);
+}
+
+.buttonExplorer {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px #181919 , 0 2px 8px 0 #181919;
+  color: white;
+  font-weight: 700;
+  height: 35px;
+  margin: 1px 4px;
+  padding: 5px;
+  position: relative;
+  top: 55px;
   width: 150px;
 }
 
-/*
-button {
-  margin: 50px;
-  width: 200px;
-} */
+.buttonExplorer:hover {
+  color: #fdb155;
+  font-weight: 700;
+}
+
+.FlexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.SelectOrigem {
+  background-color: rgb(3, 3, 3);
+  border-radius: 10px;
+  color: rgb(255, 253, 253);
+  font-size: 1.3rem;
+  height: 35px;
+  width: 150px;
+}
+
+.SelectOrigem:hover {
+  color: #fdb155;
+  font-size: 1.3rem;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.card-text {
+  color: black;
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.recipe-iconTwo {
+  background-color: #fdb155;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px;
+  position: relative;
+  right: 5px;
+  top: 10px;
+  width: 25px;
+}
+
+@keyframes opacityAnimationz {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

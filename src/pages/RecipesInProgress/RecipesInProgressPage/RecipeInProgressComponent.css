@@ -1,16 +1,28 @@
-.details-meals-container {
+.in-progress-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
-.details-meals-content {
+.in-progress-content {
   border: 1px solid black;
+  max-width: 360px;
   padding: 10px;
-  width: 360px;
+  width: 95%;
 }
 
 .instructions-container {
   text-align: justify;
+}
+
+.end-recipe-btn {
+  background-color: #cb5916;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  height: 50px;
+  width: 100%;
 }
