@@ -1,23 +1,29 @@
 import React from 'react';
-import { cleanup, waitForDomChange } from '@testing-library/react';
+import { cleanup, waitForDomChange, getAllByText } from '@testing-library/react';
 import renderWithContext from './utilitiesTest/renderWithContext';
 import DetailsRecipeContent from '../pages/DetailsPage/DetailsRecipePage/DetailsRecipeContent';
 import meals from '../../cypress/mocks/meals';
 import drinks from '../../cypress/mocks/drinks';
 import mockFetch from './utilitiesTest/mockFetch';
+import LocalStorage from './utilitiesTest/LocalStorage';
 import ShareButton from '../components/Share/ShareButton';
 import FavoriteButton from '../components/Favorite/FavoriteButton';
 
+localStorage = new LocalStorage();
 jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
 
 describe('Testing Details Page', () => {
   afterEach(() => cleanup());
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
   test('testing image', async () => {
     const corba = meals.meals[0]
     const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
     await waitForDomChange();
-
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const imageTest = getByTestId('recipe-photo');
     expect(imageTest).toBeInTheDocument();
     expect(imageTest).toHaveAttribute('src', corba.strMealThumb);
@@ -86,7 +92,7 @@ describe('Testing Details Page', () => {
     }
   });
 
-  test('testing recipe button', async () => {
+  test('testing start recipe button', async () => {
     const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
     await waitForDomChange();
 
@@ -95,4 +101,30 @@ describe('Testing Details Page', () => {
     expect(buttonTest).toHaveTextContent('Iniciar Receita')
     expect(buttonTest).toHaveAttribute('href', '/comidas/52977/in-progress');
   });
+
+  test('testing continue recipe button', async () => {
+    localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 52977: [] }, cocktails: {} }));
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    await waitForDomChange();
+    const buttonTest = getByTestId('start-recipe-btn');
+    expect(buttonTest).toBeInTheDocument();
+    expect(buttonTest).toHaveTextContent('Continuar Receita')
+    expect(buttonTest).toHaveAttribute('href', '/comidas/52977/in-progress');
+  });
 })
+
+describe('Details Page Drinks', () => {
+  afterEach(() => cleanup());
+  test('testing image', async () => {
+    const GG = drinks.drinks[0];
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/bebidas/15997');
+    await waitForDomChange();
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const imageTest = getByTestId('recipe-photo');
+    expect(imageTest).toBeInTheDocument();
+    expect(imageTest).toHaveAttribute('src', GG.strDrinkThumb);
+  });
+})
+
+

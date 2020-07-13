@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, waitForDomChange} from '@testing-library/react';
+import { fireEvent, waitForDomChange, cleanup} from '@testing-library/react';
 import renderWithContext from './utilitiesTest/renderWithContext';
 import LocalStorage from './utilitiesTest/LocalStorage';
 import RecipesInProgressContent from '../pages/RecipesInProgress/RecipesInProgressPage/RecipesInProgressContent';
@@ -10,11 +10,16 @@ localStorage = new LocalStorage();
 jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
 
 describe('Testing In Progress Page', () => {
+  afterEach(cleanup)
   beforeEach(() => {
     localStorage.clear();
     localStorage.setItem(
       'inProgressRecipes',
       JSON.stringify({ meals: { 52977: [] }, cocktails: {} }),
+    );
+    localStorage.setItem(
+      'doneRecipes',
+      JSON.stringify([]),
     );
   });
 
@@ -22,6 +27,8 @@ describe('Testing In Progress Page', () => {
     const corba = meals.meals[0]
     const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
     await waitForDomChange();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    // expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52977');
 
     const imageTest = getByTestId('recipe-photo');
     expect(imageTest).toBeInTheDocument();
@@ -66,6 +73,23 @@ describe('Testing In Progress Page', () => {
 
   });
 
+  test('testing risk ingredient', async () => {
+    const { getAllByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
+    await waitForDomChange();
+
+    for (let i = 0; i < 13; i++) {
+      const ingredientCheckbox = getAllByTestId(`label`)[i];
+      fireEvent.click(ingredientCheckbox);
+      expect(ingredientCheckbox).toHaveStyle('text-decoration: line-through')
+    }
+
+    for (let i = 0; i < 13; i++) {
+      const ingredientCheckbox = getAllByTestId(`label`)[i];
+      fireEvent.click(ingredientCheckbox);
+      expect(ingredientCheckbox).toHaveStyle('text-decoration:')
+    }
+  });
+
   test('testing checked ingredients', async () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 52977: [1, 2, 3] } }));
     const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
@@ -87,8 +111,15 @@ describe('Testing In Progress Page', () => {
   });
 
   test('testing finish button', async () => {
-    const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
+    const { getByTestId, history } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
     await waitForDomChange();
+    const inProgressLocalStorage = JSON.stringify({
+      meals: {
+        52977: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        undefined:[]
+      },
+      cocktails: {},
+    })
 
     const finishButtonTest = getByTestId('finish-recipe-btn');
     expect(finishButtonTest).toBeInTheDocument();
@@ -100,7 +131,31 @@ describe('Testing In Progress Page', () => {
       expect(ingredientCheckbox).toBeChecked();
     }
 
+    expect(localStorage.getItem('inProgressRecipes')).toEqual(inProgressLocalStorage)
     expect(finishButtonTest).toBeInTheDocument();
-    expect(finishButtonTest).not.toHaveAttribute('disabled');
+    expect(finishButtonTest).toBeEnabled();
+
+    fireEvent.click(finishButtonTest);
+    expect(history.location.pathname).toBe('/receitas-feitas')
+
+    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "13 / 07 / 2020", tags: ["Soup"]}]);
+
+    expect(localStorage.getItem('doneRecipes')).toEqual(doneRecipeTest);
+
   });
 })
+
+// describe('testing first render page', () => {
+
+//   test('testing initial localStorage', async () => {
+//     // localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 1}, cocktails: { 1} }));
+//     const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
+//     await waitForDomChange();
+//     const inProgressLocalStorage = JSON.stringify({
+//       meals: {},
+//       cocktails: {},
+//     })
+
+//     expect(localStorage.getItem('inProgressRecipes')).toEqual(inProgressLocalStorage);
+//   })
+// })

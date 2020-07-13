@@ -31,6 +31,7 @@ const IngredientsCheckbox = (props) => {
   const { ingredient, index, quantity, id, finishButton, englishType } = props;
   useEffect(() => {
     if (
+      JSON.parse(localStorage.getItem('inProgressRecipes')) &&
       JSON.parse(localStorage.getItem('inProgressRecipes'))[englishType][id].some((e) => e === index)
     ) {
       finishButton(englishType, id, index);
@@ -50,7 +51,7 @@ const IngredientsCheckbox = (props) => {
   return (
     <div className="checkbox-container" data-testid={`${index}-ingredient-step`}>
       <div className="checkbox-igredients">
-        <label data-testid="label" htmlFor={ingredient}>
+        <label data-testid="label" style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
           <input
             data-testid={`${index}-ingredient-test`}
             type="checkbox"
