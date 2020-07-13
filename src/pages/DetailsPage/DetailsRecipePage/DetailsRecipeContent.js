@@ -4,6 +4,7 @@ import { RecipeInProgressContext } from '../../RecipesInProgress/RecipeInProgres
 import DetailsRecipesPage from './DetailsRecipesPage';
 import { fetchMealById, fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
+import { useParams, useLocation } from 'react-router-dom';
 
 const DetailsRecipeContent = (props) => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -11,7 +12,9 @@ const DetailsRecipeContent = (props) => {
 
   const { setRecipeDataFunc, setProviderRecommendedFunc } = useContext(RecipeInProgressContext);
 
-  const { match: { params: { id } }, location: { pathname } } = props;
+  const { id } = useParams();
+  const { pathname } = useLocation();
+  // const { match: { params: { id } }, location: { pathname } } = props;
 
   const apiRequestSucceedMeal = ({ meals }) => {
     if (!pathname.includes('/comidas')) return setProviderRecommendedFunc(meals);
@@ -53,7 +56,7 @@ const DetailsRecipeContent = (props) => {
 
 export default DetailsRecipeContent;
 
-DetailsRecipeContent.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-  location: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// DetailsRecipeContent.propTypes = {
+//   match: PropTypes.objectOf(PropTypes.any).isRequired,
+//   location: PropTypes.objectOf(PropTypes.any).isRequired,
+// };

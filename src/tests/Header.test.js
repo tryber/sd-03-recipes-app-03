@@ -33,6 +33,7 @@ describe('testing Header Component', () => {
 
     const searchIconTest = getByTestId('search-top-btn');
     expect(searchIconTest).toBeInTheDocument();
+    expect(searchIconTest).toHaveAttribute('src', searchIcon)
   })
 
   test('testing page title', async () => {

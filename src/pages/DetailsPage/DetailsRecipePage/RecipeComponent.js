@@ -23,8 +23,8 @@ const RecipeComponent = () => {
         {recipeData.video ?
           <div>
             <h2>Video</h2>
-            <div data-testid="video">
-              <ReactPlayer url={recipeData.video} height={200} width={'100%'} />
+            <div>
+              <ReactPlayer data-testid="video" url={recipeData.video} height={200} width={'100%'} />
             </div>
           </div>
           :
