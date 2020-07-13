@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useParams, useLocation } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import { RecipeInProgressContext } from '../../RecipesInProgress/RecipeInProgressProvider';
 import DetailsRecipesPage from './DetailsRecipesPage';
 import { fetchMealById, fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
-import { useParams, useLocation } from 'react-router-dom';
 
-const DetailsRecipeContent = (props) => {
+const DetailsRecipeContent = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
