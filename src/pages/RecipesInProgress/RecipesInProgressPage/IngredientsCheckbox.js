@@ -52,7 +52,7 @@ const IngredientsCheckbox = (props) => {
       <div className="checkbox-igredients">
         <label data-testid="label" htmlFor={ingredient}>
           <input
-            data-testid={`${index}-ingredient-step-test`}
+            data-testid={`${index}-ingredient-test`}
             type="checkbox"
             checked={verifyCheck()}
             onChange={() => {

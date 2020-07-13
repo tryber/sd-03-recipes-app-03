@@ -70,10 +70,10 @@ describe('Testing In Progress Page', () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 52977: [1, 2, 3] } }));
     const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
     await waitForDomChange();
-    expect(getByTestId('1-ingredient-step-test')).toBeChecked();
-    expect(getByTestId('2-ingredient-step-test')).toBeChecked();
-    expect(getByTestId('3-ingredient-step-test')).toBeChecked();
-    expect(getByTestId('4-ingredient-step-test')).not.toBeChecked();
+    expect(getByTestId('1-ingredient-test')).toBeChecked();
+    expect(getByTestId('2-ingredient-test')).toBeChecked();
+    expect(getByTestId('3-ingredient-test')).toBeChecked();
+    expect(getByTestId('4-ingredient-test')).not.toBeChecked();
   })
 
   test('testing instructions', async () => {
@@ -95,7 +95,7 @@ describe('Testing In Progress Page', () => {
     expect(finishButtonTest).toHaveAttribute('disabled');
 
     for (let i = 0; i < 13; i++) {
-      const ingredientCheckbox = getByTestId(`${i}-ingredient-step-test`);
+      const ingredientCheckbox = getByTestId(`${i}-ingredient-test`);
       fireEvent.click(ingredientCheckbox);
       expect(ingredientCheckbox).toBeChecked();
     }
