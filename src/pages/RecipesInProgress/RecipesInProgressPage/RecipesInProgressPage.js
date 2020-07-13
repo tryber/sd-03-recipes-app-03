@@ -7,6 +7,7 @@ const RecipesInProgressPage = (props) => {
   const { isLoading, errorMessage } = props.renderControl;
 
   if (isLoading) return <Loading />;
+  // if (errorMessage) return <div data-testid="error-message">Algum erro ocorreu!</div>
   return <div><RecipeInProgressComponent /></div>;
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, waitForDomChange, getAllByText } from '@testing-library/react';
+import { cleanup, waitForDomChange, fireEvent } from '@testing-library/react';
 import renderWithContext from './utilitiesTest/renderWithContext';
 import DetailsRecipeContent from '../pages/DetailsPage/DetailsRecipePage/DetailsRecipeContent';
 import meals from '../../cypress/mocks/meals';
@@ -8,6 +8,9 @@ import mockFetch from './utilitiesTest/mockFetch';
 import LocalStorage from './utilitiesTest/LocalStorage';
 import ShareButton from '../components/Share/ShareButton';
 import FavoriteButton from '../components/Favorite/FavoriteButton';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/shareIcon.svg';
 
 localStorage = new LocalStorage();
 jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
@@ -47,6 +50,41 @@ describe('Testing Details Page', () => {
     const categoryTest = getByTestId('recipe-category');
     expect(categoryTest).toBeInTheDocument();
     expect(categoryTest.innerHTML).toBe(corba.strCategory);
+  });
+
+  test('testing favorite button', async () => {
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    await waitForDomChange();
+    const mockedObj = JSON.stringify([{
+      id: '52977',
+      type: 'comida',
+      area: 'Turkish',
+      category: 'Side',
+      alcoholicOrNot: '',
+      name: 'Corba',
+      image: 'https://www.themealdb.com/images/media/meals/58oia61564916529.jpg'
+    }]);
+    const favoriteButtonTest = getByTestId("favorite-btn");
+    expect(favoriteButtonTest).toHaveAttribute("src", whiteHeartIcon);
+    fireEvent.click(favoriteButtonTest);
+    expect(favoriteButtonTest).toHaveAttribute("src", blackHeartIcon);
+    expect(localStorage.getItem('favoriteRecipes')).toEqual(mockedObj);
+    fireEvent.click(favoriteButtonTest);
+    expect(favoriteButtonTest).toHaveAttribute("src", whiteHeartIcon);
+    expect(localStorage.getItem('favoriteRecipes')).toEqual('[]');
+  })
+
+  test('testing share button', async () => {
+
+    const { getByTestId, getByText } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    await waitForDomChange();
+
+    const shareButton = getByTestId('share-btn');
+    expect(shareButton).toHaveAttribute('src', shareIcon);
+    const shareTest = getByTestId('shareTest');
+    fireEvent.click(shareTest);
+    await waitForDomChange();
+    expect(getByText('Link copiado!')).toBeInTheDocument();
   });
 
   test('testing ingredients', async () => {

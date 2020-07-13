@@ -7,7 +7,7 @@ import meals from '../../cypress/mocks/meals';
 import mockFetch from './utilitiesTest/mockFetch';
 
 localStorage = new LocalStorage();
-jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
+jest.spyOn(global, 'fetch').mockImplementation(mockFetch);
 
 describe('Testing In Progress Page', () => {
   afterEach(cleanup)
@@ -143,19 +143,15 @@ describe('Testing In Progress Page', () => {
     expect(localStorage.getItem('doneRecipes')).toEqual(doneRecipeTest);
 
   });
+
+  test("should handle error", async () => {
+    global.fetch.mockReturnValueOnce(
+      Promise.resolve({ ok: 0, json: () => Promise.resolve("Opss") }),
+    );
+    const { queryByTestId } = renderWithContext(<RecipesInProgressContent />);
+
+    await waitForDomChange();
+
+    expect(queryByTestId('error-message')).toBeInTheDocument()
+  });
 })
-
-// describe('testing first render page', () => {
-
-//   test('testing initial localStorage', async () => {
-//     // localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 1}, cocktails: { 1} }));
-//     const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
-//     await waitForDomChange();
-//     const inProgressLocalStorage = JSON.stringify({
-//       meals: {},
-//       cocktails: {},
-//     })
-
-//     expect(localStorage.getItem('inProgressRecipes')).toEqual(inProgressLocalStorage);
-//   })
-// })

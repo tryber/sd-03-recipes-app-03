@@ -8,11 +8,11 @@ const ShareButton = ({ index, path }) => {
   const [copied, setCopied] = useState(false);
   const handleShareButton = () => {
     navigator.clipboard.writeText(`${window.location.origin}${path}`);
-    setTimeout(() => setCopied(false), 5000);
+    // setTimeout(() => setCopied(false), 5000);
     setCopied(true);
   };
   return (
-    <button className="transparentBtn" onClick={() => handleShareButton()}>
+    <button data-testid="shareTest" className="transparentBtn" onClick={() => handleShareButton()}>
       <img
         data-testid={typeof (index) === 'number' ? `${index}-horizontal-share-btn` : 'share-btn'}
         src={shareIcon} alt="Icone para compartilhar receita"
