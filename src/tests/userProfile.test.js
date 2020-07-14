@@ -53,7 +53,8 @@ describe('User Profile page tests', () => {
       getByTestId('profile-favorite-btn'),
       getByTestId('profile-logout-btn'),
     ]);
-    
+
+    //Não está indo pras rotas certas
     fireEvent.click(btnDoneRecipes);
     expect(history.location.pathname).toBe('/receitas-feitas');
     fireEvent.click(btnFavoriteRecipes);
