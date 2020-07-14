@@ -7,6 +7,7 @@ import RecipesInProgressPage from './RecipesInProgressPage';
 
 const createLocalStorage = (id, type) => {
   if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+    console.log('entre');
     const inProgressRecipes = { cocktails: {}, meals: {} };
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   }
