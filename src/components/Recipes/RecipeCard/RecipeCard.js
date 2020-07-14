@@ -74,7 +74,7 @@ const renderSubtitleCard = (recipe, index, favoriteds) => {
 const RecipeCard = ({ recipe, index, favoriteds }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;
-  if (redirect) return <Redirect to={{ pathname: `/${type}s/${id}` }}/>;
+  if (redirect) return <Redirect to={{ pathname: `/${type}s/${id}` }} />;
   return (
     <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}s/${id}`}>
       {renderThumb(recipe, index, favoriteds, setRedirect)}
