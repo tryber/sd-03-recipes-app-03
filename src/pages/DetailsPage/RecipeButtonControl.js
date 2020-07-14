@@ -10,7 +10,7 @@ const RecipeButtonControl = () => {
   if (
     JSON.parse(localStorage.getItem('doneRecipes')) &&
     JSON.parse(localStorage.getItem('doneRecipes')).some((recipe) => recipe.id === id)
-  ) return <div>Receita Feita!</div>;
+  ) return <div className="done-recipe">Receita Feita!</div>;
   if (
     englishType &&
     JSON.parse(localStorage.getItem('inProgressRecipes')) &&
@@ -18,8 +18,8 @@ const RecipeButtonControl = () => {
     ) {
     return (
       <div>
-        <Link data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
-          <button type="button">
+        <Link className="cont-btn" data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
+          <button className="cont-btn" type="button">
             Continuar Receita
           </button>
         </Link>
@@ -28,8 +28,8 @@ const RecipeButtonControl = () => {
   }
   return (
     <div>
-      <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}/${id}/in-progress`}>
-        <button type="button">
+      <Link className="recipe-btn" data-testid="start-recipe-btn" to={`/${type}s/${id}/in-progress`}>
+        <button className="recipe-btn" type="button">
           Iniciar Receita
         </button>
       </Link>

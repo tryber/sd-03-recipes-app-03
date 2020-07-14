@@ -14,7 +14,7 @@ const RecipeComponent = () => {
   return (
     <div className="details-meals-container">
       <div className="details-meals-content">
-        <ContentHeader />
+        <ContentHeader data={recipeData} />
         <Ingredients />
         <h2>Instructions</h2>
         <div className="instructions-container">
@@ -24,7 +24,7 @@ const RecipeComponent = () => {
           <div>
             <h2>Video</h2>
             <div data-testid="video">
-              <ReactPlayer url={recipeData.video} height={200} width={360} />
+              <ReactPlayer url={recipeData.video} height={200} width={'100%'} />
             </div>
           </div>
           :

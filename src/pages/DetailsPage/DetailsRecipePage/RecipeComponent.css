@@ -7,27 +7,9 @@
 
 .details-meals-content {
   border: 1px solid black;
+  max-width: 360px;
   padding: 10px;
-  width: 360px;
-}
-
-.food-img {
-  height: 200px;
-  width: 350px;
-}
-
-.details-meals-header {
-  display: flex;
-  height: 80px;
-  justify-content: space-between;
-}
-
-.fav-share-button {
-  display: flex;
-}
-
-.details-meals-titles {
-  line-height: 2px;
+  width: 95%;
 }
 
 .instructions-container {

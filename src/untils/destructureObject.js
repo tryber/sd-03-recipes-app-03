@@ -5,14 +5,14 @@ const destructureAPI = (data) => {
   let init = 21;
   let mid = 36;
   let end = 51;
-  let type = 'bebidas';
+  let type = 'bebida';
   let englishType = 'cocktails';
   if (data.idMeal) {
     apiType = 'Meal';
     init = 9;
     mid = 29;
     end = 49;
-    type = 'comidas';
+    type = 'comida';
     englishType = 'meals';
   }
 
