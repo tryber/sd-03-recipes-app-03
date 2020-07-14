@@ -1,19 +1,19 @@
 import React from 'react';
 import { cleanup, waitForDomChange, fireEvent } from '@testing-library/react';
+import { Route } from 'react-router-dom';
 import renderWithContext from './utilitiesTest/renderWithContext';
 import DetailsRecipeContent from '../pages/DetailsPage/DetailsRecipePage/DetailsRecipeContent';
 import meals from '../../cypress/mocks/meals';
 import drinks from '../../cypress/mocks/drinks';
 import mockFetch from './utilitiesTest/mockFetch';
 import LocalStorage from './utilitiesTest/LocalStorage';
-import ShareButton from '../components/Share/ShareButton';
-import FavoriteButton from '../components/Favorite/FavoriteButton';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 
 localStorage = new LocalStorage();
 jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
+
 
 describe('Testing Details Page', () => {
   afterEach(() => cleanup());
@@ -23,9 +23,10 @@ describe('Testing Details Page', () => {
 
   test('testing image', async () => {
     const corba = meals.meals[0]
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
     expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52977');
     expect(fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const imageTest = getByTestId('recipe-photo');
     expect(imageTest).toBeInTheDocument();
@@ -34,7 +35,7 @@ describe('Testing Details Page', () => {
 
   test('testing title', async () => {
     const corba = meals.meals[0]
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     const titleTest = getByTestId('recipe-title');
@@ -44,7 +45,7 @@ describe('Testing Details Page', () => {
 
   test('testing category', async () => {
     const corba = meals.meals[0]
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     const categoryTest = getByTestId('recipe-category');
@@ -53,7 +54,7 @@ describe('Testing Details Page', () => {
   });
 
   test('testing favorite button', async () => {
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
     const mockedObj = JSON.stringify([{
       id: '52977',
@@ -76,7 +77,7 @@ describe('Testing Details Page', () => {
 
   test('testing share button', async () => {
 
-    const { getByTestId, getByText } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId, getByText } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     const shareButton = getByTestId('share-btn');
@@ -89,7 +90,7 @@ describe('Testing Details Page', () => {
 
   test('testing ingredients', async () => {
     const corba = meals.meals[0]
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     for (let i = 0; i < 13; i++) {
@@ -101,7 +102,7 @@ describe('Testing Details Page', () => {
 
   test('testing instructions', async () => {
     const corba = meals.meals[0]
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     const instructionsTest = getByTestId(`instructions`);
@@ -110,7 +111,7 @@ describe('Testing Details Page', () => {
   });
 
   test('testing video', async () => {
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     const videoTest = getByTestId('video');
@@ -119,7 +120,7 @@ describe('Testing Details Page', () => {
 
   test('testing carrosel', async () => {
     const recommendedDrinks = drinks.drinks;
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     for (let i = 0; i < 6; i++) {
@@ -131,7 +132,7 @@ describe('Testing Details Page', () => {
   });
 
   test('testing start recipe button', async () => {
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
 
     const buttonTest = getByTestId('start-recipe-btn');
@@ -142,27 +143,19 @@ describe('Testing Details Page', () => {
 
   test('testing continue recipe button', async () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 52977: [] }, cocktails: {} }));
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
     await waitForDomChange();
     const buttonTest = getByTestId('start-recipe-btn');
     expect(buttonTest).toBeInTheDocument();
     expect(buttonTest).toHaveTextContent('Continuar Receita')
     expect(buttonTest).toHaveAttribute('href', '/comidas/52977/in-progress');
   });
-})
 
-describe('Details Page Drinks', () => {
-  afterEach(() => cleanup());
   test('testing image', async () => {
-    const GG = drinks.drinks[0];
-    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/bebidas/15997');
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/bebidas/178319', '/bebidas/:id');
     await waitForDomChange();
-    expect(fetch).toHaveBeenCalledTimes(2);
-    expect(fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const imageTest = getByTestId('recipe-photo');
     expect(imageTest).toBeInTheDocument();
-    expect(imageTest).toHaveAttribute('src', GG.strDrinkThumb);
+    expect(imageTest).toHaveAttribute('src', 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg');
   });
 })
-
-
