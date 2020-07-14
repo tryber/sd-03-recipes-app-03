@@ -141,6 +141,27 @@ describe('Testing Details Page', () => {
     expect(buttonTest).toHaveAttribute('href', '/comidas/52977/in-progress');
   });
 
+  test('testing done recipe message', async () => {
+    const doneRecipes = JSON.stringify([{
+      id: "52977",
+      type: "comida",
+      area: "Turkish",
+      category: "Side",
+      alcoholicOrNot: "",
+      name: "Corba",
+      image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
+      doneDate: "14 / 07 / 2020",
+      tags: ["Soup"],
+    }])
+    localStorage.setItem('doneRecipes', doneRecipes);
+    const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
+    await waitForDomChange();
+
+    const doneRecipeMessage = getByTestId('done-recipe!');
+    expect(doneRecipeMessage).toBeInTheDocument();
+    expect(doneRecipeMessage).toHaveTextContent('Receita Feita!');
+  });
+
   test('testing continue recipe button', async () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: { 52977: [] }, cocktails: {} }));
     const { getByTestId } = renderWithContext(<DetailsRecipeContent />, '/comidas/52977', '/comidas/:id');
