@@ -54,7 +54,8 @@ const IngredientsCheckbox = (props) => {
         <label
           data-testid="label"
           style={{ textDecoration: textDecorationState }}
-          htmlFor={ingredient}>
+          htmlFor={ingredient}
+        >
           <input
             data-testid={`${index}-ingredient-test`}
             type="checkbox"
