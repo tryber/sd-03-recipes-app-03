@@ -7,10 +7,10 @@ const RecipeButtonControl = () => {
   const { recipeData } = useContext(RecipeInProgressContext);
   const { id, type, englishType } = recipeData;
 
-  // if (
-  //   JSON.parse(localStorage.getItem('doneRecipes')) &&
-  //   JSON.parse(localStorage.getItem('doneRecipes')).some((recipe) => recipe.id === id)
-  // ) return <div className="done-recipe">Receita Feita!</div>;
+  if (
+    JSON.parse(localStorage.getItem('doneRecipes')) &&
+    JSON.parse(localStorage.getItem('doneRecipes')).some((recipe) => recipe.id === id)
+  ) return <div className="done-recipe">Receita Feita!</div>;
   if (
     englishType &&
     JSON.parse(localStorage.getItem('inProgressRecipes')) &&
