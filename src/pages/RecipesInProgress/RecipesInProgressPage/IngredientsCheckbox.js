@@ -51,7 +51,11 @@ const IngredientsCheckbox = (props) => {
   return (
     <div className="checkbox-container" data-testid={`${index}-ingredient-step`}>
       <div className="checkbox-igredients">
-        <label data-testid="label" style={{ textDecoration: textDecorationState }} htmlFor={ingredient}>
+        <label
+          data-testid="label"
+          style={{ textDecoration: textDecorationState }}
+          htmlFor={ingredient}
+        >
           <input
             data-testid={`${index}-ingredient-test`}
             type="checkbox"

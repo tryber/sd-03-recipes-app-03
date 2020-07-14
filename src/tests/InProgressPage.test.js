@@ -4,6 +4,7 @@ import renderWithContext from './utilitiesTest/renderWithContext';
 import LocalStorage from './utilitiesTest/LocalStorage';
 import RecipesInProgressContent from '../pages/RecipesInProgress/RecipesInProgressPage/RecipesInProgressContent';
 import meals from '../../cypress/mocks/meals';
+import drinks from '../../cypress/mocks/drinks';
 import mockFetch from './utilitiesTest/mockFetch';
 
 localStorage = new LocalStorage();
@@ -25,10 +26,10 @@ describe('Testing In Progress Page', () => {
 
   test('testing image', async () => {
     const corba = meals.meals[0]
-    const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
+    const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress', '/comidas/:id/in-progress');
     await waitForDomChange();
     expect(fetch).toHaveBeenCalledTimes(1);
-    // expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52977');
+    expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52977');
 
     const imageTest = getByTestId('recipe-photo');
     expect(imageTest).toBeInTheDocument();
@@ -111,12 +112,11 @@ describe('Testing In Progress Page', () => {
   });
 
   test('testing finish button', async () => {
-    const { getByTestId, history } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress');
+    const { getByTestId, history } = renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress', '/comidas/:id/in-progress');
     await waitForDomChange();
     const inProgressLocalStorage = JSON.stringify({
       meals: {
         52977: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        undefined:[]
       },
       cocktails: {},
     })
@@ -138,20 +138,29 @@ describe('Testing In Progress Page', () => {
     fireEvent.click(finishButtonTest);
     expect(history.location.pathname).toBe('/receitas-feitas')
 
-    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "13 / 07 / 2020", tags: ["Soup"]}]);
+    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "14 / 07 / 2020", tags: ["Soup"]}]);
 
     expect(localStorage.getItem('doneRecipes')).toEqual(doneRecipeTest);
 
   });
 
-  test("should handle error", async () => {
-    global.fetch.mockReturnValueOnce(
-      Promise.resolve({ ok: 0, json: () => Promise.resolve("Opss") }),
-    );
-    const { queryByTestId } = renderWithContext(<RecipesInProgressContent />);
-
+  test('testing drink image', async () => {
+    const GG = drinks.drinks[0]
+    const { getByTestId } = renderWithContext(<RecipesInProgressContent />, '/bebidas/178319/in-progress', '/bebidas/:id/in-progress');
     await waitForDomChange();
 
-    expect(queryByTestId('error-message')).toBeInTheDocument()
+    expect(fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=178319');
+
+    const imageTest = getByTestId('recipe-photo');
+    expect(imageTest).toBeInTheDocument();
+    expect(imageTest).toHaveAttribute('src', 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg');
+  })
+
+  test('testing localStorage', async () => {
+    localStorage.clear();
+    renderWithContext(<RecipesInProgressContent />, '/comidas/52977/in-progress', '/comidas/:id/in-progress');
+    await waitForDomChange();
+    const inProgressRecipes = { cocktails: {}, meals: { 52977: [] }};
+    expect(JSON.parse(localStorage.getItem('inProgressRecipes'))).toEqual(inProgressRecipes)
   });
 })

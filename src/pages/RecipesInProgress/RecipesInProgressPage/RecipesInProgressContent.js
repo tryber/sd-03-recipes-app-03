@@ -30,7 +30,6 @@ const RecipesInProgressContent = () => {
   const { id } = useParams();
 
   const apiRequestSucceedMeal = ({ meals }) => {
-    // console.log(meals)
     setInProgressFunc(meals[0]);
     return setIsLoading(false);
   };

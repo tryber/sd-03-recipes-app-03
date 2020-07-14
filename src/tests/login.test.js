@@ -48,7 +48,7 @@ describe('Login page tests', () => {
 
     const loginButton = getByTestId('login-submit-btn');
     const email = 'email@gmail.com';
-    const password = '1234';
+    const password = '12345';
     const emailInput = getByTestId('email-input');
     const passwordInput = getByTestId('password-input');
 
