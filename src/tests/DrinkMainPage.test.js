@@ -63,11 +63,6 @@ describe('Testing categorie s component', () => {
   });
 
   test('Testing card drink Elements', async () => {
-    global.fetch.mockReturnValueOnce = Promise.resolve({
-      status: 500,
-      ok: false,
-      json: () => Promise.resolve({ message: 'error-message' })
-    });
     const { getByTestId } = renderWithContext(<Drinks />, '/bebidas');
     await waitForDomChange();
     const cocktail = getByTestId('Cocktail-category-filter');

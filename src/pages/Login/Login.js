@@ -34,7 +34,7 @@ const Login = () => {
         <input data-testid="email-input" onChange={(e) => handleEmail(e)} type="email" />
         <label htmlFor="password">Password</label>
         <input data-testid="password-input" onChange={(e) => handlePassword(e)} type="password" />
-        <Link to="/comidas">
+        <Link to={{ pathname: "/comidas" }}>
           <button
             className="submit-btn"
             data-testid="login-submit-btn"
