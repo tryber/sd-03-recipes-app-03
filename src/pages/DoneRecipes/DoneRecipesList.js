@@ -44,14 +44,14 @@ const DoneRecipeList = ({ recipes, type }) => {
     if (type === 'doneRecipes') {
       setDoneRecipes(true);
     }
-    if (type === 'meal') {
-      fetchCategoriesMeals()
-        .then((resp) => setCategories({ recipes: resp.meals }), (resp) => resp);
-    }
-    if (type === 'drink') {
-      fetchCategoriesDrinks()
-      .then((resp) => setCategories({ recipes: resp.drinks }), (resp) => resp);
-    }
+    // if (type === 'meal') {
+    //   fetchCategoriesMeals()
+    //     .then((resp) => setCategories({ recipes: resp.meals }), (resp) => resp);
+    // }
+    // if (type === 'drink') {
+    //   fetchCategoriesDrinks()
+    //   .then((resp) => setCategories({ recipes: resp.drinks }), (resp) => resp);
+    // }
   }, []);
   useEffect(() => {
     setFilteredRecipes(recipes);

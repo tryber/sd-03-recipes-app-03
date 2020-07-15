@@ -19,7 +19,7 @@ const Profile = () => {
     setRote('/');
   };
 
-  if (rote !== '') return <Redirect to={`${rote}`} />;
+  if (rote !== '') return <Redirect to={{ pathname: `${rote}` }} />;
   return (
     <div className="profile b-shadow">
       <Header title="Perfil" searchIcon={false} />

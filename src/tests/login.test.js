@@ -2,7 +2,6 @@ import React from 'react';
 import { fireEvent, cleanup, waitForDomChange } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import renderWithContext from './utilitiesTest/renderWithContext';
-import LocalStorage from './utilitiesTest/LocalStorage';
 import App from '../App';
 
 describe('Login page tests', () => {
@@ -15,7 +14,6 @@ describe('Login page tests', () => {
 
   test('Page should render the e-mail and password inputs', () => {
     const { getByTestId, container } = renderWithContext(<App />);
-
     const emailInput = getByTestId('email-input');
     const passwordInput = getByTestId('password-input');
     const loginButton = getByTestId('login-submit-btn');
