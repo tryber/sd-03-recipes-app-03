@@ -8,7 +8,7 @@ afterEach(cleanup);
 
 describe('Testing Explorer.js and ExplorerDrinkOrFood.js', () => {
   test('Testing Explorer.js', () => {
-    const { getByTestId } = renderWithContext(<Explorer />, '/explorar');
+    const { getByTestId } = renderWithContext(<Explorer />);
 
     const btnExploreMeals = getByTestId('explore-food');
     const btnExploreDrink = getByTestId('explore-drinks');
@@ -17,24 +17,22 @@ describe('Testing Explorer.js and ExplorerDrinkOrFood.js', () => {
     expect(btnExploreDrink).toBeInTheDocument();
   });
 
-  // test('Testing Meals of ExplorerDrinkOrFood.js', () => {
-  //   const { getByTestId, getByText } = renderWithContext(<ExplorerDrinkOrFood />, '/explorar/comidas');
+  test('Testing Meals of ExplorerDrinkOrFood.js', () => {
+    const { getByText } = renderWithContext(<ExplorerDrinkOrFood />, {
+      route: '/explorar/comidas',
+    });
 
-  //   const btnExploreDrink = getByTestId('explore-food');
-  //   fireEvent.click(btnExploreDrink);
+    expect(getByText('Por Ingredientes')).toBeInTheDocument();
+    expect(getByText('Por Local de Origem')).toBeInTheDocument();
+    expect(getByText('Me Surpreenda!')).toBeInTheDocument();
+  });
 
-  //   expect(getByText('Por Ingredientes')).toBeInTheDocument();
-  //   expect(getByText('Por Local de Origem')).toBeInTheDocument();
-  //   expect(getByText('Me Surpreenda!')).toBeInTheDocument();
-  // });
+  test('Testing Drinks of ExplorerDrinkOrFood.js', () => {
+    const { getByText } = renderWithContext(<ExplorerDrinkOrFood />, {
+      route: '/explorar/bebidas',
+    });
 
-  // test('Testing Drinks of ExplorerDrinkOrFood.js', () => {
-  //   const { getByTestId, getByText } = renderWithContext(<ExplorerDrinkOrFood />, '/explorar/drinks');
-
-  //   const btnExploreDrink = getByTestId('explore-drinks');
-  //   fireEvent.click(btnExploreDrink);
-
-  //   expect(getByText('Me Surpreenda!')).toBeInTheDocument();
-  //   expect(getByText('Por Ingredientes')).toBeInTheDocument();
-  // });
+    expect(getByText('Me Surpreenda!')).toBeInTheDocument();
+    expect(getByText('Por Ingredientes')).toBeInTheDocument();
+  });
 });
