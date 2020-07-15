@@ -7,18 +7,6 @@ import App from '../App';
 
 describe('Login page tests', () => {
   afterEach(() => cleanup());
-
-  // test('Verify if localStore was setting', async () => {
-  //   const { getByText } = renderWithContext(<App />);
-  //   const submitBtn = getByText('Submit');
-  //   fireEvent.click(submitBtn);
-  //   await waitForDomChange();
-  //   expect(JSON.parse(localStorage.getItem('mealsToken'))).toBe(1);
-  //   expect(JSON.parse(localStorage.getItem('cocktailsToken'))).toBe(1);
-  //   expect(JSON.parse(localStorage.getItem('user')).email).toBe('test@test.com');
-
-  // });
-
   test('Verify if the login page has a Login text in it', () => {
     const { getByText } = renderWithContext(<App />);
     const login = getByText(/Welcome/i);
