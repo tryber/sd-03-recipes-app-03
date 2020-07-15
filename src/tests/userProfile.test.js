@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, cleanup, waitForElement, waitForDomChange } from '@testing-library/react';
+import { fireEvent, cleanup, waitForElement } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import renderWithContext from './utilitiesTest/renderWithContext';
 import UserProfile from '../pages/UserProfile/Profile';
@@ -40,12 +40,9 @@ describe('User Profile page tests', () => {
     const { getByTestId, history } = renderWithContext(<UserProfile />, '/perfil');
 
     const btnDoneRecipes = getByTestId('profile-done-btn');
-    const btnFavoriteRecipes = getByTestId('profile-favorite-btn');
-    const btnLogout = getByTestId('profile-logout-btn');
 
     fireEvent.click(btnDoneRecipes);
     expect(history.location.pathname).toBe('/receitas-feitas');
-
   });
 
   test('Verify if the button favorite recipe redirect to the right route', async () => {
@@ -57,7 +54,6 @@ describe('User Profile page tests', () => {
 
     fireEvent.click(btnFavoriteRecipes);
     expect(history.location.pathname).toBe('/receitas-favoritas');
-
   });
 
   test('Verify if the button favorite recipe redirect to the right route', async () => {

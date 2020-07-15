@@ -81,9 +81,9 @@ describe('Testing Details Page', () => {
     const shareButton = getByTestId('share-btn');
     expect(shareButton).toHaveAttribute('src', shareIcon);
     const shareTest = getByTestId('shareTest');
-    // fireEvent.click(shareTest);
-    // await waitForDomChange();
-    // expect(getByText('Link copiado!')).toBeInTheDocument();
+    fireEvent.click(shareTest);
+    await waitForDomChange();
+    expect(getByText('Link copiado!')).toBeInTheDocument();
   });
 
   test('testing ingredients', async () => {
