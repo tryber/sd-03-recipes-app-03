@@ -13,13 +13,13 @@ const renderWithContext = (children, route = '/', path = '/') => {
     ...render(
       <Router history={history}>
         <Route path={path}>
-          <RecipeInProgressProvider>
-            <FoodProvider>
-              <SearchBarProvider>
+          <SearchBarProvider>
+            <RecipeInProgressProvider>
+              <FoodProvider>
                 {children}
-              </SearchBarProvider>
-            </FoodProvider>
-          </RecipeInProgressProvider>
+              </FoodProvider>
+            </RecipeInProgressProvider>
+          </SearchBarProvider>
         </Route>
       </Router>,
     ),
