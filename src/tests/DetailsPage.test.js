@@ -6,12 +6,10 @@ import DetailsRecipeContent from '../pages/DetailsPage/DetailsRecipePage/Details
 import meals from '../../cypress/mocks/meals';
 import drinks from '../../cypress/mocks/drinks';
 import mockFetch from './utilitiesTest/mockFetch';
-import LocalStorage from './utilitiesTest/LocalStorage';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 
-localStorage = new LocalStorage();
 jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
 
 

@@ -1,13 +1,11 @@
 import React from 'react';
 import { fireEvent, waitForDomChange, cleanup} from '@testing-library/react';
 import renderWithContext from './utilitiesTest/renderWithContext';
-import LocalStorage from './utilitiesTest/LocalStorage';
 import RecipesInProgressContent from '../pages/RecipesInProgress/RecipesInProgressPage/RecipesInProgressContent';
 import meals from '../../cypress/mocks/meals';
 import drinks from '../../cypress/mocks/drinks';
 import mockFetch from './utilitiesTest/mockFetch';
 
-localStorage = new LocalStorage();
 jest.spyOn(global, 'fetch').mockImplementation(mockFetch);
 
 describe('Testing In Progress Page', () => {
