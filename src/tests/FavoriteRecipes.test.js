@@ -56,4 +56,18 @@ describe('Testing Drink Main Page', () => {
     renderWithContext(<FavoriteRecipes />, '/receitas-favoritas');
     expect(JSON.parse(localStorage.getItem('favoriteRecipes'))).toEqual([]);
   });
+
+  test('', () => {
+    const { getByTestId } = renderWithContext(<FavoriteRecipes />, '/receitas-favoritas');
+    const foodFilter = getByTestId('filter-by-food-btn');
+    fireEvent.click(foodFilter);
+    const title = getByTestId('0-horizontal-name');
+    const img = getByTestId('0-horizontal-image');
+    const infomations = getByTestId('0-horizontal-top-text');
+    const date = getByTestId('0-horizontal-top-text');
+    expect(title).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg");
+    expect(infomations).toBeInTheDocument();
+    expect(date).toBeInTheDocument();
+  })
 });

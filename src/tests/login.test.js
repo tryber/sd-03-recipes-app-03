@@ -6,7 +6,6 @@ import App from '../App';
 
 describe('Login page tests', () => {
   afterEach(() => cleanup());
-
   test('Verify if the login page has a Login text in it', () => {
     const { getByText } = renderWithContext(<App />);
     const login = getByText(/Welcome/i);
@@ -15,7 +14,6 @@ describe('Login page tests', () => {
 
   test('Page should render the e-mail and password inputs', () => {
     const { getByTestId, container } = renderWithContext(<App />);
-
     const emailInput = getByTestId('email-input');
     const passwordInput = getByTestId('password-input');
     const loginButton = getByTestId('login-submit-btn');
