@@ -1,17 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useParams, useLocation } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import { RecipeInProgressContext } from '../../RecipesInProgress/RecipeInProgressProvider';
 import DetailsRecipesPage from './DetailsRecipesPage';
 import { fetchMealById, fetchMeals } from '../../../services/theMealAPI';
 import { fetchDrinkById, fetchDrinks } from '../../../services/theCockTailAPI';
 
-const DetailsRecipeContent = (props) => {
+const DetailsRecipeContent = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const { setRecipeDataFunc, setProviderRecommendedFunc } = useContext(RecipeInProgressContext);
 
-  const { match: { params: { id } }, location: { pathname } } = props;
+  const { id } = useParams();
+  const { pathname } = useLocation();
+  // const { match: { params: { id } }, location: { pathname } } = props;
 
   const apiRequestSucceedMeal = ({ meals }) => {
     if (!pathname.includes('/comidas')) return setProviderRecommendedFunc(meals);
@@ -53,7 +56,7 @@ const DetailsRecipeContent = (props) => {
 
 export default DetailsRecipeContent;
 
-DetailsRecipeContent.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-  location: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// DetailsRecipeContent.propTypes = {
+//   match: PropTypes.objectOf(PropTypes.any).isRequired,
+//   location: PropTypes.objectOf(PropTypes.any).isRequired,
+// };

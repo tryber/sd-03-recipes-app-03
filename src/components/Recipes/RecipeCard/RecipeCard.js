@@ -12,7 +12,10 @@ const renderThumb = (recipe, index, favoriteds, setRedirect) => {
   const { img, name } = recipe;
   return (
     <div data-testid={`${index}-recipe-card`}>
-      <button onClick={() => setRedirect(true)} className="buttonCard">
+      <button
+        data-testid={`${index}-redirect-btn`}
+        onClick={() => setRedirect(true)} className="buttonCard"
+      >
         <img
           className="thumbnail"
           alt={`imagem de uma refeição: ${name}`}
@@ -29,7 +32,10 @@ const renderCardInfo = (recipe, index, favoriteds, setRedirect) => {
   return (
     <React.Fragment>
       <div className="card-title">
-        <button onClick={() => setRedirect(true)} className="buttonCard">
+        <button
+          data-testid={`${index}-redirect-btn`}
+          onClick={() => setRedirect(true)} className="buttonCard"
+        >
           <span
             data-testid={favoriteds ? `${index}-horizontal-name` : `${index}-card-name`}
           >{name}
@@ -68,7 +74,7 @@ const renderSubtitleCard = (recipe, index, favoriteds) => {
 const RecipeCard = ({ recipe, index, favoriteds }) => {
   const [redirect, setRedirect] = useState(false);
   const { id, type } = recipe;
-  if (redirect) return <Redirect to={!favoriteds ? '#' : `/${type}s/${id}`} />;
+  if (redirect) return <Redirect to={{ pathname: `/${type}s/${id}` }} />;
   return (
     <Link className="card b-shadow" to={favoriteds ? '#' : `/${type}s/${id}`}>
       {renderThumb(recipe, index, favoriteds, setRedirect)}

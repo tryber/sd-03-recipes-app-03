@@ -4,10 +4,9 @@ import RecipeComponent from './RecipeComponent';
 import Loading from '../../../components/Loading/Loading';
 
 const DetailsRecipesPage = (props) => {
-  const { isLoading, errorMessage } = props.renderControl;
+  const { isLoading } = props.renderControl;
 
   if (isLoading) return <Loading />;
-  if (errorMessage !== '') return <span>Algum Error Ocorreu</span>;
   return <div><RecipeComponent /></div>;
 };
 
