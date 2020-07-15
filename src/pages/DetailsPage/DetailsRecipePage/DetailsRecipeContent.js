@@ -23,6 +23,7 @@ const DetailsRecipeContent = () => {
   };
 
   const apiRequestSucceedDrink = ({ drinks }) => {
+    console.log(drinks);
     if (!pathname.includes('/bebidas')) return setProviderRecommendedFunc(drinks);
     setRecipeDataFunc(drinks[0]);
     return setIsLoading(false);
