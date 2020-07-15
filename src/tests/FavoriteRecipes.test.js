@@ -1,10 +1,7 @@
 import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithContext from './utilitiesTest/renderWithContext';
-import LocalStorage from './utilitiesTest/LocalStorage';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
-
-localStorage = new LocalStorage();
 
 const favoriteRecipes = [
   {
