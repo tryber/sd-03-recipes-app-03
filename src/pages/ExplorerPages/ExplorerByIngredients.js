@@ -39,7 +39,6 @@ const handlerFetchIngredients = async (ingredient, lastRoute, setDataByIngredien
 };
 
 function renderCards(ingredients, imgUrl, newRoute, setDataByIngredients) {
-  // console.log('INGREDIENTS ', ingredients);
   return (
     <div className="explorer-container">
       {ingredients.map((ele, index) => (
@@ -88,7 +87,6 @@ function ExplorerByIngredients() {
 
   if (!ingredients) return <Loading />;
 
-  // console.log('oqe tem', dataByIngredients);
   return (
     <div>
       <Header title="Explorar Ingredientes" searchIcon={false} />
