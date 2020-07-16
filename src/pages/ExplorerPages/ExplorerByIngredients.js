@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FoodContext from '../FoodMainPage/Context/FoodContext';
 import './Explorer.css';
@@ -39,7 +39,7 @@ const handlerFetchIngredients = async (ingredient, lastRoute, setDataByIngredien
 };
 
 function renderCards(ingredients, imgUrl, newRoute, setDataByIngredients) {
-  console.log('INGREDIENTS ', ingredients);
+  // console.log('INGREDIENTS ', ingredients);
   return (
     <div className="explorer-container">
       {ingredients.map((ele, index) => (
@@ -76,19 +76,19 @@ function renderCards(ingredients, imgUrl, newRoute, setDataByIngredients) {
   );
 }
 
-function ExplorerByIngredients({ location: { pathname } }) {
+function ExplorerByIngredients() {
   const [ingredients, setIngredients] = useState('');
   const [newRoute, setNewRoute] = useState('');
   const [imgUrl, setImgUrl] = useState('');
   const { dataByIngredients, setDataByIngredients } = useContext(FoodContext);
-
+  const { pathname } = useLocation();
   useEffect(() => {
     fetchIngredients(pathname, setIngredients, setImgUrl, setNewRoute);
   }, []);
 
   if (!ingredients) return <Loading />;
 
-  console.log('oqe tem', dataByIngredients);
+  // console.log('oqe tem', dataByIngredients);
   return (
     <div>
       <Header title="Explorar Ingredientes" searchIcon={false} />

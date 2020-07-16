@@ -136,7 +136,7 @@ describe('Testing In Progress Page', () => {
     fireEvent.click(finishButtonTest);
     expect(history.location.pathname).toBe('/receitas-feitas')
 
-    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "14 / 07 / 2020", tags: ["Soup"]}]);
+    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "15 / 07 / 2020", tags: ["Soup"]}]);
 
     expect(localStorage.getItem('doneRecipes')).toEqual(doneRecipeTest);
 
