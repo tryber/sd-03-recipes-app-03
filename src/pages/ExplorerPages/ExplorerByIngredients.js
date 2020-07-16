@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import FoodContext from '../FoodMainPage/Context/FoodContext';
 import './Explorer.css';
 import Footer from '../../components/Footer/Footer';
@@ -80,7 +80,7 @@ function ExplorerByIngredients() {
   const [ingredients, setIngredients] = useState('');
   const [newRoute, setNewRoute] = useState('');
   const [imgUrl, setImgUrl] = useState('');
-  const { dataByIngredients, setDataByIngredients } = useContext(FoodContext);
+  const { setDataByIngredients } = useContext(FoodContext);
   const { pathname } = useLocation();
   useEffect(() => {
     fetchIngredients(pathname, setIngredients, setImgUrl, setNewRoute);
@@ -98,10 +98,10 @@ function ExplorerByIngredients() {
   );
 }
 
-ExplorerByIngredients.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// ExplorerByIngredients.propTypes = {
+//   location: PropTypes.shape({
+//     pathname: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 export default ExplorerByIngredients;
