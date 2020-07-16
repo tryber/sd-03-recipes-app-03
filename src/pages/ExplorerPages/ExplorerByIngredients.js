@@ -7,7 +7,10 @@ import Footer from '../../components/Footer/Footer';
 import { fetchIngredientsList, fetchByIngredients } from '../../services/theMealAPI';
 import { fetchListDrinksIngredients } from '../../services/theCockTailAPI';
 import Header from '../../components/Header/index';
+<<<<<<< HEAD
+=======
 import garfo from '../../components/Recipes/RecipeCard/garfo.svg';
+>>>>>>> 87cf3f710e10e1b2c85c72c3d5f4d77e48bfa6c7
 import Loading from '../../components/Loading/Loading';
 
 const fetchIngredients = async (pathname, setIngredients, setImgUrl, setNewRoute) => {

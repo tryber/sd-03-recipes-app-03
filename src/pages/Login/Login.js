@@ -9,9 +9,7 @@ const Login = () => {
   const { email, password } = disabled;
 
   const handleEmail = ({ target: { value } }) => {
-    const regExr = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
-    const input = regExr.test(value) ? value : '';
-    return setDisabled((currentState) => ({ ...currentState, email: input }));
+    return setDisabled((currentState) => ({ ...currentState, email: value }));
   };
 
   const handlePassword = ({ target: { value } }) => {
@@ -31,7 +29,7 @@ const Login = () => {
         <div className="form-background" />
         <Heading title="Welcome" />
         <label htmlFor="email">E-mail</label>
-        <input data-testid="email-input" onChange={(e) => handleEmail(e)} type="email" />
+        <input type="email" data-testid="email-input" onChange={(e) => handleEmail(e)} type="email" />
         <label htmlFor="password">Password</label>
         <input data-testid="password-input" onChange={(e) => handlePassword(e)} type="password" />
         <Link to={{ pathname: '/comidas' }}>

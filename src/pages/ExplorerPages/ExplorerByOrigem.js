@@ -4,7 +4,10 @@ import './Explorer.css';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/index';
 import { fetchMealsByCountry, fetchAreasList, fetchAllMeals } from '../../services/theMealAPI';
+<<<<<<< HEAD
+=======
 import garfo from '../../components/Recipes/RecipeCard/garfo.svg';
+>>>>>>> 87cf3f710e10e1b2c85c72c3d5f4d77e48bfa6c7
 import Loading from '../../components/Loading/Loading';
 
 const fetchCountryList = async (setCountryList) => {
