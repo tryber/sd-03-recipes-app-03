@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup } from '@testing-library/react';
-import renderWithRouter from './renderWithRouter';
+import renderWithContext from './utilitiesTest/renderWithContext';
 import Header from '../components/Header/index';
 import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
@@ -11,7 +11,7 @@ afterEach(() => {
 
 describe('testing Header Component', () => {
   test('testing profile icon', async () => {
-    const { getByTestId } = renderWithRouter(
+    const { getByTestId } = renderWithContext(
       <Header
         title={'Comidas'}
         searchIcon={true}
@@ -24,7 +24,7 @@ describe('testing Header Component', () => {
   })
 
   test('testing search icon', async () => {
-    const { getByTestId } = renderWithRouter(
+    const { getByTestId } = renderWithContext(
       <Header
         title={'Comidas'}
         searchIcon={true}
@@ -37,7 +37,7 @@ describe('testing Header Component', () => {
   })
 
   test('testing page title', async () => {
-    const { getByTestId } = renderWithRouter(
+    const { getByTestId } = renderWithContext(
       <Header
         title={'Comidas'}
         searchIcon={true}
@@ -46,7 +46,7 @@ describe('testing Header Component', () => {
 
     const pageTitle = getByTestId('page-title');
     expect(pageTitle).toBeInTheDocument();
-    expect(pageTitle.innerHTML).toMatch('Comidas')
+    expect(pageTitle.innerHTML).toMatch('Comidas');
   })
 });
 

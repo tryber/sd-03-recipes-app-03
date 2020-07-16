@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { fetchCategoriesMeals } from '../../services/theMealAPI';
-import { fetchCategoriesDrinks } from '../../services/theCockTailAPI';
+// import { fetchCategoriesMeals } from '../../services/theMealAPI';
+// import { fetchCategoriesDrinks } from '../../services/theCockTailAPI';
 import ListCategories from '../../components/Categories/ListCategories';
 import DoneRecipeCard from '../../components/DoneRecipeCard';
 import './style.css';
@@ -37,21 +37,21 @@ const renderCategories = (setFilteredRecipes, recipes) => {
 };
 
 const DoneRecipeList = ({ recipes, type }) => {
-  const [categories, setCategories] = useState({ recipes: [] });
+  const [categories] = useState({ recipes: [] });
   const [doneRecipes, setDoneRecipes] = useState(false);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   useEffect(() => {
     if (type === 'doneRecipes') {
       setDoneRecipes(true);
     }
-    if (type === 'meal') {
-      fetchCategoriesMeals()
-        .then((resp) => setCategories({ recipes: resp.meals }), (resp) => resp);
-    }
-    if (type === 'drink') {
-      fetchCategoriesDrinks()
-      .then((resp) => setCategories({ recipes: resp.drinks }), (resp) => resp);
-    }
+    // if (type === 'meal') {
+    //   fetchCategoriesMeals()
+    //     .then((resp) => setCategories({ recipes: resp.meals }), (resp) => resp);
+    // }
+    // if (type === 'drink') {
+    //   fetchCategoriesDrinks()
+    //   .then((resp) => setCategories({ recipes: resp.drinks }), (resp) => resp);
+    // }
   }, []);
   useEffect(() => {
     setFilteredRecipes(recipes);

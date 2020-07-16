@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import './Explorer.css';
 import Header from '../../components/Header/index';
@@ -61,9 +61,9 @@ const buttonSuprise = (pathname, currentRoute, randomRecipe) => {
   );
 };
 
-function ExplorerDrinkOrFoods({ location: { pathname } }) {
+function ExplorerDrinkOrFoods() {
   const [randomRecipe, setRandomRecipe] = useState('');
-
+  const { pathname } = useLocation();
   useEffect(() => {
     fetchRandomRecipes(pathname, setRandomRecipe);
   }, []);
@@ -92,10 +92,10 @@ function ExplorerDrinkOrFoods({ location: { pathname } }) {
   );
 }
 
-ExplorerDrinkOrFoods.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// ExplorerDrinkOrFoods.propTypes = {
+//   location: PropTypes.shape({
+//     pathname: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 export default ExplorerDrinkOrFoods;

@@ -1,13 +1,11 @@
 import React from 'react';
 import { fireEvent, waitForDomChange, cleanup} from '@testing-library/react';
 import renderWithContext from './utilitiesTest/renderWithContext';
-import LocalStorage from './utilitiesTest/LocalStorage';
 import RecipesInProgressContent from '../pages/RecipesInProgress/RecipesInProgressPage/RecipesInProgressContent';
 import meals from '../../cypress/mocks/meals';
 import drinks from '../../cypress/mocks/drinks';
 import mockFetch from './utilitiesTest/mockFetch';
 
-localStorage = new LocalStorage();
 jest.spyOn(global, 'fetch').mockImplementation(mockFetch);
 
 describe('Testing In Progress Page', () => {
@@ -138,7 +136,7 @@ describe('Testing In Progress Page', () => {
     fireEvent.click(finishButtonTest);
     expect(history.location.pathname).toBe('/receitas-feitas')
 
-    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "14 / 07 / 2020", tags: ["Soup"]}]);
+    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "15 / 07 / 2020", tags: ["Soup"]}]);
 
     expect(localStorage.getItem('doneRecipes')).toEqual(doneRecipeTest);
 
