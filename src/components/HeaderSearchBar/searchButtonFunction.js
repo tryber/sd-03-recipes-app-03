@@ -8,7 +8,7 @@ const search = {
 
 const pushRoute = (history, type, data) => {
   if (type === 'meal' && data.meals.length === 1) {
-    history.push(`/comidas/${data.meals[0].idMeal}`);
+    history.push({ pathname: `/comidas/${data.meals[0].idMeal}` });
   }
   if (type === 'cocktail' && data.drinks.length === 1) {
     history.push(`/bebidas/${data.drinks[0].idDrink}`);

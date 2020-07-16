@@ -1,19 +1,9 @@
 import React from 'react';
 import { fireEvent, cleanup, waitForElement } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import renderWithRouter from './renderWithRouter';
+import renderWithContext from './utilitiesTest/renderWithContext';
 import UserProfile from '../pages/UserProfile/Profile';
 
-class LocalStorageMock {
-  constructor(obj = {}) { this.store = obj; }
-
-  setItem(key, val) { this.store[key] = val.toString(); }
-  getItem(key) { return this.store[key]; }
-  removeItem(key) { delete this.store[key]; }
-  clear() { this.store = {}; }
-}
-
-window.localStorage = new LocalStorageMock();
 
 describe('User Profile page tests', () => {
   afterEach(cleanup);
@@ -21,7 +11,7 @@ describe('User Profile page tests', () => {
 
   test('Shoul have the right header title', async () => {
     localStorage.setItem('user', JSON.stringify({ email: 'email@gmail.com' }));
-    const { getByText } = renderWithRouter(<UserProfile />, { route: '/perfil' });
+    const { getByText } = renderWithContext(<UserProfile />, { route: '/perfil' });
     const [profileText] = await waitForElement(() => [getByText(/Perfil/i)]);
 
     expect(profileText).toBeInTheDocument();
@@ -29,7 +19,7 @@ describe('User Profile page tests', () => {
 
   test('Verify the components in the page', async () => {
     localStorage.setItem('user', JSON.stringify({ email: 'email@gmail.com' }));
-    const { getByTestId, getByText } = renderWithRouter(<UserProfile />, { route: '/perfil' });
+    const { getByTestId, getByText } = renderWithContext(<UserProfile />, { route: '/perfil' });
     const [email, doneRecipes, favoriteRecipes, logoutButton] = await waitForElement(() => [
       getByTestId('profile-email'),
       getByTestId('profile-done-btn'),
@@ -45,20 +35,33 @@ describe('User Profile page tests', () => {
     });
   });
 
-  test('Verify if the buttons redirect to the right route', async () => {
+  test('Verify if the button done recipe redirect to the right route', async () => {
     localStorage.setItem('user', JSON.stringify({ email: 'email@gmail.com' }));
-    const { getByTestId, history } = renderWithRouter(<UserProfile />, { route: '/perfil' });
-    const [btnDoneRecipes, btnFavoriteRecipes, btnLogout] = await waitForElement(() => [
-      getByTestId('profile-done-btn'),
-      getByTestId('profile-favorite-btn'),
-      getByTestId('profile-logout-btn'),
-    ]);
+    const { getByTestId, history } = renderWithContext(<UserProfile />, '/perfil');
 
-    //Não está indo pras rotas certas
+    const btnDoneRecipes = getByTestId('profile-done-btn');
+
     fireEvent.click(btnDoneRecipes);
     expect(history.location.pathname).toBe('/receitas-feitas');
+  });
+
+  test('Verify if the button favorite recipe redirect to the right route', async () => {
+    localStorage.setItem('user', JSON.stringify({ email: 'email@gmail.com' }));
+    const { getByTestId, history } = renderWithContext(<UserProfile />, '/perfil');
+
+    const btnFavoriteRecipes = getByTestId('profile-favorite-btn');
+    const btnLogout = getByTestId('profile-logout-btn');
+
     fireEvent.click(btnFavoriteRecipes);
     expect(history.location.pathname).toBe('/receitas-favoritas');
+  });
+
+  test('Verify if the button favorite recipe redirect to the right route', async () => {
+    localStorage.setItem('user', JSON.stringify({ email: 'email@gmail.com' }));
+    const { getByTestId, history } = renderWithContext(<UserProfile />, '/perfil');
+
+    const btnLogout = getByTestId('profile-logout-btn');
+
     fireEvent.click(btnLogout);
     expect(history.location.pathname).toBe('/');
   });
