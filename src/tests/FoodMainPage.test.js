@@ -6,9 +6,9 @@ import breakfastMeals from '../../cypress/mocks/breakfastMeals';
 import mealCategories from '../../cypress/mocks/mealCategories';
 import meals from '../../cypress/mocks/meals';
 import Food from '../pages/FoodMainPage/Foods';
-import { act } from 'react-dom/test-utils';
 
 jest.spyOn(window, 'fetch').mockImplementation(mockFetch);
+
 
 describe('Testing Food Main Page', () => {
   afterEach(() => cleanup());
@@ -145,6 +145,23 @@ describe('Testing categorie s component', () => {
     fireEvent.click(ingredientsBtn);
     fireEvent.click(execBtn);
     expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/filter.php?i=lemon')
+    // await waitForDomChange();
+
+  })
+
+  test('testing alert', async () => {
+    const { getByTestId, history } = renderWithContext(<Food />, '/comidas');
+    await waitForDomChange();
+    const searchbtn = getByTestId('search-top-btn');
+    fireEvent.click(searchbtn);
+    const searchInput = getByTestId('search-input');
+    const ingredientsBtn = getByTestId('ingredient-search-radio');
+    const execBtn = getByTestId('exec-search-btn');
+    fireEvent.change(searchInput, { target: { value: 'kkkk' } });
+    fireEvent.click(ingredientsBtn);
+    fireEvent.click(execBtn);
+    expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/filter.php?i=kkkk');
+
     // await waitForDomChange();
 
   })
