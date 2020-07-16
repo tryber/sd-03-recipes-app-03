@@ -51,6 +51,8 @@ describe('Testing In Progress Page', () => {
 
     const categoryTest = getByTestId('recipe-category');
     expect(categoryTest).toBeInTheDocument();
+    const titleTest = getByTestId('recipe-title');
+    expect(titleTest).toBeInTheDocument();
     expect(categoryTest.innerHTML).toBe(corba.strCategory);
   });
 
@@ -136,7 +138,7 @@ describe('Testing In Progress Page', () => {
     fireEvent.click(finishButtonTest);
     expect(history.location.pathname).toBe('/receitas-feitas')
 
-    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "15 / 07 / 2020", tags: ["Soup"]}]);
+    const doneRecipeTest = JSON.stringify([{id: "52977", type: "comida", area: "Turkish", category: "Side", alcoholicOrNot: "", name: "Corba", image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg", doneDate: "16 / 07 / 2020", tags: ["Soup"]}]);
 
     expect(localStorage.getItem('doneRecipes')).toEqual(doneRecipeTest);
 
